@@ -67,6 +67,6 @@ class S3ContactRepository:
         url = self.s3.generate_presigned_url(
             "get_object",
             Params={"Bucket": self.bucket_name, "Key": key},
-            ExpiresIn=os.environ["URL_EXPIRATION"] 
+            ExpiresIn=int(os.environ["URL_EXPIRATION"]) 
         )
         return  url

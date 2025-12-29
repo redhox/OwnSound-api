@@ -7,7 +7,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv() 
 
-SECRET_KEY = os.environ["SECRET_KEY"]
+SECRET_KEY = int(os.environ["SECRET_KEY"])
 ALGORITHM = "HS256"
 TOKEN_EXP_SECONDS = os.environ["TOKEN_EXP_SECONDS"]
 
