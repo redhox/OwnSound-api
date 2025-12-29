@@ -1,0 +1,6074 @@
+{
+  "users": {
+    "1": {
+      "id": "1",
+      "username": "admin",
+      "password": "admin",
+      "email": "admin@example.com",
+      "created_at": "2025-01-10",
+      "like": {
+        "track": [],
+        "album": [
+          1,
+          2,
+          19
+        ],
+        "artist": [],
+        "playlist": [
+          1
+        ]
+      }
+    },
+    "2": {
+      "id": "2",
+      "username": "bob",
+      "password": "admin",
+      "email": "bob@example.com",
+      "created_at": "2025-02-03",
+      "like": {
+        "track": [],
+        "album": [],
+        "artist": [],
+        "playlist": []
+      }
+    }
+  },
+  "artists": {
+    "1": {
+      "id": 1,
+      "name": "Bloodbath",
+      "image": "public/artistes/Bloodbath.webp",
+      "listAlbums": [
+        1
+      ]
+    },
+    "2": {
+      "id": 2,
+      "name": "Boston",
+      "image": "public/artistes/Boston.webp",
+      "listAlbums": [
+        2,
+        3,
+        4
+      ]
+    },
+    "3": {
+      "id": 3,
+      "name": "Gorillaz",
+      "image": "public/artistes/Gorillaz.webp",
+      "listAlbums": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    "4": {
+      "id": 4,
+      "name": "Igorrr",
+      "image": "public/artistes/Igorrr.webp",
+      "listAlbums": [
+        15,
+        16
+      ]
+    },
+    "5": {
+      "id": 5,
+      "name": "Stone Sour",
+      "image": "public/artistes/Stone Sour.webp",
+      "listAlbums": [
+        17
+      ]
+    },
+    "6": {
+      "id": 6,
+      "name": "Tenacious D",
+      "image": "public/artistes/Tenacious D.webp",
+      "listAlbums": [
+        18
+      ]
+    },
+    "7": {
+      "id": 7,
+      "name": "Testament",
+      "image": "public/artistes/Testament.webp",
+      "listAlbums": [
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ]
+    },
+    "8": {
+      "id": 8,
+      "name": "Linkin Park",
+      "image": "public/artistes/Linkin Park.webp",
+      "listAlbums": [
+        28
+      ]
+    },
+    "9": {
+      "id": 9,
+      "name": "Marilyn Manson",
+      "image": "public/artistes/Marilyn Manson.webp",
+      "listAlbums": [
+        28,
+        30
+      ]
+    },
+    "10": {
+      "id": 10,
+      "name": "Rob Zombie",
+      "image": "public/artistes/Rob Zombie.webp",
+      "listAlbums": [
+        28,
+        30
+      ]
+    },
+    "11": {
+      "id": 11,
+      "name": "Rob Dougan",
+      "image": "public/artistes/Rob Dougan.webp",
+      "listAlbums": [
+        28
+      ]
+    },
+    "12": {
+      "id": 12,
+      "name": "Deftones",
+      "image": "public/artistes/Deftones.webp",
+      "listAlbums": [
+        28,
+        30
+      ]
+    },
+    "13": {
+      "id": 13,
+      "name": "Team Sleep",
+      "image": "public/artistes/Team Sleep.webp",
+      "listAlbums": [
+        28
+      ]
+    },
+    "14": {
+      "id": 14,
+      "name": "P.O.D",
+      "image": "",
+      "listAlbums": [
+        28
+      ]
+    },
+    "15": {
+      "id": 15,
+      "name": "Ünloco",
+      "image": "public/artistes/Ünloco.webp",
+      "listAlbums": [
+        28
+      ]
+    },
+    "16": {
+      "id": 16,
+      "name": "Rage Against The Machine",
+      "image": "public/artistes/Rage Against The Machine.webp",
+      "listAlbums": [
+        28,
+        30
+      ]
+    },
+    "17": {
+      "id": 17,
+      "name": "Paul Oakenfold",
+      "image": "public/artistes/Paul Oakenfold.webp",
+      "listAlbums": [
+        28
+      ]
+    },
+    "18": {
+      "id": 18,
+      "name": "Fluke",
+      "image": "public/artistes/Fluke.webp",
+      "listAlbums": [
+        28
+      ]
+    },
+    "19": {
+      "id": 19,
+      "name": "Dave Matthews Band",
+      "image": "public/artistes/Dave Matthews Band.webp",
+      "listAlbums": [
+        28
+      ]
+    },
+    "20": {
+      "id": 20,
+      "name": "Don Davis",
+      "image": "public/artistes/Don Davis.webp",
+      "listAlbums": [
+        28,
+        29
+      ]
+    },
+    "21": {
+      "id": 21,
+      "name": "Juno Reactor",
+      "image": "public/artistes/Juno Reactor.webp",
+      "listAlbums": [
+        28,
+        29
+      ]
+    },
+    "22": {
+      "id": 22,
+      "name": "Juno Reactor Vs. Don Davis",
+      "image": "",
+      "listAlbums": [
+        28,
+        29
+      ]
+    },
+    "23": {
+      "id": 23,
+      "name": "Pale 3",
+      "image": "",
+      "listAlbums": [
+        29
+      ]
+    },
+    "24": {
+      "id": 24,
+      "name": "Propellerheads",
+      "image": "public/artistes/Propellerheads.webp",
+      "listAlbums": [
+        30
+      ]
+    },
+    "25": {
+      "id": 25,
+      "name": "Ministry",
+      "image": "public/artistes/Ministry.webp",
+      "listAlbums": [
+        30
+      ]
+    },
+    "26": {
+      "id": 26,
+      "name": "Rob D",
+      "image": "",
+      "listAlbums": [
+        30
+      ]
+    },
+    "27": {
+      "id": 27,
+      "name": "Meat Beat Manifesto",
+      "image": "public/artistes/Meat Beat Manifesto.webp",
+      "listAlbums": [
+        30
+      ]
+    },
+    "28": {
+      "id": 28,
+      "name": "Lunatic Calm",
+      "image": "public/artistes/Lunatic Calm.webp",
+      "listAlbums": [
+        30
+      ]
+    },
+    "29": {
+      "id": 29,
+      "name": "Prodigy",
+      "image": "public/artistes/Prodigy.webp",
+      "listAlbums": [
+        30
+      ]
+    },
+    "30": {
+      "id": 30,
+      "name": "Hive",
+      "image": "public/artistes/Hive.webp",
+      "listAlbums": [
+        30
+      ]
+    },
+    "31": {
+      "id": 31,
+      "name": "Monster Magnet",
+      "image": "public/artistes/Monster Magnet.webp",
+      "listAlbums": [
+        30
+      ]
+    },
+    "32": {
+      "id": 32,
+      "name": "Rammstein",
+      "image": "public/artistes/Rammstein.webp",
+      "listAlbums": [
+        30
+      ]
+    },
+    "33": {
+      "id": 33,
+      "name": "The Prodigy",
+      "image": "public/artistes/The Prodigy.webp",
+      "listAlbums": [
+        31,
+        32
+      ]
+    },
+    "34": {
+      "id": 34,
+      "name": "The Who",
+      "image": "public/artistes/The Who.webp",
+      "listAlbums": [
+        33,
+        34,
+        35,
+        36,
+        37
+      ]
+    },
+    "35": {
+      "id": 35,
+      "name": "Pete Townshend",
+      "image": "public/artistes/Pete Townshend.webp",
+      "listAlbums": [
+        36
+      ]
+    },
+    "36": {
+      "id": 36,
+      "name": "Wax Tailor",
+      "image": "public/artistes/Wax Tailor.webp",
+      "listAlbums": [
+        38
+      ]
+    }
+  },
+  "albums": {
+    "1": {
+      "id": 1,
+      "name": "\"Survival of the Sickest\"",
+      "artistId": [
+        1
+      ],
+      "cover": "public/covers/\"Survival of the Sickest\".webp",
+      "coverSmall": "public/covers/\"Survival of the Sickest\"_small.webp",
+      "listMusique": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    "2": {
+      "id": 2,
+      "name": "Boston",
+      "artistId": [
+        2
+      ],
+      "cover": "public/covers/Boston.webp",
+      "coverSmall": "public/covers/Boston_small.webp",
+      "listMusique": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ]
+    },
+    "3": {
+      "id": 3,
+      "name": "Third Stage",
+      "artistId": [
+        2
+      ],
+      "cover": "public/covers/Third Stage.webp",
+      "coverSmall": "public/covers/Third Stage_small.webp",
+      "listMusique": [
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29
+      ]
+    },
+    "4": {
+      "id": 4,
+      "name": "Walk On",
+      "artistId": [
+        2
+      ],
+      "cover": "public/covers/Walk On.webp",
+      "coverSmall": "public/covers/Walk On_small.webp",
+      "listMusique": [
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
+      ]
+    },
+    "5": {
+      "id": 5,
+      "name": "Cracker Island (Deluxe)",
+      "artistId": [
+        3
+      ],
+      "cover": "public/covers/Cracker Island (Deluxe).webp",
+      "coverSmall": "public/covers/Cracker Island (Deluxe)_small.webp",
+      "listMusique": [
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54
+      ]
+    },
+    "6": {
+      "id": 6,
+      "name": "Gorillaz",
+      "artistId": [
+        3
+      ],
+      "cover": "public/covers/Gorillaz.webp",
+      "coverSmall": "public/covers/Gorillaz_small.webp",
+      "listMusique": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71
+      ]
+    },
+    "7": {
+      "id": 7,
+      "name": "Humanz ",
+      "artistId": [
+        3
+      ],
+      "cover": "public/covers/Humanz .webp",
+      "coverSmall": "public/covers/Humanz _small.webp",
+      "listMusique": [
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97
+      ]
+    },
+    "8": {
+      "id": 8,
+      "name": "Plastic Beach",
+      "artistId": [
+        3
+      ],
+      "cover": "public/covers/Plastic Beach.webp",
+      "coverSmall": "public/covers/Plastic Beach_small.webp",
+      "listMusique": [
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113
+      ]
+    },
+    "9": {
+      "id": 9,
+      "name": "Song Machine, Season One: Strange Timez (Deluxe)",
+      "artistId": [
+        3
+      ],
+      "cover": "public/covers/Song Machine, Season One: Strange Timez (Deluxe).webp",
+      "coverSmall": "public/covers/Song Machine, Season One: Strange Timez (Deluxe)_small.webp",
+      "listMusique": [
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131
+      ]
+    },
+    "10": {
+      "id": 10,
+      "name": "The Fall",
+      "artistId": [
+        3
+      ],
+      "cover": "public/covers/The Fall.webp",
+      "coverSmall": "public/covers/The Fall_small.webp",
+      "listMusique": [
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146
+      ]
+    },
+    "11": {
+      "id": 11,
+      "name": "The Now Now",
+      "artistId": [
+        3
+      ],
+      "cover": "public/covers/The Now Now.webp",
+      "coverSmall": "public/covers/The Now Now_small.webp",
+      "listMusique": [
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157
+      ]
+    },
+    "12": {
+      "id": 12,
+      "name": "laika come home",
+      "artistId": [
+        3
+      ],
+      "cover": "public/covers/laika come home.webp",
+      "coverSmall": "public/covers/laika come home_small.webp",
+      "listMusique": [
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169
+      ]
+    },
+    "13": {
+      "id": 13,
+      "name": "Demon Days",
+      "artistId": [
+        3
+      ],
+      "cover": "public/covers/Demon Days.webp",
+      "coverSmall": "public/covers/Demon Days_small.webp",
+      "listMusique": [
+        170,
+        172,
+        173,
+        174,
+        175,
+        176,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184
+      ]
+    },
+    "14": {
+      "id": 14,
+      "name": "Demon Days (instrumental)",
+      "artistId": [
+        3
+      ],
+      "cover": "public/covers/Demon Days (instrumental).webp",
+      "coverSmall": "public/covers/Demon Days (instrumental)_small.webp",
+      "listMusique": [
+        171,
+        177
+      ]
+    },
+    "15": {
+      "id": 15,
+      "name": "Savage Sinusoid",
+      "artistId": [
+        4
+      ],
+      "cover": "public/covers/Savage Sinusoid.webp",
+      "coverSmall": "public/covers/Savage Sinusoid_small.webp",
+      "listMusique": [
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195
+      ]
+    },
+    "16": {
+      "id": 16,
+      "name": "Spirituality and Distortion",
+      "artistId": [
+        4
+      ],
+      "cover": "public/covers/Spirituality and Distortion.webp",
+      "coverSmall": "public/covers/Spirituality and Distortion_small.webp",
+      "listMusique": [
+        196,
+        197,
+        198,
+        199,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209
+      ]
+    },
+    "17": {
+      "id": 17,
+      "name": "Hydrograd",
+      "artistId": [
+        5
+      ],
+      "cover": "public/covers/Hydrograd.webp",
+      "coverSmall": "public/covers/Hydrograd_small.webp",
+      "listMusique": [
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        222,
+        223,
+        224
+      ]
+    },
+    "18": {
+      "id": 18,
+      "name": "Rize of the Fenix",
+      "artistId": [
+        6
+      ],
+      "cover": "public/covers/Rize of the Fenix.webp",
+      "coverSmall": "public/covers/Rize of the Fenix_small.webp",
+      "listMusique": [
+        225,
+        226,
+        227,
+        228,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        237
+      ]
+    },
+    "19": {
+      "id": 19,
+      "name": "Brotherhood of the Snake",
+      "artistId": [
+        7
+      ],
+      "cover": "public/covers/Brotherhood of the Snake.webp",
+      "coverSmall": "public/covers/Brotherhood of the Snake_small.webp",
+      "listMusique": [
+        238,
+        239,
+        241,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247
+      ]
+    },
+    "20": {
+      "id": 20,
+      "name": "Brotherhood Of The Snake",
+      "artistId": [
+        7
+      ],
+      "cover": "",
+      "coverSmall": "",
+      "listMusique": [
+        240
+      ]
+    },
+    "21": {
+      "id": 21,
+      "name": "Dark Roots of Earth",
+      "artistId": [
+        7
+      ],
+      "cover": "public/covers/Dark Roots of Earth.webp",
+      "coverSmall": "public/covers/Dark Roots of Earth_small.webp",
+      "listMusique": [
+        248,
+        249,
+        250,
+        251,
+        252,
+        253,
+        254,
+        255,
+        256,
+        257,
+        258,
+        260
+      ]
+    },
+    "22": {
+      "id": 22,
+      "name": "Dark Roots Of Earth",
+      "artistId": [
+        7
+      ],
+      "cover": "",
+      "coverSmall": "",
+      "listMusique": [
+        259
+      ]
+    },
+    "23": {
+      "id": 23,
+      "name": "Practice What You Preach",
+      "artistId": [
+        7
+      ],
+      "cover": "public/covers/Practice What You Preach.webp",
+      "coverSmall": "public/covers/Practice What You Preach_small.webp",
+      "listMusique": [
+        261,
+        262,
+        263,
+        264,
+        265,
+        266,
+        267,
+        268,
+        269,
+        270
+      ]
+    },
+    "24": {
+      "id": 24,
+      "name": "The Gathering",
+      "artistId": [
+        7
+      ],
+      "cover": "public/covers/The Gathering.webp",
+      "coverSmall": "public/covers/The Gathering_small.webp",
+      "listMusique": [
+        271,
+        272,
+        273,
+        274,
+        275,
+        276,
+        277,
+        278,
+        279,
+        280,
+        281
+      ]
+    },
+    "25": {
+      "id": 25,
+      "name": "The Legacy",
+      "artistId": [
+        7
+      ],
+      "cover": "public/covers/The Legacy.webp",
+      "coverSmall": "public/covers/The Legacy_small.webp",
+      "listMusique": [
+        282,
+        283,
+        284,
+        285,
+        286,
+        287,
+        288,
+        289,
+        290
+      ]
+    },
+    "26": {
+      "id": 26,
+      "name": "The New Order (1988, 2013) [mp3@320] [Fallen Angel]",
+      "artistId": [
+        7
+      ],
+      "cover": "public/covers/The New Order (1988, 2013) [mp3@320] [Fallen Angel].webp",
+      "coverSmall": "public/covers/The New Order (1988, 2013) [mp3@320] [Fallen Angel]_small.webp",
+      "listMusique": [
+        291,
+        292,
+        293,
+        294,
+        295,
+        296,
+        297,
+        298,
+        299,
+        300
+      ]
+    },
+    "27": {
+      "id": 27,
+      "name": "Titans Of Creation",
+      "artistId": [
+        7
+      ],
+      "cover": "public/covers/Titans Of Creation.webp",
+      "coverSmall": "public/covers/Titans Of Creation_small.webp",
+      "listMusique": [
+        301,
+        302,
+        303,
+        304,
+        305,
+        306,
+        307,
+        308,
+        309,
+        310,
+        311,
+        312
+      ]
+    },
+    "28": {
+      "id": 28,
+      "name": "The Matrix Reloaded",
+      "artistId": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "cover": "public/covers/The Matrix Reloaded.webp",
+      "coverSmall": "public/covers/The Matrix Reloaded_small.webp",
+      "listMusique": [
+        313,
+        314,
+        315,
+        316,
+        317,
+        318,
+        319,
+        320,
+        321,
+        322,
+        323,
+        324,
+        325,
+        326,
+        327,
+        328,
+        329,
+        330,
+        331
+      ]
+    },
+    "29": {
+      "id": 29,
+      "name": "The Matrix Revolutions",
+      "artistId": [
+        20,
+        21,
+        23,
+        22
+      ],
+      "cover": "public/covers/The Matrix Revolutions.webp",
+      "coverSmall": "public/covers/The Matrix Revolutions_small.webp",
+      "listMusique": [
+        332,
+        333,
+        334,
+        335,
+        336,
+        337,
+        338,
+        339,
+        340,
+        341,
+        342,
+        343,
+        344,
+        345,
+        346,
+        347
+      ]
+    },
+    "30": {
+      "id": 30,
+      "name": "The Matrix",
+      "artistId": [
+        9,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        10,
+        12,
+        30,
+        31,
+        32,
+        16
+      ],
+      "cover": "public/covers/The Matrix.webp",
+      "coverSmall": "public/covers/The Matrix_small.webp",
+      "listMusique": [
+        348,
+        349,
+        350,
+        351,
+        352,
+        353,
+        354,
+        355,
+        356,
+        357,
+        358,
+        359,
+        360
+      ]
+    },
+    "31": {
+      "id": 31,
+      "name": "Invaders Must Die",
+      "artistId": [
+        33
+      ],
+      "cover": "public/covers/Invaders Must Die.webp",
+      "coverSmall": "public/covers/Invaders Must Die_small.webp",
+      "listMusique": [
+        361,
+        362,
+        363,
+        364,
+        365,
+        366,
+        367,
+        368,
+        369,
+        370,
+        371
+      ]
+    },
+    "32": {
+      "id": 32,
+      "name": "The Day Is My Enemy",
+      "artistId": [
+        33
+      ],
+      "cover": "public/covers/The Day Is My Enemy.webp",
+      "coverSmall": "public/covers/The Day Is My Enemy_small.webp",
+      "listMusique": [
+        372,
+        373,
+        374,
+        375,
+        376,
+        377,
+        378,
+        379,
+        380,
+        381,
+        382,
+        383,
+        384,
+        385,
+        386,
+        387
+      ]
+    },
+    "33": {
+      "id": 33,
+      "name": "Face Dances",
+      "artistId": [
+        34
+      ],
+      "cover": "public/covers/Face Dances.webp",
+      "coverSmall": "public/covers/Face Dances_small.webp",
+      "listMusique": [
+        388,
+        389,
+        390,
+        391,
+        392,
+        393,
+        394,
+        395,
+        396,
+        397,
+        398,
+        399,
+        400
+      ]
+    },
+    "34": {
+      "id": 34,
+      "name": "Quadrophenia",
+      "artistId": [
+        34
+      ],
+      "cover": "public/covers/Quadrophenia.webp",
+      "coverSmall": "public/covers/Quadrophenia_small.webp",
+      "listMusique": [
+        401,
+        402,
+        403,
+        404,
+        405,
+        406,
+        407,
+        408,
+        409,
+        410,
+        411,
+        412,
+        413,
+        414,
+        415,
+        416,
+        417
+      ]
+    },
+    "35": {
+      "id": 35,
+      "name": "The Who By Numbers",
+      "artistId": [
+        34
+      ],
+      "cover": "public/covers/The Who By Numbers.webp",
+      "coverSmall": "public/covers/The Who By Numbers_small.webp",
+      "listMusique": [
+        418,
+        419,
+        420,
+        421,
+        422,
+        423,
+        424,
+        425,
+        426,
+        427,
+        428,
+        429,
+        430
+      ]
+    },
+    "36": {
+      "id": 36,
+      "name": "Tommy (Super Deluxe)",
+      "artistId": [
+        34,
+        35
+      ],
+      "cover": "public/covers/Tommy (Super Deluxe).webp",
+      "coverSmall": "public/covers/Tommy (Super Deluxe)_small.webp",
+      "listMusique": [
+        431,
+        432,
+        433,
+        434,
+        435,
+        436,
+        437,
+        438,
+        439,
+        440,
+        441,
+        442,
+        443,
+        444,
+        445,
+        446,
+        447,
+        448,
+        449,
+        450,
+        451,
+        452,
+        453,
+        454,
+        455,
+        456,
+        457,
+        458,
+        459,
+        460,
+        461,
+        462,
+        463,
+        464,
+        465,
+        466,
+        467,
+        468,
+        469,
+        470,
+        471,
+        472,
+        473,
+        474,
+        475,
+        476,
+        477,
+        478,
+        479,
+        480,
+        481,
+        482,
+        483,
+        484,
+        485,
+        486,
+        487,
+        488,
+        489,
+        490,
+        491,
+        492,
+        493,
+        494,
+        495,
+        496,
+        497,
+        498,
+        499,
+        500
+      ]
+    },
+    "37": {
+      "id": 37,
+      "name": "Who Are You",
+      "artistId": [
+        34
+      ],
+      "cover": "public/covers/Who Are You.webp",
+      "coverSmall": "public/covers/Who Are You_small.webp",
+      "listMusique": [
+        501,
+        502,
+        503,
+        504,
+        505,
+        506,
+        507,
+        508,
+        509,
+        510,
+        511,
+        512
+      ]
+    },
+    "38": {
+      "id": 38,
+      "name": "The Shadow of Their Suns",
+      "artistId": [
+        36
+      ],
+      "cover": "public/covers/The Shadow of Their Suns.webp",
+      "coverSmall": "public/covers/The Shadow of Their Suns_small.webp",
+      "listMusique": [
+        513,
+        514,
+        515,
+        516,
+        517,
+        518,
+        519,
+        520,
+        521,
+        522,
+        523,
+        524,
+        525
+      ]
+    }
+  },
+  "playlists": {
+    "1": {
+      "id": 1,
+      "name": "bonjour",
+      "listMusique": [
+        12,
+        352,
+        351,
+        350,
+        349
+      ],
+      "owner": "1"
+    }
+  },
+  "tracks": {
+    "1": {
+      "id": 1,
+      "title": "Zombie Inferno",
+      "duration": "04:07",
+      "artistId": 1,
+      "albumId": 1,
+      "albumTrack": 1,
+      "path": "Bloodbath/Bloodbath/Survival of the Sickest/01-Zombie Inferno.flac"
+    },
+    "2": {
+      "id": 2,
+      "title": "Putrefying Corpse",
+      "duration": "03:52",
+      "artistId": 1,
+      "albumId": 1,
+      "albumTrack": 2,
+      "path": "Bloodbath/Bloodbath/Survival of the Sickest/02-Putrefying Corpse.flac"
+    },
+    "3": {
+      "id": 3,
+      "title": "Dead Parade",
+      "duration": "04:39",
+      "artistId": 1,
+      "albumId": 1,
+      "albumTrack": 3,
+      "path": "Bloodbath/Bloodbath/Survival of the Sickest/03-Dead Parade.flac"
+    },
+    "4": {
+      "id": 4,
+      "title": "Malignant Maggot Therapy",
+      "duration": "03:05",
+      "artistId": 1,
+      "albumId": 1,
+      "albumTrack": 4,
+      "path": "Bloodbath/Bloodbath/Survival of the Sickest/04-Malignant Maggot Therapy.flac"
+    },
+    "5": {
+      "id": 5,
+      "title": "Carved",
+      "duration": "03:28",
+      "artistId": 1,
+      "albumId": 1,
+      "albumTrack": 5,
+      "path": "Bloodbath/Bloodbath/Survival of the Sickest/05-Carved.flac"
+    },
+    "6": {
+      "id": 6,
+      "title": "Born Infernal",
+      "duration": "04:00",
+      "artistId": 1,
+      "albumId": 1,
+      "albumTrack": 6,
+      "path": "Bloodbath/Bloodbath/Survival of the Sickest/06-Born Infernal.flac"
+    },
+    "7": {
+      "id": 7,
+      "title": "To Die",
+      "duration": "03:41",
+      "artistId": 1,
+      "albumId": 1,
+      "albumTrack": 7,
+      "path": "Bloodbath/Bloodbath/Survival of the Sickest/07-To Die.flac"
+    },
+    "8": {
+      "id": 8,
+      "title": "Affliction of Extinction",
+      "duration": "04:10",
+      "artistId": 1,
+      "albumId": 1,
+      "albumTrack": 8,
+      "path": "Bloodbath/Bloodbath/Survival of the Sickest/08-Affliction of Extinction.flac"
+    },
+    "9": {
+      "id": 9,
+      "title": "Tales of Melting Flesh",
+      "duration": "04:05",
+      "artistId": 1,
+      "albumId": 1,
+      "albumTrack": 9,
+      "path": "Bloodbath/Bloodbath/Survival of the Sickest/09-Tales of Melting Flesh.flac"
+    },
+    "10": {
+      "id": 10,
+      "title": "Environcide",
+      "duration": "03:57",
+      "artistId": 1,
+      "albumId": 1,
+      "albumTrack": 10,
+      "path": "Bloodbath/Bloodbath/Survival of the Sickest/10-Environcide.flac"
+    },
+    "11": {
+      "id": 11,
+      "title": "No God Before Me",
+      "duration": "05:45",
+      "artistId": 1,
+      "albumId": 1,
+      "albumTrack": 11,
+      "path": "Bloodbath/Bloodbath/Survival of the Sickest/11-No God Before Me.flac"
+    },
+    "12": {
+      "id": 12,
+      "title": "More Than A Feeling",
+      "duration": "04:45",
+      "artistId": 2,
+      "albumId": 2,
+      "albumTrack": 1,
+      "path": "Boston/Boston/Boston/01-More Than a Feeling.flac"
+    },
+    "13": {
+      "id": 13,
+      "title": "Peace Of Mind",
+      "duration": "05:02",
+      "artistId": 2,
+      "albumId": 2,
+      "albumTrack": 2,
+      "path": "Boston/Boston/Boston/02-Peace of Mind.flac"
+    },
+    "14": {
+      "id": 14,
+      "title": "Foreplay/Long Time",
+      "duration": "07:49",
+      "artistId": 2,
+      "albumId": 2,
+      "albumTrack": 3,
+      "path": "Boston/Boston/Boston/03-Foreplay Long Time.flac"
+    },
+    "15": {
+      "id": 15,
+      "title": "Rock & Roll Band",
+      "duration": "03:00",
+      "artistId": 2,
+      "albumId": 2,
+      "albumTrack": 4,
+      "path": "Boston/Boston/Boston/04-Rock and Roll Band.flac"
+    },
+    "16": {
+      "id": 16,
+      "title": "Smokin'",
+      "duration": "04:21",
+      "artistId": 2,
+      "albumId": 2,
+      "albumTrack": 5,
+      "path": "Boston/Boston/Boston/05-Smokin.flac"
+    },
+    "17": {
+      "id": 17,
+      "title": "Hitch A Ride",
+      "duration": "04:11",
+      "artistId": 2,
+      "albumId": 2,
+      "albumTrack": 6,
+      "path": "Boston/Boston/Boston/06-Hitch a Ride.flac"
+    },
+    "18": {
+      "id": 18,
+      "title": "Something About You",
+      "duration": "03:47",
+      "artistId": 2,
+      "albumId": 2,
+      "albumTrack": 7,
+      "path": "Boston/Boston/Boston/07-Something About You.flac"
+    },
+    "19": {
+      "id": 19,
+      "title": "Let Me Take You Home Tonight",
+      "duration": "04:45",
+      "artistId": 2,
+      "albumId": 2,
+      "albumTrack": 8,
+      "path": "Boston/Boston/Boston/08-Let Me Take You Home Tonight.flac"
+    },
+    "20": {
+      "id": 20,
+      "title": "Amanda",
+      "duration": "04:16",
+      "artistId": 2,
+      "albumId": 3,
+      "albumTrack": 1,
+      "path": "Boston/Boston/Third Stage/01-Amanda.flac"
+    },
+    "21": {
+      "id": 21,
+      "title": "We're Ready",
+      "duration": "03:58",
+      "artistId": 2,
+      "albumId": 3,
+      "albumTrack": 2,
+      "path": "Boston/Boston/Third Stage/02-We’re Ready.flac"
+    },
+    "22": {
+      "id": 22,
+      "title": "The Launch A) Countdown B) Ignition C) Third Stage Separation",
+      "duration": "02:55",
+      "artistId": 2,
+      "albumId": 3,
+      "albumTrack": 3,
+      "path": "Boston/Boston/Third Stage/03-The Launch A Countdown B Ignition C Third Stage Separation.flac"
+    },
+    "23": {
+      "id": 23,
+      "title": "Cool The Engines",
+      "duration": "04:23",
+      "artistId": 2,
+      "albumId": 3,
+      "albumTrack": 4,
+      "path": "Boston/Boston/Third Stage/04-Cool the Engines.flac"
+    },
+    "24": {
+      "id": 24,
+      "title": "My Destination",
+      "duration": "02:13",
+      "artistId": 2,
+      "albumId": 3,
+      "albumTrack": 5,
+      "path": "Boston/Boston/Third Stage/05-My Destination.flac"
+    },
+    "25": {
+      "id": 25,
+      "title": "A New World",
+      "duration": "00:36",
+      "artistId": 2,
+      "albumId": 3,
+      "albumTrack": 6,
+      "path": "Boston/Boston/Third Stage/06-A New World.flac"
+    },
+    "26": {
+      "id": 26,
+      "title": "To Be A Man",
+      "duration": "03:30",
+      "artistId": 2,
+      "albumId": 3,
+      "albumTrack": 7,
+      "path": "Boston/Boston/Third Stage/07-To Be a Man.flac"
+    },
+    "27": {
+      "id": 27,
+      "title": "I Think I Like It",
+      "duration": "04:06",
+      "artistId": 2,
+      "albumId": 3,
+      "albumTrack": 8,
+      "path": "Boston/Boston/Third Stage/08-I Think I Like It.flac"
+    },
+    "28": {
+      "id": 28,
+      "title": "Can'tcha Say (You Believe In Me) / Still In Love",
+      "duration": "05:12",
+      "artistId": 2,
+      "albumId": 3,
+      "albumTrack": 9,
+      "path": "Boston/Boston/Third Stage/09-Can’tcha Say You Believe In Me Still In Love.flac"
+    },
+    "29": {
+      "id": 29,
+      "title": "Hollyann",
+      "duration": "05:11",
+      "artistId": 2,
+      "albumId": 3,
+      "albumTrack": 10,
+      "path": "Boston/Boston/Third Stage/10-Hollyann.flac"
+    },
+    "30": {
+      "id": 30,
+      "title": "I Need Your Love",
+      "duration": "05:33",
+      "artistId": 2,
+      "albumId": 4,
+      "albumTrack": 1,
+      "path": "Boston/Boston/Walk On/01-I Need Your Love.flac"
+    },
+    "31": {
+      "id": 31,
+      "title": "Surrender To Me",
+      "duration": "05:33",
+      "artistId": 2,
+      "albumId": 4,
+      "albumTrack": 2,
+      "path": "Boston/Boston/Walk On/02-Surrender to Me.flac"
+    },
+    "32": {
+      "id": 32,
+      "title": "Livin' For You",
+      "duration": "04:55",
+      "artistId": 2,
+      "albumId": 4,
+      "albumTrack": 3,
+      "path": "Boston/Boston/Walk On/03-Livin for You.flac"
+    },
+    "33": {
+      "id": 33,
+      "title": "Walkin' At Night",
+      "duration": "02:02",
+      "artistId": 2,
+      "albumId": 4,
+      "albumTrack": 4,
+      "path": "Boston/Boston/Walk On/04-Walkin at Night.flac"
+    },
+    "34": {
+      "id": 34,
+      "title": "Walk On",
+      "duration": "02:57",
+      "artistId": 2,
+      "albumId": 4,
+      "albumTrack": 5,
+      "path": "Boston/Boston/Walk On/05-Walk On.flac"
+    },
+    "35": {
+      "id": 35,
+      "title": "Get Organ-ized/Get Reorgan-ized",
+      "duration": "04:28",
+      "artistId": 2,
+      "albumId": 4,
+      "albumTrack": 6,
+      "path": "Boston/Boston/Walk On/06-Get Organ-Ized Get Reorgan-Ized.flac"
+    },
+    "36": {
+      "id": 36,
+      "title": "Walk On (Some More)",
+      "duration": "02:51",
+      "artistId": 2,
+      "albumId": 4,
+      "albumTrack": 7,
+      "path": "Boston/Boston/Walk On/07-Walk On Some More.flac"
+    },
+    "37": {
+      "id": 37,
+      "title": "What's Your Name",
+      "duration": "04:27",
+      "artistId": 2,
+      "albumId": 4,
+      "albumTrack": 8,
+      "path": "Boston/Boston/Walk On/08-Whats Your Name.flac"
+    },
+    "38": {
+      "id": 38,
+      "title": "Magdalene",
+      "duration": "05:58",
+      "artistId": 2,
+      "albumId": 4,
+      "albumTrack": 9,
+      "path": "Boston/Boston/Walk On/09-Magdalene.flac"
+    },
+    "39": {
+      "id": 39,
+      "title": "We Can Make It",
+      "duration": "05:29",
+      "artistId": 2,
+      "albumId": 4,
+      "albumTrack": 10,
+      "path": "Boston/Boston/Walk On/10-We Can Make It.flac"
+    },
+    "40": {
+      "id": 40,
+      "title": "Cracker Island (feat. Thundercat)",
+      "duration": "03:33",
+      "artistId": 3,
+      "albumId": 5,
+      "albumTrack": 1,
+      "path": "Gorillaz/Gorillaz/Cracker Island/01-Cracker Island.flac"
+    },
+    "41": {
+      "id": 41,
+      "title": "Oil (feat. Stevie Nicks)",
+      "duration": "03:50",
+      "artistId": 3,
+      "albumId": 5,
+      "albumTrack": 2,
+      "path": "Gorillaz/Gorillaz/Cracker Island/02-Oil.flac"
+    },
+    "42": {
+      "id": 42,
+      "title": "The Tired Influencer",
+      "duration": "03:31",
+      "artistId": 3,
+      "albumId": 5,
+      "albumTrack": 3,
+      "path": "Gorillaz/Gorillaz/Cracker Island/03-The Tired Influencer.flac"
+    },
+    "43": {
+      "id": 43,
+      "title": "Silent Running (feat. Adeleye Omotayo)",
+      "duration": "04:26",
+      "artistId": 3,
+      "albumId": 5,
+      "albumTrack": 4,
+      "path": "Gorillaz/Gorillaz/Cracker Island/04-Silent Running.flac"
+    },
+    "44": {
+      "id": 44,
+      "title": "New Gold (feat. Tame Impala and Bootie Brown)",
+      "duration": "03:35",
+      "artistId": 3,
+      "albumId": 5,
+      "albumTrack": 5,
+      "path": "Gorillaz/Gorillaz/Cracker Island/05-New Gold.flac"
+    },
+    "45": {
+      "id": 45,
+      "title": "Baby Queen",
+      "duration": "03:40",
+      "artistId": 3,
+      "albumId": 5,
+      "albumTrack": 6,
+      "path": "Gorillaz/Gorillaz/Cracker Island/06-Baby Queen.flac"
+    },
+    "46": {
+      "id": 46,
+      "title": "Tarantula",
+      "duration": "03:31",
+      "artistId": 3,
+      "albumId": 5,
+      "albumTrack": 7,
+      "path": "Gorillaz/Gorillaz/Cracker Island/07-Tarantula.flac"
+    },
+    "47": {
+      "id": 47,
+      "title": "Tormenta (feat. Bad Bunny)",
+      "duration": "03:13",
+      "artistId": 3,
+      "albumId": 5,
+      "albumTrack": 8,
+      "path": "Gorillaz/Gorillaz/Cracker Island/08-Tormenta.flac"
+    },
+    "48": {
+      "id": 48,
+      "title": "Skinny Ape",
+      "duration": "04:41",
+      "artistId": 3,
+      "albumId": 5,
+      "albumTrack": 9,
+      "path": "Gorillaz/Gorillaz/Cracker Island/09-Skinny Ape.flac"
+    },
+    "49": {
+      "id": 49,
+      "title": "Possession Island (feat. Beck)",
+      "duration": "03:26",
+      "artistId": 3,
+      "albumId": 5,
+      "albumTrack": 10,
+      "path": "Gorillaz/Gorillaz/Cracker Island/10-Possession Island.flac"
+    },
+    "50": {
+      "id": 50,
+      "title": "Captain Chicken (feat. Del The Funky Homosapien)",
+      "duration": "01:51",
+      "artistId": 3,
+      "albumId": 5,
+      "albumTrack": 11,
+      "path": "Gorillaz/Gorillaz/Cracker Island/11-Captain Chicken.flac"
+    },
+    "51": {
+      "id": 51,
+      "title": "Controllah (feat. MC Bin Laden)",
+      "duration": "02:30",
+      "artistId": 3,
+      "albumId": 5,
+      "albumTrack": 12,
+      "path": "Gorillaz/Gorillaz/Cracker Island/12-Controllah.flac"
+    },
+    "52": {
+      "id": 52,
+      "title": "Crocadillaz (feat. De La Soul and Dawn Penn)",
+      "duration": "02:33",
+      "artistId": 3,
+      "albumId": 5,
+      "albumTrack": 13,
+      "path": "Gorillaz/Gorillaz/Cracker Island/13-Crocadillaz.flac"
+    },
+    "53": {
+      "id": 53,
+      "title": "Silent Running (feat. Adeleye Omotayo) [2D Piano Version]",
+      "duration": "04:23",
+      "artistId": 3,
+      "albumId": 5,
+      "albumTrack": 14,
+      "path": "Gorillaz/Gorillaz/Cracker Island/14-Silent Running 2D piano version.flac"
+    },
+    "54": {
+      "id": 54,
+      "title": "New Gold (feat. Tame Impala and Bootie Brown)  (Dom Dolla Remix)",
+      "duration": "04:34",
+      "artistId": 3,
+      "albumId": 5,
+      "albumTrack": 15,
+      "path": "Gorillaz/Gorillaz/Cracker Island/15-New Gold Dom Dolla remix.flac"
+    },
+    "55": {
+      "id": 55,
+      "title": "Re-Hash",
+      "duration": "03:40",
+      "artistId": 3,
+      "albumId": 6,
+      "albumTrack": 1,
+      "path": "Gorillaz/Gorillaz/Gorillaz/01-Re-Hash.flac"
+    },
+    "56": {
+      "id": 56,
+      "title": "5/4",
+      "duration": "02:42",
+      "artistId": 3,
+      "albumId": 6,
+      "albumTrack": 2,
+      "path": "Gorillaz/Gorillaz/Gorillaz/02-5 4.flac"
+    },
+    "57": {
+      "id": 57,
+      "title": "Tomorrow Comes Today",
+      "duration": "03:13",
+      "artistId": 3,
+      "albumId": 6,
+      "albumTrack": 3,
+      "path": "Gorillaz/Gorillaz/Gorillaz/03-Tomorrow Comes Today.flac"
+    },
+    "58": {
+      "id": 58,
+      "title": "New Genius (Brother)",
+      "duration": "03:59",
+      "artistId": 3,
+      "albumId": 6,
+      "albumTrack": 4,
+      "path": "Gorillaz/Gorillaz/Gorillaz/04-New Genious Brother.flac"
+    },
+    "59": {
+      "id": 59,
+      "title": "Clint Eastwood",
+      "duration": "05:42",
+      "artistId": 3,
+      "albumId": 6,
+      "albumTrack": 5,
+      "path": "Gorillaz/Gorillaz/Gorillaz/05-Clint Eastwood.flac"
+    },
+    "60": {
+      "id": 60,
+      "title": "Man Research (Clapper)",
+      "duration": "04:32",
+      "artistId": 3,
+      "albumId": 6,
+      "albumTrack": 6,
+      "path": "Gorillaz/Gorillaz/Gorillaz/06-Man Research Clapper.flac"
+    },
+    "61": {
+      "id": 61,
+      "title": "Punk",
+      "duration": "01:38",
+      "artistId": 3,
+      "albumId": 6,
+      "albumTrack": 7,
+      "path": "Gorillaz/Gorillaz/Gorillaz/07-Punk.flac"
+    },
+    "62": {
+      "id": 62,
+      "title": "Sound Check (Gravity)",
+      "duration": "04:42",
+      "artistId": 3,
+      "albumId": 6,
+      "albumTrack": 8,
+      "path": "Gorillaz/Gorillaz/Gorillaz/08-Sound Check Gravity.flac"
+    },
+    "63": {
+      "id": 63,
+      "title": "Double Bass",
+      "duration": "04:46",
+      "artistId": 3,
+      "albumId": 6,
+      "albumTrack": 9,
+      "path": "Gorillaz/Gorillaz/Gorillaz/09-Double Bass.flac"
+    },
+    "64": {
+      "id": 64,
+      "title": "Rock the House",
+      "duration": "04:09",
+      "artistId": 3,
+      "albumId": 6,
+      "albumTrack": 10,
+      "path": "Gorillaz/Gorillaz/Gorillaz/10-Rock the House.flac"
+    },
+    "65": {
+      "id": 65,
+      "title": "19-2000",
+      "duration": "03:27",
+      "artistId": 3,
+      "albumId": 6,
+      "albumTrack": 11,
+      "path": "Gorillaz/Gorillaz/Gorillaz/11-19-2000.flac"
+    },
+    "66": {
+      "id": 66,
+      "title": "Latin Simone (Que Pasa Contigo)",
+      "duration": "03:38",
+      "artistId": 3,
+      "albumId": 6,
+      "albumTrack": 12,
+      "path": "Gorillaz/Gorillaz/Gorillaz/12-Latin Simone Qué pasa contigo.flac"
+    },
+    "67": {
+      "id": 67,
+      "title": "Starshine",
+      "duration": "03:33",
+      "artistId": 3,
+      "albumId": 6,
+      "albumTrack": 13,
+      "path": "Gorillaz/Gorillaz/Gorillaz/13-Starshine.flac"
+    },
+    "68": {
+      "id": 68,
+      "title": "Slow Country",
+      "duration": "03:37",
+      "artistId": 3,
+      "albumId": 6,
+      "albumTrack": 14,
+      "path": "Gorillaz/Gorillaz/Gorillaz/14-Slow Country.flac"
+    },
+    "69": {
+      "id": 69,
+      "title": "M1 A1",
+      "duration": "04:01",
+      "artistId": 3,
+      "albumId": 6,
+      "albumTrack": 15,
+      "path": "Gorillaz/Gorillaz/Gorillaz/15-M1 A1.flac"
+    },
+    "70": {
+      "id": 70,
+      "title": "Clint Eastwood (Ed Case / Sweetie Irie Refix)",
+      "duration": "03:41",
+      "artistId": 3,
+      "albumId": 6,
+      "albumTrack": 16,
+      "path": "Gorillaz/Gorillaz/Gorillaz/16-Clint Eastwood Ed Case Sweetie Irie refix edit.flac"
+    },
+    "71": {
+      "id": 71,
+      "title": "19-2000 (Soulchild Remix)",
+      "duration": "03:29",
+      "artistId": 3,
+      "albumId": 6,
+      "albumTrack": 17,
+      "path": "Gorillaz/Gorillaz/Gorillaz/17-19-2000 Soulchild remix.flac"
+    },
+    "72": {
+      "id": 72,
+      "title": "Intro: I Switched My Robot Off",
+      "duration": "00:23",
+      "artistId": 3,
+      "albumId": 7,
+      "albumTrack": 1,
+      "path": "Gorillaz/Gorillaz/Humanz/01-Intro I Switched My Robot Off.flac"
+    },
+    "73": {
+      "id": 73,
+      "title": "Ascension (feat. Vince Staples)",
+      "duration": "02:35",
+      "artistId": 3,
+      "albumId": 7,
+      "albumTrack": 2,
+      "path": "Gorillaz/Gorillaz/Humanz/02-Ascension.flac"
+    },
+    "74": {
+      "id": 74,
+      "title": "Strobelite (feat. Peven Everett)",
+      "duration": "04:32",
+      "artistId": 3,
+      "albumId": 7,
+      "albumTrack": 3,
+      "path": "Gorillaz/Gorillaz/Humanz/03-Strobelite.flac"
+    },
+    "75": {
+      "id": 75,
+      "title": "Saturnz Barz (feat. Popcaan)",
+      "duration": "03:01",
+      "artistId": 3,
+      "albumId": 7,
+      "albumTrack": 4,
+      "path": "Gorillaz/Gorillaz/Humanz/04-Saturnz Barz.flac"
+    },
+    "76": {
+      "id": 76,
+      "title": "Momentz (feat. De La Soul)",
+      "duration": "03:16",
+      "artistId": 3,
+      "albumId": 7,
+      "albumTrack": 5,
+      "path": "Gorillaz/Gorillaz/Humanz/05-Momentz.flac"
+    },
+    "77": {
+      "id": 77,
+      "title": "Interlude: The Non-Conformist Oath",
+      "duration": "00:21",
+      "artistId": 3,
+      "albumId": 7,
+      "albumTrack": 6,
+      "path": "Gorillaz/Gorillaz/Humanz/06-Interlude The Non‐Conformist Oath.flac"
+    },
+    "78": {
+      "id": 78,
+      "title": "Submission (feat. Danny Brown & Kelela)",
+      "duration": "03:21",
+      "artistId": 3,
+      "albumId": 7,
+      "albumTrack": 7,
+      "path": "Gorillaz/Gorillaz/Humanz/07-Submission.flac"
+    },
+    "79": {
+      "id": 79,
+      "title": "Charger (feat. Grace Jones)",
+      "duration": "03:34",
+      "artistId": 3,
+      "albumId": 7,
+      "albumTrack": 8,
+      "path": "Gorillaz/Gorillaz/Humanz/08-Charger.flac"
+    },
+    "80": {
+      "id": 80,
+      "title": "Interlude: Elevator Going Up",
+      "duration": "00:04",
+      "artistId": 3,
+      "albumId": 7,
+      "albumTrack": 9,
+      "path": "Gorillaz/Gorillaz/Humanz/09-Interlude Elevator Going Up.flac"
+    },
+    "81": {
+      "id": 81,
+      "title": "Andromeda (feat. DRAM)",
+      "duration": "03:17",
+      "artistId": 3,
+      "albumId": 7,
+      "albumTrack": 10,
+      "path": "Gorillaz/Gorillaz/Humanz/10-Andromeda.flac"
+    },
+    "82": {
+      "id": 82,
+      "title": "Busted and Blue",
+      "duration": "04:37",
+      "artistId": 3,
+      "albumId": 7,
+      "albumTrack": 11,
+      "path": "Gorillaz/Gorillaz/Humanz/11-Busted and Blue.flac"
+    },
+    "83": {
+      "id": 83,
+      "title": "Interlude: Talk Radio",
+      "duration": "00:19",
+      "artistId": 3,
+      "albumId": 7,
+      "albumTrack": 12,
+      "path": "Gorillaz/Gorillaz/Humanz/12-Interlude Talk Radio.flac"
+    },
+    "84": {
+      "id": 84,
+      "title": "Carnival (feat. Anthony Hamilton)",
+      "duration": "02:15",
+      "artistId": 3,
+      "albumId": 7,
+      "albumTrack": 13,
+      "path": "Gorillaz/Gorillaz/Humanz/13-Carnival.flac"
+    },
+    "85": {
+      "id": 85,
+      "title": "Let Me Out (feat. Mavis Staples & Pusha T)",
+      "duration": "02:55",
+      "artistId": 3,
+      "albumId": 7,
+      "albumTrack": 14,
+      "path": "Gorillaz/Gorillaz/Humanz/14-Let Me Out.flac"
+    },
+    "86": {
+      "id": 86,
+      "title": "Interlude: Penthouse",
+      "duration": "00:11",
+      "artistId": 3,
+      "albumId": 7,
+      "albumTrack": 15,
+      "path": "Gorillaz/Gorillaz/Humanz/15-Interlude Penthouse.flac"
+    },
+    "87": {
+      "id": 87,
+      "title": "Sex Murder Party (feat. Jamie Principle & Zebra Katz)",
+      "duration": "04:19",
+      "artistId": 3,
+      "albumId": 7,
+      "albumTrack": 16,
+      "path": "Gorillaz/Gorillaz/Humanz/16-Sex Murder Party.flac"
+    },
+    "88": {
+      "id": 88,
+      "title": "She's My Collar (feat. Kali Uchis)",
+      "duration": "03:29",
+      "artistId": 3,
+      "albumId": 7,
+      "albumTrack": 17,
+      "path": "Gorillaz/Gorillaz/Humanz/17-She’s My Collar.flac"
+    },
+    "89": {
+      "id": 89,
+      "title": "Interlude: The Elephant",
+      "duration": "00:11",
+      "artistId": 3,
+      "albumId": 7,
+      "albumTrack": 18,
+      "path": "Gorillaz/Gorillaz/Humanz/18-Interlude The Elephant.flac"
+    },
+    "90": {
+      "id": 90,
+      "title": "Hallelujah Money (feat. Benjamin Clementine)",
+      "duration": "04:23",
+      "artistId": 3,
+      "albumId": 7,
+      "albumTrack": 19,
+      "path": "Gorillaz/Gorillaz/Humanz/19-Hallelujah Money.flac"
+    },
+    "91": {
+      "id": 91,
+      "title": "We Got the Power (feat. Jehnny Beth)",
+      "duration": "02:17",
+      "artistId": 3,
+      "albumId": 7,
+      "albumTrack": 20,
+      "path": "Gorillaz/Gorillaz/Humanz/20-We Got the Power.flac"
+    },
+    "92": {
+      "id": 92,
+      "title": "Interlude: New World",
+      "duration": "01:21",
+      "artistId": 3,
+      "albumId": 7,
+      "albumTrack": 21,
+      "path": "Gorillaz/Gorillaz/Humanz/21-Interlude New World.flac"
+    },
+    "93": {
+      "id": 93,
+      "title": "The Apprentice (feat. Rag'n'Bone Man, Zebra Katz & RAY BLK)",
+      "duration": "03:55",
+      "artistId": 3,
+      "albumId": 7,
+      "albumTrack": 22,
+      "path": "Gorillaz/Gorillaz/Humanz/22-The Apprentice.flac"
+    },
+    "94": {
+      "id": 94,
+      "title": "Halfway to the Halfway House (feat. Peven Everett)",
+      "duration": "03:57",
+      "artistId": 3,
+      "albumId": 7,
+      "albumTrack": 23,
+      "path": "Gorillaz/Gorillaz/Humanz/23-Halfway to the Halfway House.flac"
+    },
+    "95": {
+      "id": 95,
+      "title": "Out of Body (feat. Kilo Kish, Zebra Katz & Imani Vonshà)",
+      "duration": "03:44",
+      "artistId": 3,
+      "albumId": 7,
+      "albumTrack": 24,
+      "path": "Gorillaz/Gorillaz/Humanz/24-Out of Body.flac"
+    },
+    "96": {
+      "id": 96,
+      "title": "Ticker Tape (feat. Carly Simon & Kali Uchis)",
+      "duration": "04:28",
+      "artistId": 3,
+      "albumId": 7,
+      "albumTrack": 25,
+      "path": "Gorillaz/Gorillaz/Humanz/25-Ticker Tape.flac"
+    },
+    "97": {
+      "id": 97,
+      "title": "Circle of Friendz (feat. Brandon Markell Holmes)",
+      "duration": "02:09",
+      "artistId": 3,
+      "albumId": 7,
+      "albumTrack": 26,
+      "path": "Gorillaz/Gorillaz/Humanz/26-Circle of Friendz.flac"
+    },
+    "98": {
+      "id": 98,
+      "title": "Orchestral Intro (feat. Sinfonia ViVA)",
+      "duration": "01:09",
+      "artistId": 3,
+      "albumId": 8,
+      "albumTrack": 1,
+      "path": "Gorillaz/Gorillaz/Plastic Beach/01-Orchestral Intro.flac"
+    },
+    "99": {
+      "id": 99,
+      "title": "Welcome to the World of the Plastic Beach (feat. Snoop Dogg and Hypnotic Brass Ensemble)",
+      "duration": "03:35",
+      "artistId": 3,
+      "albumId": 8,
+      "albumTrack": 2,
+      "path": "Gorillaz/Gorillaz/Plastic Beach/02-Welcome to the World of the Plastic Beach.flac"
+    },
+    "100": {
+      "id": 100,
+      "title": "White Flag (feat. Bashy, Kano and the National Orchestra for Arabic Music)",
+      "duration": "03:43",
+      "artistId": 3,
+      "albumId": 8,
+      "albumTrack": 3,
+      "path": "Gorillaz/Gorillaz/Plastic Beach/03-White Flag.flac"
+    },
+    "101": {
+      "id": 101,
+      "title": "Rhinestone Eyes",
+      "duration": "03:20",
+      "artistId": 3,
+      "albumId": 8,
+      "albumTrack": 4,
+      "path": "Gorillaz/Gorillaz/Plastic Beach/04-Rhinestone Eyes.flac"
+    },
+    "102": {
+      "id": 102,
+      "title": "Stylo (feat. Mos Def and Bobby Womack)",
+      "duration": "04:30",
+      "artistId": 3,
+      "albumId": 8,
+      "albumTrack": 5,
+      "path": "Gorillaz/Gorillaz/Plastic Beach/05-Stylo.flac"
+    },
+    "103": {
+      "id": 103,
+      "title": "Superfast Jellyfish (feat. Gruff Rhys and De La Soul)",
+      "duration": "02:54",
+      "artistId": 3,
+      "albumId": 8,
+      "albumTrack": 6,
+      "path": "Gorillaz/Gorillaz/Plastic Beach/06-Superfast Jellyfish.flac"
+    },
+    "104": {
+      "id": 104,
+      "title": "Empire Ants (feat. Little Dragon)",
+      "duration": "04:43",
+      "artistId": 3,
+      "albumId": 8,
+      "albumTrack": 7,
+      "path": "Gorillaz/Gorillaz/Plastic Beach/07-Empire Ants.flac"
+    },
+    "105": {
+      "id": 105,
+      "title": "Glitter Freeze (feat. Mark E Smith)",
+      "duration": "04:03",
+      "artistId": 3,
+      "albumId": 8,
+      "albumTrack": 8,
+      "path": "Gorillaz/Gorillaz/Plastic Beach/08-Glitter Freeze.flac"
+    },
+    "106": {
+      "id": 106,
+      "title": "Some Kind of Nature (feat. Lou Reed)",
+      "duration": "02:59",
+      "artistId": 3,
+      "albumId": 8,
+      "albumTrack": 9,
+      "path": "Gorillaz/Gorillaz/Plastic Beach/09-Some Kind of Nature.flac"
+    },
+    "107": {
+      "id": 107,
+      "title": "On Melancholy Hill",
+      "duration": "03:53",
+      "artistId": 3,
+      "albumId": 8,
+      "albumTrack": 10,
+      "path": "Gorillaz/Gorillaz/Plastic Beach/10-On Melancholy Hill.flac"
+    },
+    "108": {
+      "id": 108,
+      "title": "Broken",
+      "duration": "03:17",
+      "artistId": 3,
+      "albumId": 8,
+      "albumTrack": 11,
+      "path": "Gorillaz/Gorillaz/Plastic Beach/11-Broken.flac"
+    },
+    "109": {
+      "id": 109,
+      "title": "Sweepstakes (feat. Mos Def and Hypnotic Brass Ensemble)",
+      "duration": "05:20",
+      "artistId": 3,
+      "albumId": 8,
+      "albumTrack": 12,
+      "path": "Gorillaz/Gorillaz/Plastic Beach/12-Sweepstakes.flac"
+    },
+    "110": {
+      "id": 110,
+      "title": "Plastic Beach (feat. Mick Jones and Paul Simonon)",
+      "duration": "03:47",
+      "artistId": 3,
+      "albumId": 8,
+      "albumTrack": 13,
+      "path": "Gorillaz/Gorillaz/Plastic Beach/13-Plastic Beach.flac"
+    },
+    "111": {
+      "id": 111,
+      "title": "To Binge (feat. Little Dragon)",
+      "duration": "03:55",
+      "artistId": 3,
+      "albumId": 8,
+      "albumTrack": 14,
+      "path": "Gorillaz/Gorillaz/Plastic Beach/14-To Binge.flac"
+    },
+    "112": {
+      "id": 112,
+      "title": "Cloud of Unknowing (feat. Bobby Womack and Sinfonia ViVA)",
+      "duration": "03:06",
+      "artistId": 3,
+      "albumId": 8,
+      "albumTrack": 15,
+      "path": "Gorillaz/Gorillaz/Plastic Beach/15-Cloud of Unknowing.flac"
+    },
+    "113": {
+      "id": 113,
+      "title": "Pirate Jet",
+      "duration": "02:32",
+      "artistId": 3,
+      "albumId": 8,
+      "albumTrack": 16,
+      "path": "Gorillaz/Gorillaz/Plastic Beach/16-Pirate Jet.flac"
+    },
+    "114": {
+      "id": 114,
+      "title": "Strange Timez (feat. Robert Smith)",
+      "duration": "03:47",
+      "artistId": 3,
+      "albumId": 9,
+      "albumTrack": 1,
+      "path": "Gorillaz/Gorillaz/Song Machine, Season One - Strange Timez/01-Strange Timez.flac"
+    },
+    "115": {
+      "id": 115,
+      "title": "The Valley of The Pagans (feat. Beck)",
+      "duration": "03:01",
+      "artistId": 3,
+      "albumId": 9,
+      "albumTrack": 2,
+      "path": "Gorillaz/Gorillaz/Song Machine, Season One - Strange Timez/02-The Valley of The Pagans.flac"
+    },
+    "116": {
+      "id": 116,
+      "title": "The Lost Chord (feat. Leee John)",
+      "duration": "04:03",
+      "artistId": 3,
+      "albumId": 9,
+      "albumTrack": 3,
+      "path": "Gorillaz/Gorillaz/Song Machine, Season One - Strange Timez/03-The Lost Chord.flac"
+    },
+    "117": {
+      "id": 117,
+      "title": "Pac-Man (feat. ScHoolboy Q)",
+      "duration": "03:12",
+      "artistId": 3,
+      "albumId": 9,
+      "albumTrack": 4,
+      "path": "Gorillaz/Gorillaz/Song Machine, Season One - Strange Timez/04-Pac‐Man.flac"
+    },
+    "118": {
+      "id": 118,
+      "title": "Chalk Tablet Towers (feat. St Vincent)",
+      "duration": "03:02",
+      "artistId": 3,
+      "albumId": 9,
+      "albumTrack": 5,
+      "path": "Gorillaz/Gorillaz/Song Machine, Season One - Strange Timez/05-Chalk Tablet Towers.flac"
+    },
+    "119": {
+      "id": 119,
+      "title": "The Pink Phantom (feat. Elton John and 6LACK)",
+      "duration": "04:13",
+      "artistId": 3,
+      "albumId": 9,
+      "albumTrack": 6,
+      "path": "Gorillaz/Gorillaz/Song Machine, Season One - Strange Timez/06-The Pink Phantom.flac"
+    },
+    "120": {
+      "id": 120,
+      "title": "Aries (feat. Peter Hook and Georgia)",
+      "duration": "04:13",
+      "artistId": 3,
+      "albumId": 9,
+      "albumTrack": 7,
+      "path": "Gorillaz/Gorillaz/Song Machine, Season One - Strange Timez/07-Aries.flac"
+    },
+    "121": {
+      "id": 121,
+      "title": "Friday 13th (feat. Octavian)",
+      "duration": "03:35",
+      "artistId": 3,
+      "albumId": 9,
+      "albumTrack": 8,
+      "path": "Gorillaz/Gorillaz/Song Machine, Season One - Strange Timez/08-Friday 13th.flac"
+    },
+    "122": {
+      "id": 122,
+      "title": "Dead Butterflies (feat. Kano and Roxani Arias)",
+      "duration": "04:33",
+      "artistId": 3,
+      "albumId": 9,
+      "albumTrack": 9,
+      "path": "Gorillaz/Gorillaz/Song Machine, Season One - Strange Timez/09-Dead Butterflies.flac"
+    },
+    "123": {
+      "id": 123,
+      "title": "Désolé (feat. Fatoumata Diawara) (Extended Version)",
+      "duration": "05:33",
+      "artistId": 3,
+      "albumId": 9,
+      "albumTrack": 10,
+      "path": "Gorillaz/Gorillaz/Song Machine, Season One - Strange Timez/10-Désolé.flac"
+    },
+    "124": {
+      "id": 124,
+      "title": "Momentary Bliss (feat. slowthai and Slaves)",
+      "duration": "03:41",
+      "artistId": 3,
+      "albumId": 9,
+      "albumTrack": 11,
+      "path": "Gorillaz/Gorillaz/Song Machine, Season One - Strange Timez/11-Momentary Bliss.flac"
+    },
+    "125": {
+      "id": 125,
+      "title": "Opium (feat. EARTHGANG)",
+      "duration": "06:50",
+      "artistId": 3,
+      "albumId": 9,
+      "albumTrack": 12,
+      "path": "Gorillaz/Gorillaz/Song Machine, Season One - Strange Timez/12-Opium.flac"
+    },
+    "126": {
+      "id": 126,
+      "title": "Simplicity (feat. Joan As Police Woman)",
+      "duration": "02:44",
+      "artistId": 3,
+      "albumId": 9,
+      "albumTrack": 13,
+      "path": "Gorillaz/Gorillaz/Song Machine, Season One - Strange Timez/13-Simplicity.flac"
+    },
+    "127": {
+      "id": 127,
+      "title": "Severed Head (feat. Goldlink and Unknown Mortal Orchestra)",
+      "duration": "03:34",
+      "artistId": 3,
+      "albumId": 9,
+      "albumTrack": 14,
+      "path": "Gorillaz/Gorillaz/Song Machine, Season One - Strange Timez/14-Severed Head.flac"
+    },
+    "128": {
+      "id": 128,
+      "title": "With Love To An Ex (feat. Moonchild Sanelly)",
+      "duration": "03:01",
+      "artistId": 3,
+      "albumId": 9,
+      "albumTrack": 15,
+      "path": "Gorillaz/Gorillaz/Song Machine, Season One - Strange Timez/15-With Love to an Ex.flac"
+    },
+    "129": {
+      "id": 129,
+      "title": "MLS (feat. JPEGMAFIA and CHAI)",
+      "duration": "03:13",
+      "artistId": 3,
+      "albumId": 9,
+      "albumTrack": 16,
+      "path": "Gorillaz/Gorillaz/Song Machine, Season One - Strange Timez/16-MLS.flac"
+    },
+    "130": {
+      "id": 130,
+      "title": "How Far? (feat. Tony Allen and Skepta)",
+      "duration": "02:46",
+      "artistId": 3,
+      "albumId": 9,
+      "albumTrack": 17,
+      "path": "Gorillaz/Gorillaz/Song Machine, Season One - Strange Timez/17-How Far.flac"
+    },
+    "131": {
+      "id": 131,
+      "title": "Taxi back to 80s Reykjavík",
+      "duration": "02:42",
+      "artistId": 3,
+      "albumId": 9,
+      "albumTrack": 18,
+      "path": "Gorillaz/Gorillaz/Song Machine, Season One - Strange Timez/18-Taxi Back to 80s Reykjavík.flac"
+    },
+    "132": {
+      "id": 132,
+      "title": "Phoner to Arizona",
+      "duration": "04:14",
+      "artistId": 3,
+      "albumId": 10,
+      "albumTrack": 1,
+      "path": "Gorillaz/Gorillaz/The Fall/01-Phoner to Arizona.flac"
+    },
+    "133": {
+      "id": 133,
+      "title": "Revolving Doors",
+      "duration": "03:26",
+      "artistId": 3,
+      "albumId": 10,
+      "albumTrack": 2,
+      "path": "Gorillaz/Gorillaz/The Fall/02-Revolving Doors.flac"
+    },
+    "134": {
+      "id": 134,
+      "title": "HillBilly Man",
+      "duration": "03:50",
+      "artistId": 3,
+      "albumId": 10,
+      "albumTrack": 3,
+      "path": "Gorillaz/Gorillaz/The Fall/03-Hillbilly Man.flac"
+    },
+    "135": {
+      "id": 135,
+      "title": "Detroit",
+      "duration": "02:03",
+      "artistId": 3,
+      "albumId": 10,
+      "albumTrack": 4,
+      "path": "Gorillaz/Gorillaz/The Fall/04-Detroit.flac"
+    },
+    "136": {
+      "id": 136,
+      "title": "Shy-Town",
+      "duration": "02:54",
+      "artistId": 3,
+      "albumId": 10,
+      "albumTrack": 5,
+      "path": "Gorillaz/Gorillaz/The Fall/05-Shy‐town.flac"
+    },
+    "137": {
+      "id": 137,
+      "title": "Little Pink Plastic Bags",
+      "duration": "03:09",
+      "artistId": 3,
+      "albumId": 10,
+      "albumTrack": 6,
+      "path": "Gorillaz/Gorillaz/The Fall/06-Little Pink Plastic Bags.flac"
+    },
+    "138": {
+      "id": 138,
+      "title": "The Joplin Spider",
+      "duration": "03:22",
+      "artistId": 3,
+      "albumId": 10,
+      "albumTrack": 7,
+      "path": "Gorillaz/Gorillaz/The Fall/07-The Joplin Spider.flac"
+    },
+    "139": {
+      "id": 139,
+      "title": "The Parish of Space Dust",
+      "duration": "02:25",
+      "artistId": 3,
+      "albumId": 10,
+      "albumTrack": 8,
+      "path": "Gorillaz/Gorillaz/The Fall/08-The Parish of Space Dust.flac"
+    },
+    "140": {
+      "id": 140,
+      "title": "The Snake in Dallas",
+      "duration": "02:11",
+      "artistId": 3,
+      "albumId": 10,
+      "albumTrack": 9,
+      "path": "Gorillaz/Gorillaz/The Fall/09-The Snake in Dallas.flac"
+    },
+    "141": {
+      "id": 141,
+      "title": "Amarillo",
+      "duration": "03:24",
+      "artistId": 3,
+      "albumId": 10,
+      "albumTrack": 10,
+      "path": "Gorillaz/Gorillaz/The Fall/10-Amarillo.flac"
+    },
+    "142": {
+      "id": 142,
+      "title": "The Speak It Mountains",
+      "duration": "02:14",
+      "artistId": 3,
+      "albumId": 10,
+      "albumTrack": 11,
+      "path": "Gorillaz/Gorillaz/The Fall/11-The Speak It Mountains.flac"
+    },
+    "143": {
+      "id": 143,
+      "title": "Aspen Forest",
+      "duration": "02:50",
+      "artistId": 3,
+      "albumId": 10,
+      "albumTrack": 12,
+      "path": "Gorillaz/Gorillaz/The Fall/12-Aspen Forest.flac"
+    },
+    "144": {
+      "id": 144,
+      "title": "Bobby in Phoenix (feat. Bobby Womack)",
+      "duration": "03:16",
+      "artistId": 3,
+      "albumId": 10,
+      "albumTrack": 13,
+      "path": "Gorillaz/Gorillaz/The Fall/13-Bobby in Phoenix.flac"
+    },
+    "145": {
+      "id": 145,
+      "title": "California and the Slipping of the Sun",
+      "duration": "03:24",
+      "artistId": 3,
+      "albumId": 10,
+      "albumTrack": 14,
+      "path": "Gorillaz/Gorillaz/The Fall/14-California and the Slipping of the Sun.flac"
+    },
+    "146": {
+      "id": 146,
+      "title": "Seattle Yodel",
+      "duration": "00:38",
+      "artistId": 3,
+      "albumId": 10,
+      "albumTrack": 15,
+      "path": "Gorillaz/Gorillaz/The Fall/15-Seattle Yodel.flac"
+    },
+    "147": {
+      "id": 147,
+      "title": "Humility (feat. George Benson)",
+      "duration": "03:17",
+      "artistId": 3,
+      "albumId": 11,
+      "albumTrack": 1,
+      "path": "Gorillaz/Gorillaz/The Now Now/01-Humility.flac"
+    },
+    "148": {
+      "id": 148,
+      "title": "Tranz",
+      "duration": "02:42",
+      "artistId": 3,
+      "albumId": 11,
+      "albumTrack": 2,
+      "path": "Gorillaz/Gorillaz/The Now Now/02-Tranz.flac"
+    },
+    "149": {
+      "id": 149,
+      "title": "Hollywood (feat. Snoop Dogg & Jamie Principle)",
+      "duration": "04:53",
+      "artistId": 3,
+      "albumId": 11,
+      "albumTrack": 3,
+      "path": "Gorillaz/Gorillaz/The Now Now/03-Hollywood.flac"
+    },
+    "150": {
+      "id": 150,
+      "title": "Kansas",
+      "duration": "04:08",
+      "artistId": 3,
+      "albumId": 11,
+      "albumTrack": 4,
+      "path": "Gorillaz/Gorillaz/The Now Now/04-Kansas.flac"
+    },
+    "151": {
+      "id": 151,
+      "title": "Sorcererz",
+      "duration": "03:00",
+      "artistId": 3,
+      "albumId": 11,
+      "albumTrack": 5,
+      "path": "Gorillaz/Gorillaz/The Now Now/05-Sorcererz.flac"
+    },
+    "152": {
+      "id": 152,
+      "title": "Idaho",
+      "duration": "03:42",
+      "artistId": 3,
+      "albumId": 11,
+      "albumTrack": 6,
+      "path": "Gorillaz/Gorillaz/The Now Now/06-Idaho.flac"
+    },
+    "153": {
+      "id": 153,
+      "title": "Lake Zurich",
+      "duration": "04:13",
+      "artistId": 3,
+      "albumId": 11,
+      "albumTrack": 7,
+      "path": "Gorillaz/Gorillaz/The Now Now/07-Lake Zurich.flac"
+    },
+    "154": {
+      "id": 154,
+      "title": "Magic City",
+      "duration": "03:59",
+      "artistId": 3,
+      "albumId": 11,
+      "albumTrack": 8,
+      "path": "Gorillaz/Gorillaz/The Now Now/08-Magic City.flac"
+    },
+    "155": {
+      "id": 155,
+      "title": "Fire Flies",
+      "duration": "03:53",
+      "artistId": 3,
+      "albumId": 11,
+      "albumTrack": 9,
+      "path": "Gorillaz/Gorillaz/The Now Now/09-Fire Flies.flac"
+    },
+    "156": {
+      "id": 156,
+      "title": "One Percent",
+      "duration": "02:21",
+      "artistId": 3,
+      "albumId": 11,
+      "albumTrack": 10,
+      "path": "Gorillaz/Gorillaz/The Now Now/10-One Percent.flac"
+    },
+    "157": {
+      "id": 157,
+      "title": "Souk Eye",
+      "duration": "04:34",
+      "artistId": 3,
+      "albumId": 11,
+      "albumTrack": 11,
+      "path": "Gorillaz/Gorillaz/The Now Now/11-Souk Eye.flac"
+    },
+    "158": {
+      "id": 158,
+      "title": "jungle fresh",
+      "duration": "05:28",
+      "artistId": 3,
+      "albumId": 12,
+      "albumTrack": 1,
+      "path": "Gorillaz/[2002] Gorillaz - Laika Come Home/(01) Gorillaz - Jungle Fresh.mp3"
+    },
+    "159": {
+      "id": 159,
+      "title": "strictly rubbadub",
+      "duration": "03:41",
+      "artistId": 3,
+      "albumId": 12,
+      "albumTrack": 2,
+      "path": "Gorillaz/[2002] Gorillaz - Laika Come Home/(02) Gorillaz - Strictly Rubbadub.mp3"
+    },
+    "160": {
+      "id": 160,
+      "title": "banana baby",
+      "duration": "05:29",
+      "artistId": 3,
+      "albumId": 12,
+      "albumTrack": 3,
+      "path": "Gorillaz/[2002] Gorillaz - Laika Come Home/(03) Gorillaz - Banana Baby.mp3"
+    },
+    "161": {
+      "id": 161,
+      "title": "monkey racket",
+      "duration": "05:57",
+      "artistId": 3,
+      "albumId": 12,
+      "albumTrack": 4,
+      "path": "Gorillaz/[2002] Gorillaz - Laika Come Home/(04) Gorillaz - Monkey Racket.mp3"
+    },
+    "162": {
+      "id": 162,
+      "title": "de punked",
+      "duration": "05:20",
+      "artistId": 3,
+      "albumId": 12,
+      "albumTrack": 5,
+      "path": "Gorillaz/[2002] Gorillaz - Laika Come Home/(05) Gorillaz - De-Punked.mp3"
+    },
+    "163": {
+      "id": 163,
+      "title": "p45",
+      "duration": "04:26",
+      "artistId": 3,
+      "albumId": 12,
+      "albumTrack": 6,
+      "path": "Gorillaz/[2002] Gorillaz - Laika Come Home/(06) Gorillaz - P45.mp3"
+    },
+    "164": {
+      "id": 164,
+      "title": "dub 9",
+      "duration": "05:17",
+      "artistId": 3,
+      "albumId": 12,
+      "albumTrack": 7,
+      "path": "Gorillaz/[2002] Gorillaz - Laika Come Home/(07) Gorillaz - Dub Ø9.mp3"
+    },
+    "165": {
+      "id": 165,
+      "title": "crooked dub",
+      "duration": "05:31",
+      "artistId": 3,
+      "albumId": 12,
+      "albumTrack": 8,
+      "path": "Gorillaz/[2002] Gorillaz - Laika Come Home/(08) Gorillaz - Crooked Dub.mp3"
+    },
+    "166": {
+      "id": 166,
+      "title": "mutant genius",
+      "duration": "05:02",
+      "artistId": 3,
+      "albumId": 12,
+      "albumTrack": 9,
+      "path": "Gorillaz/[2002] Gorillaz - Laika Come Home/(09) Gorillaz - Mutant Genius.mp3"
+    },
+    "167": {
+      "id": 167,
+      "title": "come again",
+      "duration": "06:04",
+      "artistId": 3,
+      "albumId": 12,
+      "albumTrack": 10,
+      "path": "Gorillaz/[2002] Gorillaz - Laika Come Home/(10) Gorillaz - Come Again.mp3"
+    },
+    "168": {
+      "id": 168,
+      "title": "a fistful of peanuts",
+      "duration": "05:53",
+      "artistId": 3,
+      "albumId": 12,
+      "albumTrack": 11,
+      "path": "Gorillaz/[2002] Gorillaz - Laika Come Home/(11) Gorillaz - A Fistful Of Peanuts.mp3"
+    },
+    "169": {
+      "id": 169,
+      "title": "lil dub chefin",
+      "duration": "05:43",
+      "artistId": 3,
+      "albumId": 12,
+      "albumTrack": 12,
+      "path": "Gorillaz/[2002] Gorillaz - Laika Come Home/(12) Gorillaz - Lil Dub Chefin.mp3"
+    },
+    "170": {
+      "id": 170,
+      "title": "All Alone",
+      "duration": "03:30",
+      "artistId": 3,
+      "albumId": 13,
+      "albumTrack": 1,
+      "path": "Gorillaz/[2005] Gorillaz - Demon Days/All Alone.mp3"
+    },
+    "171": {
+      "id": 171,
+      "title": "DARE",
+      "duration": "04:04",
+      "artistId": 3,
+      "albumId": 14,
+      "albumTrack": 1,
+      "path": "Gorillaz/[2005] Gorillaz - Demon Days/Dare.mp3"
+    },
+    "172": {
+      "id": 172,
+      "title": "Demon Days",
+      "duration": "04:30",
+      "artistId": 3,
+      "albumId": 13,
+      "albumTrack": 2,
+      "path": "Gorillaz/[2005] Gorillaz - Demon Days/Demon Days.mp3"
+    },
+    "173": {
+      "id": 173,
+      "title": "Dirty Harry",
+      "duration": "03:43",
+      "artistId": 3,
+      "albumId": 13,
+      "albumTrack": 3,
+      "path": "Gorillaz/[2005] Gorillaz - Demon Days/Dirty Harry.mp3"
+    },
+    "174": {
+      "id": 174,
+      "title": "Don’t Get Lost in Heaven",
+      "duration": "02:00",
+      "artistId": 3,
+      "albumId": 13,
+      "albumTrack": 4,
+      "path": "Gorillaz/[2005] Gorillaz - Demon Days/Don't Get Lost in Heaven.mp3"
+    },
+    "175": {
+      "id": 175,
+      "title": "El Mañana",
+      "duration": "03:50",
+      "artistId": 3,
+      "albumId": 13,
+      "albumTrack": 5,
+      "path": "Gorillaz/[2005] Gorillaz - Demon Days/El Mañana.mp3"
+    },
+    "176": {
+      "id": 176,
+      "title": "Every Planet We Reach Is Dead",
+      "duration": "04:53",
+      "artistId": 3,
+      "albumId": 13,
+      "albumTrack": 6,
+      "path": "Gorillaz/[2005] Gorillaz - Demon Days/Every Planet we Reach is Dead.mp3"
+    },
+    "177": {
+      "id": 177,
+      "title": "Feel Good Inc.",
+      "duration": "03:41",
+      "artistId": 3,
+      "albumId": 14,
+      "albumTrack": 2,
+      "path": "Gorillaz/[2005] Gorillaz - Demon Days/Feel Good Inc..mp3"
+    },
+    "178": {
+      "id": 178,
+      "title": "Fire Coming Out of the Monkey’s Head",
+      "duration": "03:16",
+      "artistId": 3,
+      "albumId": 13,
+      "albumTrack": 7,
+      "path": "Gorillaz/[2005] Gorillaz - Demon Days/Fire Coming Out of The Monkey's Head.mp3"
+    },
+    "179": {
+      "id": 179,
+      "title": "Intro",
+      "duration": "01:03",
+      "artistId": 3,
+      "albumId": 13,
+      "albumTrack": 8,
+      "path": "Gorillaz/[2005] Gorillaz - Demon Days/Intro.mp3"
+    },
+    "180": {
+      "id": 180,
+      "title": "Kids With Guns",
+      "duration": "03:45",
+      "artistId": 3,
+      "albumId": 13,
+      "albumTrack": 9,
+      "path": "Gorillaz/[2005] Gorillaz - Demon Days/Kids With Guns.mp3"
+    },
+    "181": {
+      "id": 181,
+      "title": "Last Living Souls",
+      "duration": "03:10",
+      "artistId": 3,
+      "albumId": 13,
+      "albumTrack": 10,
+      "path": "Gorillaz/[2005] Gorillaz - Demon Days/Last Living Souls.mp3"
+    },
+    "182": {
+      "id": 182,
+      "title": "November Has Come",
+      "duration": "02:41",
+      "artistId": 3,
+      "albumId": 13,
+      "albumTrack": 11,
+      "path": "Gorillaz/[2005] Gorillaz - Demon Days/November has Come.mp3"
+    },
+    "183": {
+      "id": 183,
+      "title": "O Green World",
+      "duration": "04:31",
+      "artistId": 3,
+      "albumId": 13,
+      "albumTrack": 12,
+      "path": "Gorillaz/[2005] Gorillaz - Demon Days/O Green World.mp3"
+    },
+    "184": {
+      "id": 184,
+      "title": "White Light",
+      "duration": "02:08",
+      "artistId": 3,
+      "albumId": 13,
+      "albumTrack": 13,
+      "path": "Gorillaz/[2005] Gorillaz - Demon Days/White Light.mp3"
+    },
+    "185": {
+      "id": 185,
+      "title": "Viande",
+      "duration": "01:55",
+      "artistId": 4,
+      "albumId": 15,
+      "albumTrack": 1,
+      "path": "Igorrr/Igorrr/Savage Sinusoid/01-Viande.mp3"
+    },
+    "186": {
+      "id": 186,
+      "title": "ieuD",
+      "duration": "03:55",
+      "artistId": 4,
+      "albumId": 15,
+      "albumTrack": 2,
+      "path": "Igorrr/Igorrr/Savage Sinusoid/02-ieuD.mp3"
+    },
+    "187": {
+      "id": 187,
+      "title": "Houmous",
+      "duration": "03:31",
+      "artistId": 4,
+      "albumId": 15,
+      "albumTrack": 3,
+      "path": "Igorrr/Igorrr/Savage Sinusoid/03-Houmous.mp3"
+    },
+    "188": {
+      "id": 188,
+      "title": "Opus Brain",
+      "duration": "05:25",
+      "artistId": 4,
+      "albumId": 15,
+      "albumTrack": 4,
+      "path": "Igorrr/Igorrr/Savage Sinusoid/04-Opus Brain.mp3"
+    },
+    "189": {
+      "id": 189,
+      "title": "Problème d’émotion",
+      "duration": "04:38",
+      "artistId": 4,
+      "albumId": 15,
+      "albumTrack": 5,
+      "path": "Igorrr/Igorrr/Savage Sinusoid/05-Problème d’émotion.mp3"
+    },
+    "190": {
+      "id": 190,
+      "title": "Spaghetti Forever",
+      "duration": "04:24",
+      "artistId": 4,
+      "albumId": 15,
+      "albumTrack": 6,
+      "path": "Igorrr/Igorrr/Savage Sinusoid/06-Spaghetti Forever.mp3"
+    },
+    "191": {
+      "id": 191,
+      "title": "Cheval",
+      "duration": "03:06",
+      "artistId": 4,
+      "albumId": 15,
+      "albumTrack": 7,
+      "path": "Igorrr/Igorrr/Savage Sinusoid/07-Cheval.mp3"
+    },
+    "192": {
+      "id": 192,
+      "title": "Apopathodiaphulatophobie",
+      "duration": "02:02",
+      "artistId": 4,
+      "albumId": 15,
+      "albumTrack": 8,
+      "path": "Igorrr/Igorrr/Savage Sinusoid/08-Apopathodiaphulatophobie.mp3"
+    },
+    "193": {
+      "id": 193,
+      "title": "Va te foutre",
+      "duration": "01:45",
+      "artistId": 4,
+      "albumId": 15,
+      "albumTrack": 9,
+      "path": "Igorrr/Igorrr/Savage Sinusoid/09-Va te foutre.mp3"
+    },
+    "194": {
+      "id": 194,
+      "title": "Robert",
+      "duration": "03:19",
+      "artistId": 4,
+      "albumId": 15,
+      "albumTrack": 10,
+      "path": "Igorrr/Igorrr/Savage Sinusoid/10-Robert.mp3"
+    },
+    "195": {
+      "id": 195,
+      "title": "Au Revoir",
+      "duration": "05:26",
+      "artistId": 4,
+      "albumId": 15,
+      "albumTrack": 11,
+      "path": "Igorrr/Igorrr/Savage Sinusoid/11-Au Revoir.mp3"
+    },
+    "196": {
+      "id": 196,
+      "title": "Downgrade Desert",
+      "duration": "04:23",
+      "artistId": 4,
+      "albumId": 16,
+      "albumTrack": 1,
+      "path": "Igorrr/Igorrr/Spirituality and Distortion/01-Downgrade Desert.mp3"
+    },
+    "197": {
+      "id": 197,
+      "title": "Nervous Waltz",
+      "duration": "03:23",
+      "artistId": 4,
+      "albumId": 16,
+      "albumTrack": 2,
+      "path": "Igorrr/Igorrr/Spirituality and Distortion/02-Nervous Waltz.mp3"
+    },
+    "198": {
+      "id": 198,
+      "title": "Very Noise",
+      "duration": "01:47",
+      "artistId": 4,
+      "albumId": 16,
+      "albumTrack": 3,
+      "path": "Igorrr/Igorrr/Spirituality and Distortion/03-Very Noise.mp3"
+    },
+    "199": {
+      "id": 199,
+      "title": "Hollow Tree",
+      "duration": "03:06",
+      "artistId": 4,
+      "albumId": 16,
+      "albumTrack": 4,
+      "path": "Igorrr/Igorrr/Spirituality and Distortion/04-Hollow Tree.mp3"
+    },
+    "200": {
+      "id": 200,
+      "title": "Camel Dancefloor",
+      "duration": "03:13",
+      "artistId": 4,
+      "albumId": 16,
+      "albumTrack": 5,
+      "path": "Igorrr/Igorrr/Spirituality and Distortion/05-Camel Dancefloor.mp3"
+    },
+    "201": {
+      "id": 201,
+      "title": "Parpaing",
+      "duration": "03:36",
+      "artistId": 4,
+      "albumId": 16,
+      "albumTrack": 6,
+      "path": "Igorrr/Igorrr/Spirituality and Distortion/06-Parpaing.mp3"
+    },
+    "202": {
+      "id": 202,
+      "title": "Musette Maximum",
+      "duration": "02:18",
+      "artistId": 4,
+      "albumId": 16,
+      "albumTrack": 7,
+      "path": "Igorrr/Igorrr/Spirituality and Distortion/07-Musette Maximum.mp3"
+    },
+    "203": {
+      "id": 203,
+      "title": "Himalaya Massive Ritual",
+      "duration": "07:06",
+      "artistId": 4,
+      "albumId": 16,
+      "albumTrack": 8,
+      "path": "Igorrr/Igorrr/Spirituality and Distortion/08-Himalaya Massive Ritual.mp3"
+    },
+    "204": {
+      "id": 204,
+      "title": "Lost in Introspection",
+      "duration": "04:56",
+      "artistId": 4,
+      "albumId": 16,
+      "albumTrack": 9,
+      "path": "Igorrr/Igorrr/Spirituality and Distortion/09-Lost in Introspection.mp3"
+    },
+    "205": {
+      "id": 205,
+      "title": "Overweight Poesy",
+      "duration": "05:50",
+      "artistId": 4,
+      "albumId": 16,
+      "albumTrack": 10,
+      "path": "Igorrr/Igorrr/Spirituality and Distortion/10-Overweight Poesy.mp3"
+    },
+    "206": {
+      "id": 206,
+      "title": "Paranoid Bulldozer Italiano",
+      "duration": "03:47",
+      "artistId": 4,
+      "albumId": 16,
+      "albumTrack": 11,
+      "path": "Igorrr/Igorrr/Spirituality and Distortion/11-Paranoid Bulldozer Italiano.mp3"
+    },
+    "207": {
+      "id": 207,
+      "title": "Barocco Satani",
+      "duration": "03:36",
+      "artistId": 4,
+      "albumId": 16,
+      "albumTrack": 12,
+      "path": "Igorrr/Igorrr/Spirituality and Distortion/12-Barocco Satani.mp3"
+    },
+    "208": {
+      "id": 208,
+      "title": "Polyphonic Rust",
+      "duration": "04:16",
+      "artistId": 4,
+      "albumId": 16,
+      "albumTrack": 13,
+      "path": "Igorrr/Igorrr/Spirituality and Distortion/13-Polyphonic Rust.mp3"
+    },
+    "209": {
+      "id": 209,
+      "title": "Kung-Fu Chèvre",
+      "duration": "04:13",
+      "artistId": 4,
+      "albumId": 16,
+      "albumTrack": 14,
+      "path": "Igorrr/Igorrr/Spirituality and Distortion/14-Kung-Fu chèvre.mp3"
+    },
+    "210": {
+      "id": 210,
+      "title": "YSIF",
+      "duration": "02:02",
+      "artistId": 5,
+      "albumId": 17,
+      "albumTrack": 1,
+      "path": "Stone Sour/Stone Sour/Hydrograd/01-YSIF.flac"
+    },
+    "211": {
+      "id": 211,
+      "title": "Taipei Person/Allah Tea",
+      "duration": "05:16",
+      "artistId": 5,
+      "albumId": 17,
+      "albumTrack": 2,
+      "path": "Stone Sour/Stone Sour/Hydrograd/02-Taipei Person Allah Tea.flac"
+    },
+    "212": {
+      "id": 212,
+      "title": "Knievel Has Landed",
+      "duration": "04:01",
+      "artistId": 5,
+      "albumId": 17,
+      "albumTrack": 3,
+      "path": "Stone Sour/Stone Sour/Hydrograd/03-Knievel Has Landed.flac"
+    },
+    "213": {
+      "id": 213,
+      "title": "Hydrograd",
+      "duration": "04:37",
+      "artistId": 5,
+      "albumId": 17,
+      "albumTrack": 4,
+      "path": "Stone Sour/Stone Sour/Hydrograd/04-Hydrograd.flac"
+    },
+    "214": {
+      "id": 214,
+      "title": "Song #3",
+      "duration": "04:16",
+      "artistId": 5,
+      "albumId": 17,
+      "albumTrack": 5,
+      "path": "Stone Sour/Stone Sour/Hydrograd/05-Song #3.flac"
+    },
+    "215": {
+      "id": 215,
+      "title": "Fabuless",
+      "duration": "04:00",
+      "artistId": 5,
+      "albumId": 17,
+      "albumTrack": 6,
+      "path": "Stone Sour/Stone Sour/Hydrograd/06-Fabuless.flac"
+    },
+    "216": {
+      "id": 216,
+      "title": "The Witness Trees",
+      "duration": "04:45",
+      "artistId": 5,
+      "albumId": 17,
+      "albumTrack": 7,
+      "path": "Stone Sour/Stone Sour/Hydrograd/07-The Witness Trees.flac"
+    },
+    "217": {
+      "id": 217,
+      "title": "Rose Red Violent Blue (This Song Is Dumb & So Am I)",
+      "duration": "04:56",
+      "artistId": 5,
+      "albumId": 17,
+      "albumTrack": 8,
+      "path": "Stone Sour/Stone Sour/Hydrograd/08-Rose Red Violent Blue This Song Is Dumb and So Am I.flac"
+    },
+    "218": {
+      "id": 218,
+      "title": "Thank God It's Over",
+      "duration": "03:36",
+      "artistId": 5,
+      "albumId": 17,
+      "albumTrack": 9,
+      "path": "Stone Sour/Stone Sour/Hydrograd/09-Thank God It’s Over.flac"
+    },
+    "219": {
+      "id": 219,
+      "title": "St. Marie",
+      "duration": "04:27",
+      "artistId": 5,
+      "albumId": 17,
+      "albumTrack": 10,
+      "path": "Stone Sour/Stone Sour/Hydrograd/10-St. Marie.flac"
+    },
+    "220": {
+      "id": 220,
+      "title": "Mercy",
+      "duration": "03:23",
+      "artistId": 5,
+      "albumId": 17,
+      "albumTrack": 11,
+      "path": "Stone Sour/Stone Sour/Hydrograd/11-Mercy.flac"
+    },
+    "221": {
+      "id": 221,
+      "title": "Whiplash Pants",
+      "duration": "04:19",
+      "artistId": 5,
+      "albumId": 17,
+      "albumTrack": 12,
+      "path": "Stone Sour/Stone Sour/Hydrograd/12-Whiplash Pants.flac"
+    },
+    "222": {
+      "id": 222,
+      "title": "Friday Knights",
+      "duration": "05:17",
+      "artistId": 5,
+      "albumId": 17,
+      "albumTrack": 13,
+      "path": "Stone Sour/Stone Sour/Hydrograd/13-Friday Knights.flac"
+    },
+    "223": {
+      "id": 223,
+      "title": "Somebody Stole My Eyes",
+      "duration": "03:47",
+      "artistId": 5,
+      "albumId": 17,
+      "albumTrack": 14,
+      "path": "Stone Sour/Stone Sour/Hydrograd/14-Somebody Stole My Eyes.flac"
+    },
+    "224": {
+      "id": 224,
+      "title": "When The Fever Broke",
+      "duration": "06:32",
+      "artistId": 5,
+      "albumId": 17,
+      "albumTrack": 15,
+      "path": "Stone Sour/Stone Sour/Hydrograd/15-When the Fever Broke.flac"
+    },
+    "225": {
+      "id": 225,
+      "title": "Rize Of The Fenix",
+      "duration": "05:53",
+      "artistId": 6,
+      "albumId": 18,
+      "albumTrack": 1,
+      "path": "Tenacious D/Rize of the Fenix/01-Rize of the Fenix.mp3"
+    },
+    "226": {
+      "id": 226,
+      "title": "Low Hangin' Fruit",
+      "duration": "02:31",
+      "artistId": 6,
+      "albumId": 18,
+      "albumTrack": 2,
+      "path": "Tenacious D/Rize of the Fenix/02-Low Hangin’ Fruit.mp3"
+    },
+    "227": {
+      "id": 227,
+      "title": "Classical Teacher",
+      "duration": "03:23",
+      "artistId": 6,
+      "albumId": 18,
+      "albumTrack": 3,
+      "path": "Tenacious D/Rize of the Fenix/03-Classical Teacher.mp3"
+    },
+    "228": {
+      "id": 228,
+      "title": "Señorita",
+      "duration": "03:08",
+      "artistId": 6,
+      "albumId": 18,
+      "albumTrack": 4,
+      "path": "Tenacious D/Rize of the Fenix/04-Señorita.mp3"
+    },
+    "229": {
+      "id": 229,
+      "title": "Deth Starr",
+      "duration": "04:46",
+      "artistId": 6,
+      "albumId": 18,
+      "albumTrack": 5,
+      "path": "Tenacious D/Rize of the Fenix/05-Deth Starr.mp3"
+    },
+    "230": {
+      "id": 230,
+      "title": "Roadie",
+      "duration": "02:58",
+      "artistId": 6,
+      "albumId": 18,
+      "albumTrack": 6,
+      "path": "Tenacious D/Rize of the Fenix/06-Roadie.mp3"
+    },
+    "231": {
+      "id": 231,
+      "title": "Flutes & Trombones",
+      "duration": "01:28",
+      "artistId": 6,
+      "albumId": 18,
+      "albumTrack": 7,
+      "path": "Tenacious D/Rize of the Fenix/07-Flutes and Trombones.mp3"
+    },
+    "232": {
+      "id": 232,
+      "title": "The Ballad Of Hollywood Jack And The Rage Kage",
+      "duration": "05:05",
+      "artistId": 6,
+      "albumId": 18,
+      "albumTrack": 8,
+      "path": "Tenacious D/Rize of the Fenix/08-The Ballad of Hollywood Jack and the Rage Kage.mp3"
+    },
+    "233": {
+      "id": 233,
+      "title": "Throw Down",
+      "duration": "02:56",
+      "artistId": 6,
+      "albumId": 18,
+      "albumTrack": 9,
+      "path": "Tenacious D/Rize of the Fenix/09-Throw Down.mp3"
+    },
+    "234": {
+      "id": 234,
+      "title": "Rock Is Dead",
+      "duration": "01:44",
+      "artistId": 6,
+      "albumId": 18,
+      "albumTrack": 10,
+      "path": "Tenacious D/Rize of the Fenix/10-Rock Is Dead.mp3"
+    },
+    "235": {
+      "id": 235,
+      "title": "They Fucked Our Asses",
+      "duration": "01:08",
+      "artistId": 6,
+      "albumId": 18,
+      "albumTrack": 11,
+      "path": "Tenacious D/Rize of the Fenix/11-They Fucked Our Asses.mp3"
+    },
+    "236": {
+      "id": 236,
+      "title": "To Be The Best",
+      "duration": "01:00",
+      "artistId": 6,
+      "albumId": 18,
+      "albumTrack": 12,
+      "path": "Tenacious D/Rize of the Fenix/12-To Be the Best.mp3"
+    },
+    "237": {
+      "id": 237,
+      "title": "39",
+      "duration": "05:16",
+      "artistId": 6,
+      "albumId": 18,
+      "albumTrack": 13,
+      "path": "Tenacious D/Rize of the Fenix/13-39.mp3"
+    },
+    "238": {
+      "id": 238,
+      "title": "Brotherhood of the Snake",
+      "duration": "04:14",
+      "artistId": 7,
+      "albumId": 19,
+      "albumTrack": 1,
+      "path": "Testament/Brotherhood of the Snake/01-Brotherhood of the Snake.mp3"
+    },
+    "239": {
+      "id": 239,
+      "title": "The Pale King",
+      "duration": "04:51",
+      "artistId": 7,
+      "albumId": 19,
+      "albumTrack": 2,
+      "path": "Testament/Brotherhood of the Snake/02-The Pale King.mp3"
+    },
+    "240": {
+      "id": 240,
+      "title": "Stronghold",
+      "duration": "04:00",
+      "artistId": 7,
+      "albumId": 20,
+      "albumTrack": 1,
+      "path": "Testament/Brotherhood of the Snake/03-Stronghold.mp3"
+    },
+    "241": {
+      "id": 241,
+      "title": "Seven Seals",
+      "duration": "05:38",
+      "artistId": 7,
+      "albumId": 19,
+      "albumTrack": 3,
+      "path": "Testament/Brotherhood of the Snake/04-Seven Seals.mp3"
+    },
+    "242": {
+      "id": 242,
+      "title": "Born in a Rut",
+      "duration": "04:57",
+      "artistId": 7,
+      "albumId": 19,
+      "albumTrack": 4,
+      "path": "Testament/Brotherhood of the Snake/05-Born in a Rut.mp3"
+    },
+    "243": {
+      "id": 243,
+      "title": "Centuries of Suffering",
+      "duration": "03:34",
+      "artistId": 7,
+      "albumId": 19,
+      "albumTrack": 5,
+      "path": "Testament/Brotherhood of the Snake/06-Centuries of Suffering.mp3"
+    },
+    "244": {
+      "id": 244,
+      "title": "Black Jack",
+      "duration": "04:21",
+      "artistId": 7,
+      "albumId": 19,
+      "albumTrack": 6,
+      "path": "Testament/Brotherhood of the Snake/07-Black Jack.mp3"
+    },
+    "245": {
+      "id": 245,
+      "title": "Neptune’s Spear",
+      "duration": "05:26",
+      "artistId": 7,
+      "albumId": 19,
+      "albumTrack": 7,
+      "path": "Testament/Brotherhood of the Snake/08-Neptune’s Spear.mp3"
+    },
+    "246": {
+      "id": 246,
+      "title": "Canna-Business",
+      "duration": "03:47",
+      "artistId": 7,
+      "albumId": 19,
+      "albumTrack": 8,
+      "path": "Testament/Brotherhood of the Snake/09-Canna-Business.mp3"
+    },
+    "247": {
+      "id": 247,
+      "title": "The Number Game",
+      "duration": "04:38",
+      "artistId": 7,
+      "albumId": 19,
+      "albumTrack": 9,
+      "path": "Testament/Brotherhood of the Snake/10-The Number Game.mp3"
+    },
+    "248": {
+      "id": 248,
+      "title": "Rise Up",
+      "duration": "04:18",
+      "artistId": 7,
+      "albumId": 21,
+      "albumTrack": 1,
+      "path": "Testament/Dark Roots of Earth/01-Rise Up.mp3"
+    },
+    "249": {
+      "id": 249,
+      "title": "Native Blood",
+      "duration": "05:21",
+      "artistId": 7,
+      "albumId": 21,
+      "albumTrack": 2,
+      "path": "Testament/Dark Roots of Earth/02-Native Blood.mp3"
+    },
+    "250": {
+      "id": 250,
+      "title": "Dark Roots of Earth",
+      "duration": "05:45",
+      "artistId": 7,
+      "albumId": 21,
+      "albumTrack": 3,
+      "path": "Testament/Dark Roots of Earth/03-Dark Roots of Earth.mp3"
+    },
+    "251": {
+      "id": 251,
+      "title": "True American Hate",
+      "duration": "05:26",
+      "artistId": 7,
+      "albumId": 21,
+      "albumTrack": 4,
+      "path": "Testament/Dark Roots of Earth/04-True American Hate.mp3"
+    },
+    "252": {
+      "id": 252,
+      "title": "A Day in the Death",
+      "duration": "05:38",
+      "artistId": 7,
+      "albumId": 21,
+      "albumTrack": 5,
+      "path": "Testament/Dark Roots of Earth/05-A Day in the Death.mp3"
+    },
+    "253": {
+      "id": 253,
+      "title": "Cold Embrace",
+      "duration": "07:46",
+      "artistId": 7,
+      "albumId": 21,
+      "albumTrack": 6,
+      "path": "Testament/Dark Roots of Earth/06-Cold Embrace.mp3"
+    },
+    "254": {
+      "id": 254,
+      "title": "Man Kills Mankind",
+      "duration": "05:05",
+      "artistId": 7,
+      "albumId": 21,
+      "albumTrack": 7,
+      "path": "Testament/Dark Roots of Earth/07-Man Kills Mankind.mp3"
+    },
+    "255": {
+      "id": 255,
+      "title": "Throne of Thorns",
+      "duration": "07:05",
+      "artistId": 7,
+      "albumId": 21,
+      "albumTrack": 8,
+      "path": "Testament/Dark Roots of Earth/08-Throne of Thorns.mp3"
+    },
+    "256": {
+      "id": 256,
+      "title": "Last Stand for Independence",
+      "duration": "04:43",
+      "artistId": 7,
+      "albumId": 21,
+      "albumTrack": 9,
+      "path": "Testament/Dark Roots of Earth/09-Last Stand for Independence.mp3"
+    },
+    "257": {
+      "id": 257,
+      "title": "Dragon Attack",
+      "duration": "04:44",
+      "artistId": 7,
+      "albumId": 21,
+      "albumTrack": 10,
+      "path": "Testament/Dark Roots of Earth/10-Dragon Attack.mp3"
+    },
+    "258": {
+      "id": 258,
+      "title": "Animal Magnetism",
+      "duration": "05:55",
+      "artistId": 7,
+      "albumId": 21,
+      "albumTrack": 11,
+      "path": "Testament/Dark Roots of Earth/11-Animal Magnetism.mp3"
+    },
+    "259": {
+      "id": 259,
+      "title": "Powerslave",
+      "duration": "06:50",
+      "artistId": 7,
+      "albumId": 22,
+      "albumTrack": 1,
+      "path": "Testament/Dark Roots of Earth/12-Powerslave.mp3"
+    },
+    "260": {
+      "id": 260,
+      "title": "Throne of Thorns (extended)",
+      "duration": "07:40",
+      "artistId": 7,
+      "albumId": 21,
+      "albumTrack": 12,
+      "path": "Testament/Dark Roots of Earth/13-Throne of Thorns extended.mp3"
+    },
+    "261": {
+      "id": 261,
+      "title": "Practice What You Preach",
+      "duration": "04:55",
+      "artistId": 7,
+      "albumId": 23,
+      "albumTrack": 1,
+      "path": "Testament/Practice What You Preach/01-Practice What You Preach.mp3"
+    },
+    "262": {
+      "id": 262,
+      "title": "Perilous Nation",
+      "duration": "05:52",
+      "artistId": 7,
+      "albumId": 23,
+      "albumTrack": 2,
+      "path": "Testament/Practice What You Preach/02-Perilous Nation.mp3"
+    },
+    "263": {
+      "id": 263,
+      "title": "Envy Life",
+      "duration": "04:16",
+      "artistId": 7,
+      "albumId": 23,
+      "albumTrack": 3,
+      "path": "Testament/Practice What You Preach/03-Envy Life.mp3"
+    },
+    "264": {
+      "id": 264,
+      "title": "Time Is Coming",
+      "duration": "05:26",
+      "artistId": 7,
+      "albumId": 23,
+      "albumTrack": 4,
+      "path": "Testament/Practice What You Preach/04-Time Is Coming.mp3"
+    },
+    "265": {
+      "id": 265,
+      "title": "Blessed In Contempt",
+      "duration": "04:14",
+      "artistId": 7,
+      "albumId": 23,
+      "albumTrack": 5,
+      "path": "Testament/Practice What You Preach/05-Blessed in Contempt.mp3"
+    },
+    "266": {
+      "id": 266,
+      "title": "Greenhouse Effect",
+      "duration": "04:53",
+      "artistId": 7,
+      "albumId": 23,
+      "albumTrack": 6,
+      "path": "Testament/Practice What You Preach/06-Greenhouse Effect.mp3"
+    },
+    "267": {
+      "id": 267,
+      "title": "Sins Of Omission",
+      "duration": "05:01",
+      "artistId": 7,
+      "albumId": 23,
+      "albumTrack": 7,
+      "path": "Testament/Practice What You Preach/07-Sins of Omission.mp3"
+    },
+    "268": {
+      "id": 268,
+      "title": "The Ballad",
+      "duration": "06:08",
+      "artistId": 7,
+      "albumId": 23,
+      "albumTrack": 8,
+      "path": "Testament/Practice What You Preach/08-The Ballad.mp3"
+    },
+    "269": {
+      "id": 269,
+      "title": "Nightmare (Coming Back To You)",
+      "duration": "02:20",
+      "artistId": 7,
+      "albumId": 23,
+      "albumTrack": 9,
+      "path": "Testament/Practice What You Preach/09-Nightmare Coming Back to You.mp3"
+    },
+    "270": {
+      "id": 270,
+      "title": "Confusion Fusion",
+      "duration": "03:07",
+      "artistId": 7,
+      "albumId": 23,
+      "albumTrack": 10,
+      "path": "Testament/Practice What You Preach/10-Confusion Fusion.mp3"
+    },
+    "271": {
+      "id": 271,
+      "title": "D.N.R. (Do Not Resuscitate)",
+      "duration": "03:32",
+      "artistId": 7,
+      "albumId": 24,
+      "albumTrack": 1,
+      "path": "Testament/The Gathering/01-D.N.R. Do Not Resuscitate.mp3"
+    },
+    "272": {
+      "id": 272,
+      "title": "Down For Life",
+      "duration": "03:22",
+      "artistId": 7,
+      "albumId": 24,
+      "albumTrack": 2,
+      "path": "Testament/The Gathering/02-Down for Life.mp3"
+    },
+    "273": {
+      "id": 273,
+      "title": "Eyes Of Wrath",
+      "duration": "05:27",
+      "artistId": 7,
+      "albumId": 24,
+      "albumTrack": 3,
+      "path": "Testament/The Gathering/03-Eyes of Wrath.mp3"
+    },
+    "274": {
+      "id": 274,
+      "title": "True Believer",
+      "duration": "03:36",
+      "artistId": 7,
+      "albumId": 24,
+      "albumTrack": 4,
+      "path": "Testament/The Gathering/04-True Believer.mp3"
+    },
+    "275": {
+      "id": 275,
+      "title": "3 Days In Darkness",
+      "duration": "04:41",
+      "artistId": 7,
+      "albumId": 24,
+      "albumTrack": 5,
+      "path": "Testament/The Gathering/05-3 Days in Darkness.mp3"
+    },
+    "276": {
+      "id": 276,
+      "title": "Legions Of The Dead",
+      "duration": "02:37",
+      "artistId": 7,
+      "albumId": 24,
+      "albumTrack": 6,
+      "path": "Testament/The Gathering/06-Legions of the Dead.mp3"
+    },
+    "277": {
+      "id": 277,
+      "title": "Careful What You Wish For",
+      "duration": "03:30",
+      "artistId": 7,
+      "albumId": 24,
+      "albumTrack": 7,
+      "path": "Testament/The Gathering/07-Careful What You Wish For.mp3"
+    },
+    "278": {
+      "id": 278,
+      "title": "Riding The Snake",
+      "duration": "04:13",
+      "artistId": 7,
+      "albumId": 24,
+      "albumTrack": 8,
+      "path": "Testament/The Gathering/08-Riding the Snake.mp3"
+    },
+    "279": {
+      "id": 279,
+      "title": "Allegiance",
+      "duration": "02:37",
+      "artistId": 7,
+      "albumId": 24,
+      "albumTrack": 9,
+      "path": "Testament/The Gathering/09-Allegiance.mp3"
+    },
+    "280": {
+      "id": 280,
+      "title": "Sewn Shut Eyes",
+      "duration": "04:15",
+      "artistId": 7,
+      "albumId": 24,
+      "albumTrack": 10,
+      "path": "Testament/The Gathering/10-Sewn Shut Eyes.mp3"
+    },
+    "281": {
+      "id": 281,
+      "title": "Fall Of Sipledome",
+      "duration": "04:47",
+      "artistId": 7,
+      "albumId": 24,
+      "albumTrack": 11,
+      "path": "Testament/The Gathering/11-Fall of Sipledome.mp3"
+    },
+    "282": {
+      "id": 282,
+      "title": "Over The Wall",
+      "duration": "04:07",
+      "artistId": 7,
+      "albumId": 25,
+      "albumTrack": 1,
+      "path": "Testament/The Legacy/01-Over the Wall.mp3"
+    },
+    "283": {
+      "id": 283,
+      "title": "The Haunting",
+      "duration": "04:16",
+      "artistId": 7,
+      "albumId": 25,
+      "albumTrack": 2,
+      "path": "Testament/The Legacy/02-The Haunting.mp3"
+    },
+    "284": {
+      "id": 284,
+      "title": "Burnt Offerings",
+      "duration": "05:06",
+      "artistId": 7,
+      "albumId": 25,
+      "albumTrack": 3,
+      "path": "Testament/The Legacy/03-Burnt Offerings.mp3"
+    },
+    "285": {
+      "id": 285,
+      "title": "Raging Waters",
+      "duration": "04:32",
+      "artistId": 7,
+      "albumId": 25,
+      "albumTrack": 4,
+      "path": "Testament/The Legacy/04-Raging Waters.mp3"
+    },
+    "286": {
+      "id": 286,
+      "title": "C.O.T.L.O.D.",
+      "duration": "02:31",
+      "artistId": 7,
+      "albumId": 25,
+      "albumTrack": 5,
+      "path": "Testament/The Legacy/05-C.O.T.L.O.D.mp3"
+    },
+    "287": {
+      "id": 287,
+      "title": "First Strike Is Deadly",
+      "duration": "03:42",
+      "artistId": 7,
+      "albumId": 25,
+      "albumTrack": 6,
+      "path": "Testament/The Legacy/06-First Strike Is Deadly.mp3"
+    },
+    "288": {
+      "id": 288,
+      "title": "Do Or Die",
+      "duration": "04:39",
+      "artistId": 7,
+      "albumId": 25,
+      "albumTrack": 7,
+      "path": "Testament/The Legacy/07-Do or Die.mp3"
+    },
+    "289": {
+      "id": 289,
+      "title": "Alone In The Dark",
+      "duration": "04:04",
+      "artistId": 7,
+      "albumId": 25,
+      "albumTrack": 8,
+      "path": "Testament/The Legacy/08-Alone in the Dark.mp3"
+    },
+    "290": {
+      "id": 290,
+      "title": "Apocalyptic City",
+      "duration": "05:51",
+      "artistId": 7,
+      "albumId": 25,
+      "albumTrack": 9,
+      "path": "Testament/The Legacy/09-Apocalyptic City.mp3"
+    },
+    "291": {
+      "id": 291,
+      "title": "Eerie Inhabitants",
+      "duration": "05:05",
+      "artistId": 7,
+      "albumId": 26,
+      "albumTrack": 1,
+      "path": "Testament/The New Order/01-Eerie Inhabitants.mp3"
+    },
+    "292": {
+      "id": 292,
+      "title": "The New Order",
+      "duration": "04:26",
+      "artistId": 7,
+      "albumId": 26,
+      "albumTrack": 2,
+      "path": "Testament/The New Order/02-The New Order.mp3"
+    },
+    "293": {
+      "id": 293,
+      "title": "Trial By Fire",
+      "duration": "04:15",
+      "artistId": 7,
+      "albumId": 26,
+      "albumTrack": 3,
+      "path": "Testament/The New Order/03-Trial by Fire.mp3"
+    },
+    "294": {
+      "id": 294,
+      "title": "Into The Pit",
+      "duration": "02:46",
+      "artistId": 7,
+      "albumId": 26,
+      "albumTrack": 4,
+      "path": "Testament/The New Order/04-Into the Pit.mp3"
+    },
+    "295": {
+      "id": 295,
+      "title": "Hypnosis",
+      "duration": "02:04",
+      "artistId": 7,
+      "albumId": 26,
+      "albumTrack": 5,
+      "path": "Testament/The New Order/05-Hypnosis.mp3"
+    },
+    "296": {
+      "id": 296,
+      "title": "Disciples Of The Watch",
+      "duration": "05:05",
+      "artistId": 7,
+      "albumId": 26,
+      "albumTrack": 6,
+      "path": "Testament/The New Order/06-Disciples of the Watch.mp3"
+    },
+    "297": {
+      "id": 297,
+      "title": "The Preacher",
+      "duration": "03:38",
+      "artistId": 7,
+      "albumId": 26,
+      "albumTrack": 7,
+      "path": "Testament/The New Order/07-The Preacher.mp3"
+    },
+    "298": {
+      "id": 298,
+      "title": "Nobody's Fault",
+      "duration": "03:55",
+      "artistId": 7,
+      "albumId": 26,
+      "albumTrack": 8,
+      "path": "Testament/The New Order/08-Nobody’s Fault.mp3"
+    },
+    "299": {
+      "id": 299,
+      "title": "A Day Of Reckoning",
+      "duration": "04:00",
+      "artistId": 7,
+      "albumId": 26,
+      "albumTrack": 9,
+      "path": "Testament/The New Order/09-A Day of Reckoning.mp3"
+    },
+    "300": {
+      "id": 300,
+      "title": "Musical Death (A Dirge)",
+      "duration": "04:02",
+      "artistId": 7,
+      "albumId": 26,
+      "albumTrack": 10,
+      "path": "Testament/The New Order/10-Musical Death A Dirge.mp3"
+    },
+    "301": {
+      "id": 301,
+      "title": "Children Of The Next Level",
+      "duration": "06:14",
+      "artistId": 7,
+      "albumId": 27,
+      "albumTrack": 1,
+      "path": "Testament/Titans of Creation/01-Children of the Next Level.mp3"
+    },
+    "302": {
+      "id": 302,
+      "title": "WW III",
+      "duration": "04:48",
+      "artistId": 7,
+      "albumId": 27,
+      "albumTrack": 2,
+      "path": "Testament/Titans of Creation/02-WWIII.mp3"
+    },
+    "303": {
+      "id": 303,
+      "title": "Dream Deceiver",
+      "duration": "04:58",
+      "artistId": 7,
+      "albumId": 27,
+      "albumTrack": 3,
+      "path": "Testament/Titans of Creation/03-Dream Deceiver.mp3"
+    },
+    "304": {
+      "id": 304,
+      "title": "Night Of The Witch",
+      "duration": "06:32",
+      "artistId": 7,
+      "albumId": 27,
+      "albumTrack": 4,
+      "path": "Testament/Titans of Creation/04-Night of the Witch.mp3"
+    },
+    "305": {
+      "id": 305,
+      "title": "City Of Angels",
+      "duration": "06:43",
+      "artistId": 7,
+      "albumId": 27,
+      "albumTrack": 5,
+      "path": "Testament/Titans of Creation/05-City of Angels.mp3"
+    },
+    "306": {
+      "id": 306,
+      "title": "Ishtars Gate",
+      "duration": "05:09",
+      "artistId": 7,
+      "albumId": 27,
+      "albumTrack": 6,
+      "path": "Testament/Titans of Creation/06-Ishtar’s Gate.mp3"
+    },
+    "307": {
+      "id": 307,
+      "title": "Symptoms",
+      "duration": "04:37",
+      "artistId": 7,
+      "albumId": 27,
+      "albumTrack": 7,
+      "path": "Testament/Titans of Creation/07-Symptoms.mp3"
+    },
+    "308": {
+      "id": 308,
+      "title": "False Prophet",
+      "duration": "04:54",
+      "artistId": 7,
+      "albumId": 27,
+      "albumTrack": 8,
+      "path": "Testament/Titans of Creation/08-False Prophet.mp3"
+    },
+    "309": {
+      "id": 309,
+      "title": "The Healers",
+      "duration": "04:23",
+      "artistId": 7,
+      "albumId": 27,
+      "albumTrack": 9,
+      "path": "Testament/Titans of Creation/09-The Healers.mp3"
+    },
+    "310": {
+      "id": 310,
+      "title": "Code Of Hammurabi",
+      "duration": "04:52",
+      "artistId": 7,
+      "albumId": 27,
+      "albumTrack": 10,
+      "path": "Testament/Titans of Creation/10-Code of Hammurabi.mp3"
+    },
+    "311": {
+      "id": 311,
+      "title": "Curse Of Osiris",
+      "duration": "03:24",
+      "artistId": 7,
+      "albumId": 27,
+      "albumTrack": 11,
+      "path": "Testament/Titans of Creation/11-Curse of Osiris.mp3"
+    },
+    "312": {
+      "id": 312,
+      "title": "Catacombs",
+      "duration": "02:01",
+      "artistId": 7,
+      "albumId": 27,
+      "albumTrack": 12,
+      "path": "Testament/Titans of Creation/12-Catacombs.mp3"
+    },
+    "313": {
+      "id": 313,
+      "title": "Session",
+      "duration": "02:23",
+      "artistId": 8,
+      "albumId": 28,
+      "albumTrack": 1,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Reloaded [2003]/101  Linkin Park - Session.mp3"
+    },
+    "314": {
+      "id": 314,
+      "title": "This Is The New Shit",
+      "duration": "04:20",
+      "artistId": 9,
+      "albumId": 28,
+      "albumTrack": 2,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Reloaded [2003]/102  Marilyn Manson - This Is The New Shit.mp3"
+    },
+    "315": {
+      "id": 315,
+      "title": "Reload",
+      "duration": "04:25",
+      "artistId": 10,
+      "albumId": 28,
+      "albumTrack": 3,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Reloaded [2003]/103  Rob Zombie - Reload.mp3"
+    },
+    "316": {
+      "id": 316,
+      "title": "Furious Angels",
+      "duration": "05:29",
+      "artistId": 11,
+      "albumId": 28,
+      "albumTrack": 4,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Reloaded [2003]/104  Rob Dougan - Furious Angels.mp3"
+    },
+    "317": {
+      "id": 317,
+      "title": "Lucky You",
+      "duration": "04:08",
+      "artistId": 12,
+      "albumId": 28,
+      "albumTrack": 5,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Reloaded [2003]/105  Deftones - Lucky You.mp3"
+    },
+    "318": {
+      "id": 318,
+      "title": "The Passportal",
+      "duration": "02:55",
+      "artistId": 13,
+      "albumId": 28,
+      "albumTrack": 6,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Reloaded [2003]/106  Team Sleep - The Passportal.mp3"
+    },
+    "319": {
+      "id": 319,
+      "title": "Sleeping Awake",
+      "duration": "03:23",
+      "artistId": 14,
+      "albumId": 28,
+      "albumTrack": 7,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Reloaded [2003]/107  P.O.D - Sleeping Awake.mp3"
+    },
+    "320": {
+      "id": 320,
+      "title": "Bruises",
+      "duration": "02:36",
+      "artistId": 15,
+      "albumId": 28,
+      "albumTrack": 8,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Reloaded [2003]/108  Ünloco - Bruises.mp3"
+    },
+    "321": {
+      "id": 321,
+      "title": "Calm Like A Bomb",
+      "duration": "04:58",
+      "artistId": 16,
+      "albumId": 28,
+      "albumTrack": 9,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Reloaded [2003]/109  Rage Against The Machine - Calm Like A Bomb.mp3"
+    },
+    "322": {
+      "id": 322,
+      "title": "Dread Rock",
+      "duration": "04:40",
+      "artistId": 17,
+      "albumId": 28,
+      "albumTrack": 10,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Reloaded [2003]/110  Paul Oakenfold - Dread Rock.mp3"
+    },
+    "323": {
+      "id": 323,
+      "title": "Zion",
+      "duration": "04:33",
+      "artistId": 18,
+      "albumId": 28,
+      "albumTrack": 11,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Reloaded [2003]/111  Fluke - Zion.mp3"
+    },
+    "324": {
+      "id": 324,
+      "title": "When The World Ends [Oakenfold Remix]",
+      "duration": "05:26",
+      "artistId": 19,
+      "albumId": 28,
+      "albumTrack": 12,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Reloaded [2003]/112  Dave Matthews Band - When The World Ends.mp3"
+    },
+    "325": {
+      "id": 325,
+      "title": "Main Title",
+      "duration": "01:30",
+      "artistId": 20,
+      "albumId": 28,
+      "albumTrack": 13,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Reloaded [2003]/201  Don Davis - Main Title.mp3"
+    },
+    "326": {
+      "id": 326,
+      "title": "Trinity Dream",
+      "duration": "01:56",
+      "artistId": 20,
+      "albumId": 28,
+      "albumTrack": 14,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Reloaded [2003]/202  Don Davis - Trinity Dream.mp3"
+    },
+    "327": {
+      "id": 327,
+      "title": "Wgocoo Teahouse",
+      "duration": "01:04",
+      "artistId": 21,
+      "albumId": 28,
+      "albumTrack": 15,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Reloaded [2003]/203  Juno Reactor - Wgocoo Teahouse.mp3"
+    },
+    "328": {
+      "id": 328,
+      "title": "Chateau",
+      "duration": "03:23",
+      "artistId": 11,
+      "albumId": 28,
+      "albumTrack": 16,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Reloaded [2003]/204  Rob Dougan - Chateau.mp3"
+    },
+    "329": {
+      "id": 329,
+      "title": "Mona Lisa Overdrive",
+      "duration": "10:08",
+      "artistId": 22,
+      "albumId": 28,
+      "albumTrack": 17,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Reloaded [2003]/205  Juno Reactor Vs. Don Davis - Mona Lisa Overdrive.mp3"
+    },
+    "330": {
+      "id": 330,
+      "title": "Burly Brawl",
+      "duration": "05:52",
+      "artistId": 22,
+      "albumId": 28,
+      "albumTrack": 18,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Reloaded [2003]/206  Juno Reactor Vs. Don Davis - Burly Brawl.mp3"
+    },
+    "331": {
+      "id": 331,
+      "title": "Matrix Reloaded Suite",
+      "duration": "00:10",
+      "artistId": 20,
+      "albumId": 28,
+      "albumTrack": 19,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Reloaded [2003]/207  Don Davis - Matrix Reloaded Suite.mp3"
+    },
+    "332": {
+      "id": 332,
+      "title": "The Matrix Revolutions Main Title",
+      "duration": "01:21",
+      "artistId": 20,
+      "albumId": 29,
+      "albumTrack": 1,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Revolutions [2003]/01  Don Davis - The Matrix Revolutions Main Title.mp3"
+    },
+    "333": {
+      "id": 333,
+      "title": "The Trainman Cometh",
+      "duration": "02:43",
+      "artistId": 21,
+      "albumId": 29,
+      "albumTrack": 2,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Revolutions [2003]/02  Juno Reactor & Don Davis - The Trainman Cometh.mp3"
+    },
+    "334": {
+      "id": 334,
+      "title": "Tetsujin",
+      "duration": "03:21",
+      "artistId": 21,
+      "albumId": 29,
+      "albumTrack": 3,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Revolutions [2003]/03  Juno Reactor & Don Davis - Tetsujin.mp3"
+    },
+    "335": {
+      "id": 335,
+      "title": "In My Head",
+      "duration": "03:46",
+      "artistId": 23,
+      "albumId": 29,
+      "albumTrack": 4,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Revolutions [2003]/04  Pale 3 - In My Head.mp3"
+    },
+    "336": {
+      "id": 336,
+      "title": "The Road To Sourceville",
+      "duration": "01:25",
+      "artistId": 20,
+      "albumId": 29,
+      "albumTrack": 5,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Revolutions [2003]/05  Don Davis - The Road To Sourceville.mp3"
+    },
+    "337": {
+      "id": 337,
+      "title": "Men In Metal",
+      "duration": "02:18",
+      "artistId": 20,
+      "albumId": 29,
+      "albumTrack": 6,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Revolutions [2003]/06  Don Davis - Men In Metal.mp3"
+    },
+    "338": {
+      "id": 338,
+      "title": "Niobe's Run",
+      "duration": "02:48",
+      "artistId": 20,
+      "albumId": 29,
+      "albumTrack": 7,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Revolutions [2003]/07  Don Davis - Niobe's Run.mp3"
+    },
+    "339": {
+      "id": 339,
+      "title": "Woman Can Drive",
+      "duration": "02:41",
+      "artistId": 20,
+      "albumId": 29,
+      "albumTrack": 8,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Revolutions [2003]/08  Don Davis - Woman Can Drive.mp3"
+    },
+    "340": {
+      "id": 340,
+      "title": "Moribund Mifune",
+      "duration": "03:47",
+      "artistId": 20,
+      "albumId": 29,
+      "albumTrack": 9,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Revolutions [2003]/09  Don Davis - Moribund Mifune.mp3"
+    },
+    "341": {
+      "id": 341,
+      "title": "Kidfriend",
+      "duration": "04:49",
+      "artistId": 20,
+      "albumId": 29,
+      "albumTrack": 10,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Revolutions [2003]/10  Don Davis - Kidfriend.mp3"
+    },
+    "342": {
+      "id": 342,
+      "title": "Saw Bitch Workhorse",
+      "duration": "03:59",
+      "artistId": 20,
+      "albumId": 29,
+      "albumTrack": 11,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Revolutions [2003]/11  Don Davis - Saw Bitch Workhorse.mp3"
+    },
+    "343": {
+      "id": 343,
+      "title": "Trinity Definitely",
+      "duration": "04:15",
+      "artistId": 20,
+      "albumId": 29,
+      "albumTrack": 12,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Revolutions [2003]/12  Don Davis - Trinity Definitely.mp3"
+    },
+    "344": {
+      "id": 344,
+      "title": "Neodämmerung",
+      "duration": "05:59",
+      "artistId": 20,
+      "albumId": 29,
+      "albumTrack": 13,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Revolutions [2003]/13  Don Davis - Neo.mp3"
+    },
+    "345": {
+      "id": 345,
+      "title": "Why, Mr. Anderson",
+      "duration": "06:10",
+      "artistId": 20,
+      "albumId": 29,
+      "albumTrack": 14,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Revolutions [2003]/14  Don Davis - Why, Mr. Anderson.mp3"
+    },
+    "346": {
+      "id": 346,
+      "title": "Spirit Of The Universe",
+      "duration": "04:51",
+      "artistId": 20,
+      "albumId": 29,
+      "albumTrack": 15,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Revolutions [2003]/15  Don Davis - Spirit Of The Universe.mp3"
+    },
+    "347": {
+      "id": 347,
+      "title": "Navras",
+      "duration": "09:08",
+      "artistId": 22,
+      "albumId": 29,
+      "albumTrack": 16,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix Revolutions [2003]/16  Juno Reactor Vs. Don Davis - Navras.mp3"
+    },
+    "348": {
+      "id": 348,
+      "title": "Rock Is Dead",
+      "duration": "03:10",
+      "artistId": 9,
+      "albumId": 30,
+      "albumTrack": 1,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix [2000]/01  Marilyn Manson - Rock Is Dead.mp3"
+    },
+    "349": {
+      "id": 349,
+      "title": "Spybreak",
+      "duration": "04:00",
+      "artistId": 24,
+      "albumId": 30,
+      "albumTrack": 2,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix [2000]/02  Propellerheads - Spybreak.mp3"
+    },
+    "350": {
+      "id": 350,
+      "title": "Bad Blood",
+      "duration": "05:00",
+      "artistId": 25,
+      "albumId": 30,
+      "albumTrack": 3,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix [2000]/03  Ministry - Bad Blood.mp3"
+    },
+    "351": {
+      "id": 351,
+      "title": "Clubbed To Death [Kurayamino Mix]",
+      "duration": "07:26",
+      "artistId": 26,
+      "albumId": 30,
+      "albumTrack": 4,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix [2000]/04  Rob D - Clubbed To Death [Kurayamino Mix].mp3"
+    },
+    "352": {
+      "id": 352,
+      "title": "Prime Audio Soup",
+      "duration": "06:17",
+      "artistId": 27,
+      "albumId": 30,
+      "albumTrack": 5,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix [2000]/05  Meat Beat Manifesto - Prime Audio Soup.mp3"
+    },
+    "353": {
+      "id": 353,
+      "title": "Leave You Far Behind",
+      "duration": "03:13",
+      "artistId": 28,
+      "albumId": 30,
+      "albumTrack": 6,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix [2000]/06  Lunatic Calm - Leave You Far Behind.mp3"
+    },
+    "354": {
+      "id": 354,
+      "title": "Mindfields",
+      "duration": "05:40",
+      "artistId": 29,
+      "albumId": 30,
+      "albumTrack": 7,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix [2000]/07  Prodigy - Mindfields.mp3"
+    },
+    "355": {
+      "id": 355,
+      "title": "Dragula [Hot Rod Herman Remix]",
+      "duration": "04:36",
+      "artistId": 10,
+      "albumId": 30,
+      "albumTrack": 8,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix [2000]/08  Rob Zombie - Dragula [Hot Rod Herman Remix].mp3"
+    },
+    "356": {
+      "id": 356,
+      "title": "My Own Summer [Shove It]",
+      "duration": "03:34",
+      "artistId": 12,
+      "albumId": 30,
+      "albumTrack": 9,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix [2000]/09  Deftones - My Own Summer [Shove It].mp3"
+    },
+    "357": {
+      "id": 357,
+      "title": "Ultrasonic Sound",
+      "duration": "04:54",
+      "artistId": 30,
+      "albumId": 30,
+      "albumTrack": 10,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix [2000]/10  Hive - Ultrasonic Sound.mp3"
+    },
+    "358": {
+      "id": 358,
+      "title": "Look To Your Orb For The Warning",
+      "duration": "04:43",
+      "artistId": 31,
+      "albumId": 30,
+      "albumTrack": 11,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix [2000]/11  Monster Magnet - Look To Your Orb For The Warning.mp3"
+    },
+    "359": {
+      "id": 359,
+      "title": "Du Hast",
+      "duration": "03:54",
+      "artistId": 32,
+      "albumId": 30,
+      "albumTrack": 12,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix [2000]/12  Rammstein - Du Hast.mp3"
+    },
+    "360": {
+      "id": 360,
+      "title": "Wake Up",
+      "duration": "06:03",
+      "artistId": 16,
+      "albumId": 30,
+      "albumTrack": 13,
+      "path": "The Matrix Soundtrack [First, Second & Third]/The Matrix [2000]/13  Rage Against The Machine - Wake Up.mp3"
+    },
+    "361": {
+      "id": 361,
+      "title": "Invaders Must Die",
+      "duration": "04:55",
+      "artistId": 33,
+      "albumId": 31,
+      "albumTrack": 1,
+      "path": "The Prodigy/Invaders Must Die/01-Invaders Must Die.mp3"
+    },
+    "362": {
+      "id": 362,
+      "title": "Omen",
+      "duration": "03:36",
+      "artistId": 33,
+      "albumId": 31,
+      "albumTrack": 2,
+      "path": "The Prodigy/Invaders Must Die/02-Omen.mp3"
+    },
+    "363": {
+      "id": 363,
+      "title": "Thunder",
+      "duration": "04:09",
+      "artistId": 33,
+      "albumId": 31,
+      "albumTrack": 3,
+      "path": "The Prodigy/Invaders Must Die/03-Thunder.mp3"
+    },
+    "364": {
+      "id": 364,
+      "title": "Colours",
+      "duration": "03:27",
+      "artistId": 33,
+      "albumId": 31,
+      "albumTrack": 4,
+      "path": "The Prodigy/Invaders Must Die/04-Colours.mp3"
+    },
+    "365": {
+      "id": 365,
+      "title": "Take Me to the Hospital",
+      "duration": "03:40",
+      "artistId": 33,
+      "albumId": 31,
+      "albumTrack": 5,
+      "path": "The Prodigy/Invaders Must Die/05-Take Me to the Hospital.mp3"
+    },
+    "366": {
+      "id": 366,
+      "title": "Warriors Dance",
+      "duration": "05:12",
+      "artistId": 33,
+      "albumId": 31,
+      "albumTrack": 6,
+      "path": "The Prodigy/Invaders Must Die/06-Warrior’s Dance.mp3"
+    },
+    "367": {
+      "id": 367,
+      "title": "Run With the Wolves",
+      "duration": "04:24",
+      "artistId": 33,
+      "albumId": 31,
+      "albumTrack": 7,
+      "path": "The Prodigy/Invaders Must Die/07-Run With the Wolves.mp3"
+    },
+    "368": {
+      "id": 368,
+      "title": "Omen Reprise",
+      "duration": "02:14",
+      "artistId": 33,
+      "albumId": 31,
+      "albumTrack": 8,
+      "path": "The Prodigy/Invaders Must Die/08-Omen reprise.mp3"
+    },
+    "369": {
+      "id": 369,
+      "title": "World's on Fire",
+      "duration": "04:50",
+      "artistId": 33,
+      "albumId": 31,
+      "albumTrack": 9,
+      "path": "The Prodigy/Invaders Must Die/09-World’s on Fire.mp3"
+    },
+    "370": {
+      "id": 370,
+      "title": "Piranha",
+      "duration": "04:04",
+      "artistId": 33,
+      "albumId": 31,
+      "albumTrack": 10,
+      "path": "The Prodigy/Invaders Must Die/10-Piranha.mp3"
+    },
+    "371": {
+      "id": 371,
+      "title": "Stand Up",
+      "duration": "05:30",
+      "artistId": 33,
+      "albumId": 31,
+      "albumTrack": 11,
+      "path": "The Prodigy/Invaders Must Die/11-Stand Up.mp3"
+    },
+    "372": {
+      "id": 372,
+      "title": "The Day Is My Enemy",
+      "duration": "04:25",
+      "artistId": 33,
+      "albumId": 32,
+      "albumTrack": 1,
+      "path": "The Prodigy/The Day Is My Enemy/01-The Day Is My Enemy.flac"
+    },
+    "373": {
+      "id": 373,
+      "title": "Nasty",
+      "duration": "04:03",
+      "artistId": 33,
+      "albumId": 32,
+      "albumTrack": 2,
+      "path": "The Prodigy/The Day Is My Enemy/02-Nasty.flac"
+    },
+    "374": {
+      "id": 374,
+      "title": "Rebel Radio",
+      "duration": "03:52",
+      "artistId": 33,
+      "albumId": 32,
+      "albumTrack": 3,
+      "path": "The Prodigy/The Day Is My Enemy/03-Rebel Radio.flac"
+    },
+    "375": {
+      "id": 375,
+      "title": "Ibiza (feat. Sleaford Mods)",
+      "duration": "02:45",
+      "artistId": 33,
+      "albumId": 32,
+      "albumTrack": 4,
+      "path": "The Prodigy/The Day Is My Enemy/04-Ibiza.flac"
+    },
+    "376": {
+      "id": 376,
+      "title": "Destroy",
+      "duration": "04:28",
+      "artistId": 33,
+      "albumId": 32,
+      "albumTrack": 5,
+      "path": "The Prodigy/The Day Is My Enemy/05-Destroy.flac"
+    },
+    "377": {
+      "id": 377,
+      "title": "Wild Frontier",
+      "duration": "04:27",
+      "artistId": 33,
+      "albumId": 32,
+      "albumTrack": 6,
+      "path": "The Prodigy/The Day Is My Enemy/06-Wild Frontier.flac"
+    },
+    "378": {
+      "id": 378,
+      "title": "Rok-Weiler",
+      "duration": "03:50",
+      "artistId": 33,
+      "albumId": 32,
+      "albumTrack": 7,
+      "path": "The Prodigy/The Day Is My Enemy/07-Rok-Weiler.flac"
+    },
+    "379": {
+      "id": 379,
+      "title": "Beyond the Deathray",
+      "duration": "03:08",
+      "artistId": 33,
+      "albumId": 32,
+      "albumTrack": 8,
+      "path": "The Prodigy/The Day Is My Enemy/08-Beyond the Deathray.flac"
+    },
+    "380": {
+      "id": 380,
+      "title": "Rhythm Bomb (feat. Flux Pavilion)",
+      "duration": "04:12",
+      "artistId": 33,
+      "albumId": 32,
+      "albumTrack": 9,
+      "path": "The Prodigy/The Day Is My Enemy/09-Rhythm Bomb.flac"
+    },
+    "381": {
+      "id": 381,
+      "title": "Roadblox",
+      "duration": "05:00",
+      "artistId": 33,
+      "albumId": 32,
+      "albumTrack": 10,
+      "path": "The Prodigy/The Day Is My Enemy/10-Roadblox.flac"
+    },
+    "382": {
+      "id": 382,
+      "title": "Get Your Fight On",
+      "duration": "03:38",
+      "artistId": 33,
+      "albumId": 32,
+      "albumTrack": 11,
+      "path": "The Prodigy/The Day Is My Enemy/11-Get Your Fight On.flac"
+    },
+    "383": {
+      "id": 383,
+      "title": "Medicine",
+      "duration": "03:56",
+      "artistId": 33,
+      "albumId": 32,
+      "albumTrack": 12,
+      "path": "The Prodigy/The Day Is My Enemy/12-Medicine.flac"
+    },
+    "384": {
+      "id": 384,
+      "title": "Invisible Sun",
+      "duration": "04:16",
+      "artistId": 33,
+      "albumId": 32,
+      "albumTrack": 13,
+      "path": "The Prodigy/The Day Is My Enemy/13-Invisible Sun.flac"
+    },
+    "385": {
+      "id": 385,
+      "title": "Wall of Death",
+      "duration": "04:04",
+      "artistId": 33,
+      "albumId": 32,
+      "albumTrack": 14,
+      "path": "The Prodigy/The Day Is My Enemy/14-Wall of Death.flac"
+    },
+    "386": {
+      "id": 386,
+      "title": "Rebel Radio (Proxy Remix)",
+      "duration": "05:16",
+      "artistId": 33,
+      "albumId": 32,
+      "albumTrack": 15,
+      "path": "The Prodigy/The Day Is My Enemy/15-Rebel Radio Proxy remix.flac"
+    },
+    "387": {
+      "id": 387,
+      "title": "Wild Frontier (KillSonik Remix)",
+      "duration": "05:17",
+      "artistId": 33,
+      "albumId": 32,
+      "albumTrack": 16,
+      "path": "The Prodigy/The Day Is My Enemy/16-Wild Frontier Killsonik remix.flac"
+    },
+    "388": {
+      "id": 388,
+      "title": "You Better You Bet",
+      "duration": "05:37",
+      "artistId": 34,
+      "albumId": 33,
+      "albumTrack": 1,
+      "path": "The Who/Face Dances/01-You Better You Bet.flac"
+    },
+    "389": {
+      "id": 389,
+      "title": "Don't Let Go The Coat",
+      "duration": "03:44",
+      "artistId": 34,
+      "albumId": 33,
+      "albumTrack": 2,
+      "path": "The Who/Face Dances/02-Don’t Let Go the Coat.flac"
+    },
+    "390": {
+      "id": 390,
+      "title": "Cache Cache",
+      "duration": "03:56",
+      "artistId": 34,
+      "albumId": 33,
+      "albumTrack": 3,
+      "path": "The Who/Face Dances/03-Cache Cache.flac"
+    },
+    "391": {
+      "id": 391,
+      "title": "The Quiet One",
+      "duration": "03:09",
+      "artistId": 34,
+      "albumId": 33,
+      "albumTrack": 4,
+      "path": "The Who/Face Dances/04-The Quiet One.flac"
+    },
+    "392": {
+      "id": 392,
+      "title": "Did You Steal My Money",
+      "duration": "04:17",
+      "artistId": 34,
+      "albumId": 33,
+      "albumTrack": 5,
+      "path": "The Who/Face Dances/05-Did You Steal My Money.flac"
+    },
+    "393": {
+      "id": 393,
+      "title": "How Can You Do It Alone",
+      "duration": "05:27",
+      "artistId": 34,
+      "albumId": 33,
+      "albumTrack": 6,
+      "path": "The Who/Face Dances/06-How Can You Do It Alone.flac"
+    },
+    "394": {
+      "id": 394,
+      "title": "Daily Records",
+      "duration": "03:27",
+      "artistId": 34,
+      "albumId": 33,
+      "albumTrack": 7,
+      "path": "The Who/Face Dances/07-Daily Records.flac"
+    },
+    "395": {
+      "id": 395,
+      "title": "You",
+      "duration": "04:31",
+      "artistId": 34,
+      "albumId": 33,
+      "albumTrack": 8,
+      "path": "The Who/Face Dances/08-You.flac"
+    },
+    "396": {
+      "id": 396,
+      "title": "Another Tricky Day",
+      "duration": "04:58",
+      "artistId": 34,
+      "albumId": 33,
+      "albumTrack": 9,
+      "path": "The Who/Face Dances/09-Another Tricky Day.flac"
+    },
+    "397": {
+      "id": 397,
+      "title": "I Like Nightmares",
+      "duration": "03:09",
+      "artistId": 34,
+      "albumId": 33,
+      "albumTrack": 10,
+      "path": "The Who/Face Dances/10-I Like Nightmares.flac"
+    },
+    "398": {
+      "id": 398,
+      "title": "It's In You",
+      "duration": "05:12",
+      "artistId": 34,
+      "albumId": 33,
+      "albumTrack": 11,
+      "path": "The Who/Face Dances/11-It’s in You.flac"
+    },
+    "399": {
+      "id": 399,
+      "title": "How Can You Do It Alone",
+      "duration": "08:11",
+      "artistId": 34,
+      "albumId": 33,
+      "albumTrack": 12,
+      "path": "The Who/Face Dances/12-How Can You Do It Alone.flac"
+    },
+    "400": {
+      "id": 400,
+      "title": "The Quiet One",
+      "duration": "03:59",
+      "artistId": 34,
+      "albumId": 33,
+      "albumTrack": 13,
+      "path": "The Who/Face Dances/13-The Quiet One.flac"
+    },
+    "401": {
+      "id": 401,
+      "title": "I Am The Sea",
+      "duration": "02:03",
+      "artistId": 34,
+      "albumId": 34,
+      "albumTrack": 1,
+      "path": "The Who/Quadrophenia/01-I Am the Sea.flac"
+    },
+    "402": {
+      "id": 402,
+      "title": "The Real Me",
+      "duration": "03:25",
+      "artistId": 34,
+      "albumId": 34,
+      "albumTrack": 2,
+      "path": "The Who/Quadrophenia/02-The Real Me.flac"
+    },
+    "403": {
+      "id": 403,
+      "title": "Quadrophenia",
+      "duration": "06:18",
+      "artistId": 34,
+      "albumId": 34,
+      "albumTrack": 3,
+      "path": "The Who/Quadrophenia/03-Quadrophenia.flac"
+    },
+    "404": {
+      "id": 404,
+      "title": "Cut My Hair",
+      "duration": "03:46",
+      "artistId": 34,
+      "albumId": 34,
+      "albumTrack": 4,
+      "path": "The Who/Quadrophenia/04-Cut My Hair.flac"
+    },
+    "405": {
+      "id": 405,
+      "title": "The Punk And The Godfather",
+      "duration": "05:14",
+      "artistId": 34,
+      "albumId": 34,
+      "albumTrack": 5,
+      "path": "The Who/Quadrophenia/05-The Punk and the Godfather.flac"
+    },
+    "406": {
+      "id": 406,
+      "title": "I'm One",
+      "duration": "02:40",
+      "artistId": 34,
+      "albumId": 34,
+      "albumTrack": 6,
+      "path": "The Who/Quadrophenia/06-I’m One.flac"
+    },
+    "407": {
+      "id": 407,
+      "title": "The Dirty Jobs",
+      "duration": "04:30",
+      "artistId": 34,
+      "albumId": 34,
+      "albumTrack": 7,
+      "path": "The Who/Quadrophenia/07-The Dirty Jobs.flac"
+    },
+    "408": {
+      "id": 408,
+      "title": "Helpless Dancer",
+      "duration": "02:35",
+      "artistId": 34,
+      "albumId": 34,
+      "albumTrack": 8,
+      "path": "The Who/Quadrophenia/08-Helpless Dancer.flac"
+    },
+    "409": {
+      "id": 409,
+      "title": "Is It In My Head",
+      "duration": "03:46",
+      "artistId": 34,
+      "albumId": 34,
+      "albumTrack": 9,
+      "path": "The Who/Quadrophenia/09-Is It in My Head.flac"
+    },
+    "410": {
+      "id": 410,
+      "title": "I've Had Enough",
+      "duration": "06:18",
+      "artistId": 34,
+      "albumId": 34,
+      "albumTrack": 10,
+      "path": "The Who/Quadrophenia/10-I’ve Had Enough.flac"
+    },
+    "411": {
+      "id": 411,
+      "title": "5:15",
+      "duration": "05:03",
+      "artistId": 34,
+      "albumId": 34,
+      "albumTrack": 11,
+      "path": "The Who/Quadrophenia/11-5-15.flac"
+    },
+    "412": {
+      "id": 412,
+      "title": "Sea And Sand",
+      "duration": "05:07",
+      "artistId": 34,
+      "albumId": 34,
+      "albumTrack": 12,
+      "path": "The Who/Quadrophenia/12-Sea and Sand.flac"
+    },
+    "413": {
+      "id": 413,
+      "title": "Drowned",
+      "duration": "05:28",
+      "artistId": 34,
+      "albumId": 34,
+      "albumTrack": 13,
+      "path": "The Who/Quadrophenia/13-Drowned.flac"
+    },
+    "414": {
+      "id": 414,
+      "title": "Bell Boy",
+      "duration": "05:00",
+      "artistId": 34,
+      "albumId": 34,
+      "albumTrack": 14,
+      "path": "The Who/Quadrophenia/14-Bell Boy.flac"
+    },
+    "415": {
+      "id": 415,
+      "title": "Doctor Jimmy",
+      "duration": "08:41",
+      "artistId": 34,
+      "albumId": 34,
+      "albumTrack": 15,
+      "path": "The Who/Quadrophenia/15-Doctor Jimmy.flac"
+    },
+    "416": {
+      "id": 416,
+      "title": "The Rock",
+      "duration": "06:38",
+      "artistId": 34,
+      "albumId": 34,
+      "albumTrack": 16,
+      "path": "The Who/Quadrophenia/16-The Rock.flac"
+    },
+    "417": {
+      "id": 417,
+      "title": "Love, Reign O'er Me",
+      "duration": "05:51",
+      "artistId": 34,
+      "albumId": 34,
+      "albumTrack": 17,
+      "path": "The Who/Quadrophenia/17-Love Reign O’er Me.flac"
+    },
+    "418": {
+      "id": 418,
+      "title": "Slip Kid",
+      "duration": "04:38",
+      "artistId": 34,
+      "albumId": 35,
+      "albumTrack": 1,
+      "path": "The Who/The Who by Numbers/01-Slip Kid.flac"
+    },
+    "419": {
+      "id": 419,
+      "title": "However Much I Booze",
+      "duration": "05:04",
+      "artistId": 34,
+      "albumId": 35,
+      "albumTrack": 2,
+      "path": "The Who/The Who by Numbers/02-However Much I Booze.flac"
+    },
+    "420": {
+      "id": 420,
+      "title": "Squeeze Box",
+      "duration": "02:41",
+      "artistId": 34,
+      "albumId": 35,
+      "albumTrack": 3,
+      "path": "The Who/The Who by Numbers/03-Squeeze Box.flac"
+    },
+    "421": {
+      "id": 421,
+      "title": "Dreaming From The Waist",
+      "duration": "04:09",
+      "artistId": 34,
+      "albumId": 35,
+      "albumTrack": 4,
+      "path": "The Who/The Who by Numbers/04-Dreaming From the Waist.flac"
+    },
+    "422": {
+      "id": 422,
+      "title": "Imagine A Man",
+      "duration": "04:05",
+      "artistId": 34,
+      "albumId": 35,
+      "albumTrack": 5,
+      "path": "The Who/The Who by Numbers/05-Imagine a Man.flac"
+    },
+    "423": {
+      "id": 423,
+      "title": "Success Story",
+      "duration": "03:22",
+      "artistId": 34,
+      "albumId": 35,
+      "albumTrack": 6,
+      "path": "The Who/The Who by Numbers/06-Success Story.flac"
+    },
+    "424": {
+      "id": 424,
+      "title": "They Are All In Love",
+      "duration": "03:02",
+      "artistId": 34,
+      "albumId": 35,
+      "albumTrack": 7,
+      "path": "The Who/The Who by Numbers/07-They Are All in Love.flac"
+    },
+    "425": {
+      "id": 425,
+      "title": "Blue Red And Grey",
+      "duration": "02:49",
+      "artistId": 34,
+      "albumId": 35,
+      "albumTrack": 8,
+      "path": "The Who/The Who by Numbers/08-Blue Red and Grey.flac"
+    },
+    "426": {
+      "id": 426,
+      "title": "How Many Friends",
+      "duration": "04:06",
+      "artistId": 34,
+      "albumId": 35,
+      "albumTrack": 9,
+      "path": "The Who/The Who by Numbers/09-How Many Friends.flac"
+    },
+    "427": {
+      "id": 427,
+      "title": "In A Hand Or A Face",
+      "duration": "03:22",
+      "artistId": 34,
+      "albumId": 35,
+      "albumTrack": 10,
+      "path": "The Who/The Who by Numbers/10-In a Hand or a Face.flac"
+    },
+    "428": {
+      "id": 428,
+      "title": "Squeeze Box",
+      "duration": "03:18",
+      "artistId": 34,
+      "albumId": 35,
+      "albumTrack": 11,
+      "path": "The Who/The Who by Numbers/11-Squeeze Box live.flac"
+    },
+    "429": {
+      "id": 429,
+      "title": "Behind Blue Eyes",
+      "duration": "04:41",
+      "artistId": 34,
+      "albumId": 35,
+      "albumTrack": 12,
+      "path": "The Who/The Who by Numbers/12-Behind Blue Eyes live.flac"
+    },
+    "430": {
+      "id": 430,
+      "title": "Dreaming From The Waist",
+      "duration": "04:50",
+      "artistId": 34,
+      "albumId": 35,
+      "albumTrack": 13,
+      "path": "The Who/The Who by Numbers/13-Dreaming From the Waist live.flac"
+    },
+    "431": {
+      "id": 431,
+      "title": "Overture (Original Album Version)",
+      "duration": "05:20",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 1,
+      "path": "The Who/Tommy/01-Overture.flac"
+    },
+    "432": {
+      "id": 432,
+      "title": "It's A Boy (Original Album Version)",
+      "duration": "00:38",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 2,
+      "path": "The Who/Tommy/02-It’s a Boy.flac"
+    },
+    "433": {
+      "id": 433,
+      "title": "1921 (Original Album Version)",
+      "duration": "02:49",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 3,
+      "path": "The Who/Tommy/03-1921.flac"
+    },
+    "434": {
+      "id": 434,
+      "title": "Amazing Journey (Original Album Version)",
+      "duration": "05:04",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 4,
+      "path": "The Who/Tommy/04-Amazing Journey.flac"
+    },
+    "435": {
+      "id": 435,
+      "title": "Sparks (Original Album Version)",
+      "duration": "02:05",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 5,
+      "path": "The Who/Tommy/05-Sparks.flac"
+    },
+    "436": {
+      "id": 436,
+      "title": "Eyesight to the Blind (the Hawker) (Original Album Version)",
+      "duration": "02:13",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 6,
+      "path": "The Who/Tommy/06-Eyesight to the Blind The Hawker.flac"
+    },
+    "437": {
+      "id": 437,
+      "title": "Christmas (Original Album Version)",
+      "duration": "04:34",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 7,
+      "path": "The Who/Tommy/07-Christmas.flac"
+    },
+    "438": {
+      "id": 438,
+      "title": "Cousin Kevin (Original Album Version)",
+      "duration": "04:06",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 8,
+      "path": "The Who/Tommy/08-Cousin Kevin.flac"
+    },
+    "439": {
+      "id": 439,
+      "title": "The Acid Queen (Original Album Version)",
+      "duration": "03:34",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 9,
+      "path": "The Who/Tommy/09-The Acid Queen.flac"
+    },
+    "440": {
+      "id": 440,
+      "title": "Underture (Original Album Version)",
+      "duration": "10:04",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 10,
+      "path": "The Who/Tommy/10-Underture.flac"
+    },
+    "441": {
+      "id": 441,
+      "title": "Do You Think It's Alright? (Original Album Version)",
+      "duration": "00:24",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 11,
+      "path": "The Who/Tommy/11-Do You Think It’s Alright.flac"
+    },
+    "442": {
+      "id": 442,
+      "title": "Fiddle About (Original Album Version)",
+      "duration": "01:31",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 12,
+      "path": "The Who/Tommy/12-Fiddle About.flac"
+    },
+    "443": {
+      "id": 443,
+      "title": "Pinball Wizard (Original Album Version)",
+      "duration": "03:00",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 13,
+      "path": "The Who/Tommy/13-Pinball Wizard.flac"
+    },
+    "444": {
+      "id": 444,
+      "title": "There's A Doctor (Original Album Version)",
+      "duration": "00:23",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 14,
+      "path": "The Who/Tommy/14-There’s a Doctor.flac"
+    },
+    "445": {
+      "id": 445,
+      "title": "Go to the Mirror! (Original Album Version)",
+      "duration": "03:47",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 15,
+      "path": "The Who/Tommy/15-Go to the Mirror!.flac"
+    },
+    "446": {
+      "id": 446,
+      "title": "Tommy Can You Hear Me? (Original Album Version)",
+      "duration": "01:35",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 16,
+      "path": "The Who/Tommy/16-Tommy Can You Hear Me.flac"
+    },
+    "447": {
+      "id": 447,
+      "title": "Smash the Mirror (Original Album Version)",
+      "duration": "01:34",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 17,
+      "path": "The Who/Tommy/17-Smash the Mirror.flac"
+    },
+    "448": {
+      "id": 448,
+      "title": "Sensation (Original Album Version)",
+      "duration": "02:27",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 18,
+      "path": "The Who/Tommy/18-Sensation.flac"
+    },
+    "449": {
+      "id": 449,
+      "title": "Miracle Cure (Original Album Version)",
+      "duration": "00:12",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 19,
+      "path": "The Who/Tommy/19-Miracle Cure.flac"
+    },
+    "450": {
+      "id": 450,
+      "title": "Sally Simpson (Original Album Version)",
+      "duration": "04:10",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 20,
+      "path": "The Who/Tommy/20-Sally Simpson.flac"
+    },
+    "451": {
+      "id": 451,
+      "title": "I'm Free (Original Album Version)",
+      "duration": "02:39",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 21,
+      "path": "The Who/Tommy/21-I’m Free.flac"
+    },
+    "452": {
+      "id": 452,
+      "title": "Welcome (Original Album Version)",
+      "duration": "04:32",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 22,
+      "path": "The Who/Tommy/22-Welcome.flac"
+    },
+    "453": {
+      "id": 453,
+      "title": "Tommy's Holiday Camp (Original Album Version)",
+      "duration": "00:57",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 23,
+      "path": "The Who/Tommy/23-Tommy’s Holiday Camp.flac"
+    },
+    "454": {
+      "id": 454,
+      "title": "We're Not Gonna Take It (Original Album Version)",
+      "duration": "07:06",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 24,
+      "path": "The Who/Tommy/24-We’re Not Gonna Take It.flac"
+    },
+    "455": {
+      "id": 455,
+      "title": "Overture (Including Introduction) (Live In Canada 1969)",
+      "duration": "07:00",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 25,
+      "path": "The Who/Tommy/25-Overture Including Introduction live in Canada 1969.flac"
+    },
+    "456": {
+      "id": 456,
+      "title": "It's A Boy (Live In Canada 1969)",
+      "duration": "00:39",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 26,
+      "path": "The Who/Tommy/26-It’s a Boy live in Canada 1969.flac"
+    },
+    "457": {
+      "id": 457,
+      "title": "1921 (Live In Canada 1969)",
+      "duration": "02:28",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 27,
+      "path": "The Who/Tommy/27-1921 live in Canada 1969.flac"
+    },
+    "458": {
+      "id": 458,
+      "title": "Amazing Journey (Live In Canada 1969)",
+      "duration": "05:07",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 28,
+      "path": "The Who/Tommy/28-Amazing Journey live in Canada 1969.flac"
+    },
+    "459": {
+      "id": 459,
+      "title": "Sparks (Live In Canada 1969)",
+      "duration": "02:49",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 29,
+      "path": "The Who/Tommy/29-Sparks live in Canada 1969.flac"
+    },
+    "460": {
+      "id": 460,
+      "title": "The Hawker (Eyesight To The Blind) (Live In Canada 1969)",
+      "duration": "01:54",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 30,
+      "path": "The Who/Tommy/30-The Hawker Eyesight to the Blind live in Canada 1969.flac"
+    },
+    "461": {
+      "id": 461,
+      "title": "Christmas (Live In Canada 1969)",
+      "duration": "03:11",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 31,
+      "path": "The Who/Tommy/31-Christmas live in Canada 1969.flac"
+    },
+    "462": {
+      "id": 462,
+      "title": "The Acid Queen (Live In Canada 1969)",
+      "duration": "03:30",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 32,
+      "path": "The Who/Tommy/32-The Acid Queen live in Canada 1969.flac"
+    },
+    "463": {
+      "id": 463,
+      "title": "Pinball Wizard (Live In Canada 1969)",
+      "duration": "02:47",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 33,
+      "path": "The Who/Tommy/33-Pinball Wizard live in Canada 1969.flac"
+    },
+    "464": {
+      "id": 464,
+      "title": "Do You Think It's Alright? (Live In Canada 1969)",
+      "duration": "00:21",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 34,
+      "path": "The Who/Tommy/34-Do You Think It’s Alright live in Canada 1969.flac"
+    },
+    "465": {
+      "id": 465,
+      "title": "Fiddle About (Live In Canada 1969)",
+      "duration": "01:12",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 35,
+      "path": "The Who/Tommy/35-Fiddle About live in Canada 1969.flac"
+    },
+    "466": {
+      "id": 466,
+      "title": "Tommy, Can You Hear Me? (Live In Canada / 1969)",
+      "duration": "00:55",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 36,
+      "path": "The Who/Tommy/36-Tommy Can You Hear Me live in Canada 1969.flac"
+    },
+    "467": {
+      "id": 467,
+      "title": "There's A Doctor (Live In Canada 1969)",
+      "duration": "00:24",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 37,
+      "path": "The Who/Tommy/37-There’s a Doctor live in Canada 1969.flac"
+    },
+    "468": {
+      "id": 468,
+      "title": "Go to the Mirror! (Live In Canada 1969)",
+      "duration": "03:22",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 38,
+      "path": "The Who/Tommy/38-Go to the Mirror! live in Canada 1969.flac"
+    },
+    "469": {
+      "id": 469,
+      "title": "Smash the Mirror (Live In Canada 1969)",
+      "duration": "01:10",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 39,
+      "path": "The Who/Tommy/39-Smash the Mirror live in Canada 1969.flac"
+    },
+    "470": {
+      "id": 470,
+      "title": "Miracle Cure (Live In Canada 1969)",
+      "duration": "00:12",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 40,
+      "path": "The Who/Tommy/40-Miracle Cure live in Canada 1969.flac"
+    },
+    "471": {
+      "id": 471,
+      "title": "Sally Simpson (Live In Canada 1969)",
+      "duration": "04:01",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 41,
+      "path": "The Who/Tommy/41-Sally Simpson live in Canada 1969.flac"
+    },
+    "472": {
+      "id": 472,
+      "title": "I'm Free (Live In Canada 1969)",
+      "duration": "02:12",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 42,
+      "path": "The Who/Tommy/42-I’m Free live in Canada 1969.flac"
+    },
+    "473": {
+      "id": 473,
+      "title": "Tommy's Holiday Camp (Live In Canada 1969)",
+      "duration": "00:48",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 43,
+      "path": "The Who/Tommy/43-Tommy’s Holiday Camp live in Canada 1969.flac"
+    },
+    "474": {
+      "id": 474,
+      "title": "We're Not Gonna Take It (Live In Canada 1969)",
+      "duration": "03:28",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 44,
+      "path": "The Who/Tommy/44-We’re Not Gonna Take It live in Canada 1969.flac"
+    },
+    "475": {
+      "id": 475,
+      "title": "See Me, Feel Me / Listening To You (Live In Canada 1969)",
+      "duration": "07:51",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 45,
+      "path": "The Who/Tommy/45-See Me Feel Me Listening to You live in Canada 1969.flac"
+    },
+    "476": {
+      "id": 476,
+      "title": "Overture (Demo)",
+      "duration": "04:05",
+      "artistId": 35,
+      "albumId": 36,
+      "albumTrack": 46,
+      "path": "The Who/Tommy/46-Overture demo.flac"
+    },
+    "477": {
+      "id": 477,
+      "title": "It's A Boy (Demo)",
+      "duration": "00:41",
+      "artistId": 35,
+      "albumId": 36,
+      "albumTrack": 47,
+      "path": "The Who/Tommy/47-It’s a Boy demo.flac"
+    },
+    "478": {
+      "id": 478,
+      "title": "1921 (Demo)",
+      "duration": "03:12",
+      "artistId": 35,
+      "albumId": 36,
+      "albumTrack": 48,
+      "path": "The Who/Tommy/48-1921 demo.flac"
+    },
+    "479": {
+      "id": 479,
+      "title": "Amazing Journey (Demo)",
+      "duration": "04:46",
+      "artistId": 35,
+      "albumId": 36,
+      "albumTrack": 49,
+      "path": "The Who/Tommy/49-Amazing Journey demo.flac"
+    },
+    "480": {
+      "id": 480,
+      "title": "Dream One (Demo)",
+      "duration": "03:08",
+      "artistId": 35,
+      "albumId": 36,
+      "albumTrack": 50,
+      "path": "The Who/Tommy/50-Dream One demo.flac"
+    },
+    "481": {
+      "id": 481,
+      "title": "Sparks (Demo)",
+      "duration": "07:38",
+      "artistId": 35,
+      "albumId": 36,
+      "albumTrack": 51,
+      "path": "The Who/Tommy/51-Sparks demo.flac"
+    },
+    "482": {
+      "id": 482,
+      "title": "The Hawker (Eyesight to the Blind) (Demo)",
+      "duration": "04:46",
+      "artistId": 35,
+      "albumId": 36,
+      "albumTrack": 52,
+      "path": "The Who/Tommy/52-The Hawker Eyesight to the Blind demo.flac"
+    },
+    "483": {
+      "id": 483,
+      "title": "Christmas (Demo)",
+      "duration": "04:39",
+      "artistId": 35,
+      "albumId": 36,
+      "albumTrack": 53,
+      "path": "The Who/Tommy/53-Christmas demo.flac"
+    },
+    "484": {
+      "id": 484,
+      "title": "The Acid Queen (Demo)",
+      "duration": "03:34",
+      "artistId": 35,
+      "albumId": 36,
+      "albumTrack": 54,
+      "path": "The Who/Tommy/54-The Acid Queen demo.flac"
+    },
+    "485": {
+      "id": 485,
+      "title": "Underture (Dream Two) (Demo)",
+      "duration": "01:48",
+      "artistId": 35,
+      "albumId": 36,
+      "albumTrack": 55,
+      "path": "The Who/Tommy/55-Underture Dream Two demo.flac"
+    },
+    "486": {
+      "id": 486,
+      "title": "Do You Think It's Alright? (Demo)",
+      "duration": "00:25",
+      "artistId": 35,
+      "albumId": 36,
+      "albumTrack": 56,
+      "path": "The Who/Tommy/56-Do You Think It’s Alright demo.flac"
+    },
+    "487": {
+      "id": 487,
+      "title": "Pinball Wizard (Demo)",
+      "duration": "03:42",
+      "artistId": 35,
+      "albumId": 36,
+      "albumTrack": 57,
+      "path": "The Who/Tommy/57-Pinball Wizard demo.flac"
+    },
+    "488": {
+      "id": 488,
+      "title": "There's A Doctor (Demo)",
+      "duration": "00:23",
+      "artistId": 35,
+      "albumId": 36,
+      "albumTrack": 58,
+      "path": "The Who/Tommy/58-There’s a Doctor demo.flac"
+    },
+    "489": {
+      "id": 489,
+      "title": "Go to the Mirror! (Demo)",
+      "duration": "04:32",
+      "artistId": 35,
+      "albumId": 36,
+      "albumTrack": 59,
+      "path": "The Who/Tommy/59-Go to the Mirror! demo.flac"
+    },
+    "490": {
+      "id": 490,
+      "title": "Success (Demo)",
+      "duration": "00:09",
+      "artistId": 35,
+      "albumId": 36,
+      "albumTrack": 60,
+      "path": "The Who/Tommy/60-Success demo.flac"
+    },
+    "491": {
+      "id": 491,
+      "title": "Tommy, Can You Hear Me? (Demo)",
+      "duration": "01:15",
+      "artistId": 35,
+      "albumId": 36,
+      "albumTrack": 61,
+      "path": "The Who/Tommy/61-Tommy Can You Hear Me demo.flac"
+    },
+    "492": {
+      "id": 492,
+      "title": "Smash the Mirror (Demo)",
+      "duration": "01:33",
+      "artistId": 35,
+      "albumId": 36,
+      "albumTrack": 62,
+      "path": "The Who/Tommy/62-Smash the Mirror demo.flac"
+    },
+    "493": {
+      "id": 493,
+      "title": "Sensation (Demo)",
+      "duration": "02:47",
+      "artistId": 35,
+      "albumId": 36,
+      "albumTrack": 63,
+      "path": "The Who/Tommy/63-Sensation demo.flac"
+    },
+    "494": {
+      "id": 494,
+      "title": "Miracle Cure (Demo)",
+      "duration": "00:10",
+      "artistId": 35,
+      "albumId": 36,
+      "albumTrack": 64,
+      "path": "The Who/Tommy/64-Miracle Cure demo.flac"
+    },
+    "495": {
+      "id": 495,
+      "title": "Sally Simpson (Demo)",
+      "duration": "04:50",
+      "artistId": 35,
+      "albumId": 36,
+      "albumTrack": 65,
+      "path": "The Who/Tommy/65-Sally Simpson demo.flac"
+    },
+    "496": {
+      "id": 496,
+      "title": "I'm Free (Demo)",
+      "duration": "02:28",
+      "artistId": 35,
+      "albumId": 36,
+      "albumTrack": 66,
+      "path": "The Who/Tommy/66-I’m Free demo.flac"
+    },
+    "497": {
+      "id": 497,
+      "title": "Welcome (Demo)",
+      "duration": "03:25",
+      "artistId": 35,
+      "albumId": 36,
+      "albumTrack": 67,
+      "path": "The Who/Tommy/67-Welcome demo.flac"
+    },
+    "498": {
+      "id": 498,
+      "title": "We're Not Gonna Take It (Demo)",
+      "duration": "05:04",
+      "artistId": 35,
+      "albumId": 36,
+      "albumTrack": 68,
+      "path": "The Who/Tommy/68-We’re Not Gonna Take It demo.flac"
+    },
+    "499": {
+      "id": 499,
+      "title": "Trying to Get Through (Demo)",
+      "duration": "02:10",
+      "artistId": 35,
+      "albumId": 36,
+      "albumTrack": 69,
+      "path": "The Who/Tommy/69-Trying to Get Through.flac"
+    },
+    "500": {
+      "id": 500,
+      "title": "Young Man Blues",
+      "duration": "02:47",
+      "artistId": 34,
+      "albumId": 36,
+      "albumTrack": 70,
+      "path": "The Who/Tommy/70-Young Man Blues.flac"
+    },
+    "501": {
+      "id": 501,
+      "title": "New Song",
+      "duration": "04:22",
+      "artistId": 34,
+      "albumId": 37,
+      "albumTrack": 1,
+      "path": "The Who/Who Are You/01-New Song.flac"
+    },
+    "502": {
+      "id": 502,
+      "title": "Had Enough",
+      "duration": "04:30",
+      "artistId": 34,
+      "albumId": 37,
+      "albumTrack": 2,
+      "path": "The Who/Who Are You/02-Had Enough.flac"
+    },
+    "503": {
+      "id": 503,
+      "title": "905",
+      "duration": "03:58",
+      "artistId": 34,
+      "albumId": 37,
+      "albumTrack": 3,
+      "path": "The Who/Who Are You/03-905.flac"
+    },
+    "504": {
+      "id": 504,
+      "title": "Sister Disco",
+      "duration": "04:23",
+      "artistId": 34,
+      "albumId": 37,
+      "albumTrack": 4,
+      "path": "The Who/Who Are You/04-Sister Disco.flac"
+    },
+    "505": {
+      "id": 505,
+      "title": "Music Must Change",
+      "duration": "04:38",
+      "artistId": 34,
+      "albumId": 37,
+      "albumTrack": 5,
+      "path": "The Who/Who Are You/05-Music Must Change.flac"
+    },
+    "506": {
+      "id": 506,
+      "title": "Trick Of The Light",
+      "duration": "04:24",
+      "artistId": 34,
+      "albumId": 37,
+      "albumTrack": 6,
+      "path": "The Who/Who Are You/06-Trick of the Light.flac"
+    },
+    "507": {
+      "id": 507,
+      "title": "Guitar And Pen",
+      "duration": "05:47",
+      "artistId": 34,
+      "albumId": 37,
+      "albumTrack": 7,
+      "path": "The Who/Who Are You/07-Guitar and Pen.flac"
+    },
+    "508": {
+      "id": 508,
+      "title": "Love Is Coming Down",
+      "duration": "04:03",
+      "artistId": 34,
+      "albumId": 37,
+      "albumTrack": 8,
+      "path": "The Who/Who Are You/08-Love Is Coming Down.flac"
+    },
+    "509": {
+      "id": 509,
+      "title": "Who Are You",
+      "duration": "06:26",
+      "artistId": 34,
+      "albumId": 37,
+      "albumTrack": 9,
+      "path": "The Who/Who Are You/09-Who Are You.flac"
+    },
+    "510": {
+      "id": 510,
+      "title": "Guitar And Pen (Olympic '78 Mix)",
+      "duration": "06:05",
+      "artistId": 34,
+      "albumId": 37,
+      "albumTrack": 10,
+      "path": "The Who/Who Are You/10-Guitar and Pen Olympic ’78 mix.flac"
+    },
+    "511": {
+      "id": 511,
+      "title": "Love Is Coming Down (Work-In-Progress Mix)",
+      "duration": "04:01",
+      "artistId": 34,
+      "albumId": 37,
+      "albumTrack": 11,
+      "path": "The Who/Who Are You/11-Love Is Coming Down Work in Progress mix.flac"
+    },
+    "512": {
+      "id": 512,
+      "title": "Who Are You (Lost Verse Mix)",
+      "duration": "06:19",
+      "artistId": 34,
+      "albumId": 37,
+      "albumTrack": 12,
+      "path": "The Who/Who Are You/12-Who Are You lost verse mix.flac"
+    },
+    "513": {
+      "id": 513,
+      "title": "Fear of a Blind Planet",
+      "duration": "03:45",
+      "artistId": 36,
+      "albumId": 38,
+      "albumTrack": 1,
+      "path": "Wax Tailor/The Shadow of Their Suns/01-Fear Of A Blind Planet.flac"
+    },
+    "514": {
+      "id": 514,
+      "title": "Never Forget",
+      "duration": "03:13",
+      "artistId": 36,
+      "albumId": 38,
+      "albumTrack": 2,
+      "path": "Wax Tailor/The Shadow of Their Suns/02-Never Forget.flac"
+    },
+    "515": {
+      "id": 515,
+      "title": "Just a Candle",
+      "duration": "04:18",
+      "artistId": 36,
+      "albumId": 38,
+      "albumTrack": 3,
+      "path": "Wax Tailor/The Shadow of Their Suns/03-Just A Candle.flac"
+    },
+    "516": {
+      "id": 516,
+      "title": "Everybody",
+      "duration": "03:29",
+      "artistId": 36,
+      "albumId": 38,
+      "albumTrack": 4,
+      "path": "Wax Tailor/The Shadow of Their Suns/04-Everybody.flac"
+    },
+    "517": {
+      "id": 517,
+      "title": "On the Air",
+      "duration": "04:24",
+      "artistId": 36,
+      "albumId": 38,
+      "albumTrack": 5,
+      "path": "Wax Tailor/The Shadow of Their Suns/05-On The Air.flac"
+    },
+    "518": {
+      "id": 518,
+      "title": "Misery",
+      "duration": "03:15",
+      "artistId": 36,
+      "albumId": 38,
+      "albumTrack": 6,
+      "path": "Wax Tailor/The Shadow of Their Suns/06-Misery.flac"
+    },
+    "519": {
+      "id": 519,
+      "title": "Shining Underdog",
+      "duration": "03:26",
+      "artistId": 36,
+      "albumId": 38,
+      "albumTrack": 7,
+      "path": "Wax Tailor/The Shadow of Their Suns/07-Shining Underdog.flac"
+    },
+    "520": {
+      "id": 520,
+      "title": "Déjà vu",
+      "duration": "04:06",
+      "artistId": 36,
+      "albumId": 38,
+      "albumTrack": 8,
+      "path": "Wax Tailor/The Shadow of Their Suns/08-Déjà vu.flac"
+    },
+    "521": {
+      "id": 521,
+      "title": "Keep It Movin",
+      "duration": "02:58",
+      "artistId": 36,
+      "albumId": 38,
+      "albumTrack": 9,
+      "path": "Wax Tailor/The Shadow of Their Suns/09-Keep It Movin.flac"
+    },
+    "522": {
+      "id": 522,
+      "title": "Like This",
+      "duration": "03:22",
+      "artistId": 36,
+      "albumId": 38,
+      "albumTrack": 10,
+      "path": "Wax Tailor/The Shadow of Their Suns/10-Like This.flac"
+    },
+    "523": {
+      "id": 523,
+      "title": "Paint It Black",
+      "duration": "00:29",
+      "artistId": 36,
+      "albumId": 38,
+      "albumTrack": 11,
+      "path": "Wax Tailor/The Shadow of Their Suns/11-Paint It Black.flac"
+    },
+    "524": {
+      "id": 524,
+      "title": "Dusk to Dusk",
+      "duration": "03:17",
+      "artistId": 36,
+      "albumId": 38,
+      "albumTrack": 12,
+      "path": "Wax Tailor/The Shadow of Their Suns/12-Dusk To Dusk.flac"
+    },
+    "525": {
+      "id": 525,
+      "title": "The Light",
+      "duration": "03:54",
+      "artistId": 36,
+      "albumId": 38,
+      "albumTrack": 13,
+      "path": "Wax Tailor/The Shadow of Their Suns/13-The Light.flac"
+    }
+  }
+}
