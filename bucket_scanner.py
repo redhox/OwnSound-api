@@ -198,8 +198,6 @@ def scan_bucket_for_music_metadata(endpoint, access_key, secret_key, bucket_name
             if meta["cover_base64"]:
                 cover_full_key = upload_cover_s3(s3_client, meta["cover_base64"], f"{album_name}_cover", bucket_name)
                 cover_small_key = upload_cover_s3(s3_client, meta["cover_base64"], f"{album_name}_cover_small", bucket_name, size=(40, 40))
-                if not processed_data["artists"][artist_id_str]["image"]:
-                     processed_data["artists"][artist_id_str]["image"] = cover_full_key
 
             processed_data["albums"][album_id_str] = {
                 "id": current_album_id,

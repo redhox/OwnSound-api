@@ -118,15 +118,10 @@ def scan_artists_for_images(repo):
             if image_url:
                 s3_key = download_and_upload_image(s3_client, bucket_name, image_url, artist["name"])
                 if s3_key:
-                    artist["image"] = s3_key
-                    artist["bucket"] = bucket_name # Link to bucket for correct URL building
+                    repo.update_artist(artist["id"], {"image": s3_key, "bucket": bucket_name})
                     updated_count += 1
                     logger.info(f"Successfully updated image for {artist['name']}")
             
             time.sleep(1)
 
-    if updated_count > 0:
-        repo._save()
-        logger.info(f"Updated {updated_count} artist images.")
-    
     return updated_count

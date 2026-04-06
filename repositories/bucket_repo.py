@@ -4,11 +4,14 @@ from botocore.exceptions import ClientError
 from botocore.config import Config
 import os
 from dotenv import load_dotenv
+import logging
 load_dotenv() 
 
+logger = logging.getLogger(__name__)
+
 class S3ContactRepository:
-    def __init__(self, json_repo=None):
-        self.json_repo = json_repo
+    def __init__(self, repo=None):
+        self.repo = repo
         self.bucket_configs = {} # Keyed by library_id
         self.active_config = None
         self.active_s3_client = None
@@ -17,8 +20,8 @@ class S3ContactRepository:
     def refresh_configs(self):
         self.bucket_configs = {} 
         
-        if self.json_repo:
-            libraries = self.json_repo.get_libraries()
+        if self.repo:
+            libraries = self.repo.get_libraries()
             for lib in libraries:
                 lib_id = lib.get("id")
                 if not lib_id: continue
@@ -56,6 +59,59 @@ class S3ContactRepository:
         if self.bucket_configs:
             self.set_active_by_id(list(self.bucket_configs.keys())[0])
 
+    def ensure_public_policy(self, client, bucket_name):
+        """Vérifie et applique la politique d'accès public pour le préfixe 'public/'."""
+        import json
+        
+        target_resource = f"arn:aws:s3:::{bucket_name}/public/*"
+        
+        policy = {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "PublicReadPrefix",
+                    "Effect": "Allow",
+                    "Principal": {"AWS": ["*"]},
+                    "Action": ["s3:GetObject"],
+                    "Resource": [target_resource]
+                }
+            ]
+        }
+
+        try:
+            # On tente d'abord de récupérer la politique actuelle
+            try:
+                response = client.get_bucket_policy(Bucket=bucket_name)
+                current_policy = json.loads(response['Policy'])
+                
+                # Vérifier si notre statement est déjà présent
+                is_configured = False
+                for statement in current_policy.get('Statement', []):
+                    if statement.get('Sid') == "PublicReadPrefix" and target_resource in statement.get('Resource', []):
+                        is_configured = True
+                        break
+                
+                if is_configured:
+                    logger.info(f"Public policy already configured for bucket {bucket_name}")
+                    return
+                
+                # Si une politique existe mais n'a pas notre statement, on l'ajoute
+                current_policy['Statement'].append(policy['Statement'][0])
+                policy_to_apply = current_policy
+            except ClientError as e:
+                # Si aucune politique n'existe (Error 404/NoSuchBucketPolicy)
+                policy_to_apply = policy
+
+            # Appliquer la politique
+            client.put_bucket_policy(
+                Bucket=bucket_name,
+                Policy=json.dumps(policy_to_apply)
+            )
+            logger.info(f"Successfully applied public read policy to {bucket_name}/public/*")
+            
+        except Exception as e:
+            logger.warning(f"Could not ensure bucket policy for {bucket_name}: {e}")
+
     def set_active_by_id(self, lib_id):
         config = self.bucket_configs.get(lib_id)
         if not config:
@@ -68,14 +124,9 @@ class S3ContactRepository:
         bucket_name = config["bucket_name"]
         endpoint = url
         if bucket_name and bucket_name in url:
-            # We want the part before /bucket_name/
-            # Example: https://host.com/my-bucket/ -> https://host.com/
             parts = url.split(f"/{bucket_name}")
             if len(parts) > 1:
                 endpoint = parts[0]
-        
-        # Ensure endpoint ends with / if it doesn't already (some S3 clients prefer it)
-        # but boto3 usually handles it.
         
         self.active_s3_client = boto3.client(
             's3',
@@ -85,6 +136,21 @@ class S3ContactRepository:
             config=Config(signature_version="s3v4", s3={"addressing_style": "path"}),
             region_name="us-east-1"
         )
+        
+        # S'assurer que la politique publique est appliquée
+        self.ensure_public_policy(self.active_s3_client, bucket_name)
+
+    def check_public_access(self, bucket_name, path, endpoint_url):
+        """Tente d'accéder à un fichier sans signature pour voir s'il est public."""
+        import requests
+        # Construire l'URL publique probable
+        public_url = f"{endpoint_url.rstrip('/')}/{bucket_name}/{path.lstrip('/')}"
+        try:
+            # On utilise HEAD pour ne pas télécharger tout le fichier, juste vérifier l'accès
+            response = requests.head(public_url, timeout=2)
+            return response.status_code == 200
+        except:
+            return False
 
     def get_temporary_link(self, path: str, bucket_name: str = None, library_id: int = None):
         if library_id is not None:
@@ -99,13 +165,20 @@ class S3ContactRepository:
                 if cfg["bucket_name"] == bucket_name:
                     config = cfg
                     break
-        
+
         if not config:
             if self.active_config:
                 config = self.active_config
             else:
                 return None
-            
+
+        # Si un bucket_host (URL publique) est configuré, on vérifie si on peut l'utiliser directement
+        bucket_host = config.get("bucket_host")
+        if bucket_host:
+            # On pourrait mettre en cache le résultat du test de visibilité publique
+            # pour éviter de faire un ping HTTP à chaque fois
+            return f"{bucket_host.rstrip('/')}/{path.lstrip('/')}"
+
         try:
             client = self.active_s3_client
             if config != self.active_config:

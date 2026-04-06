@@ -1,6 +1,7 @@
 annotated-doc==0.0.4
 annotated-types==0.7.0
 anyio==4.12.0
+sqlalchemy==2.0.38
 bcrypt==3.2.2
 boto3==1.42.16
 botocore==1.42.16

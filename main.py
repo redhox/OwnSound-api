@@ -6,8 +6,7 @@ from typing import List, Literal, Dict, Any
 import os
 from passlib.context import CryptContext
 from auth import verify_token, create_token
-from repositories.json_repo import JsonRepository
-from repositories.bucket_repo import S3ContactRepository
+from repositories import repo, bucketS3
 from dotenv import load_dotenv
 import logging
 
@@ -27,8 +26,6 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 def get_password_hash(password):
     return pwd_context.hash(password)
 
-repo = JsonRepository()
-bucketS3 = S3ContactRepository(json_repo=repo)
 
 async def top_genres_job():
     while True:
@@ -79,8 +76,13 @@ def get_base_url_for_bucket(identifier: int | str | None = None) -> str | None:
                 break
     if not target:
         target = libraries[0]
-    if target and target.get("url"):
-        return target["url"].rstrip("/") + "/"
+    
+    if target:
+        url = target.get("url", "").rstrip("/")
+        bucket_name = target.get("identifiers", {}).get("bucket_name")
+        if bucket_name:
+            return f"{url}/{bucket_name}/"
+        return f"{url}/"
     return None
 # ======================
 # AUTH
@@ -383,39 +385,32 @@ def get_libraries(user=Depends(verify_token)):
     if not current or current.get("role") != "admin":
         raise HTTPException(status_code=403, detail="ADMIN_REQUIRED")
     
-    raw_libraries = repo.get_libraries() # This comes directly from database.json
+    raw_libraries = repo.get_libraries() 
     formatted_libraries = []
     for lib in raw_libraries:
+        # Default bucket name inference
+        bucket_name_from_url = ""
+        if lib.get("url"):
+            try:
+                parsed_url = lib["url"].rstrip("/").split('/')
+                if len(parsed_url) > 1:
+                    bucket_name_from_url = parsed_url[-1]
+            except Exception:
+                pass
+
         formatted_lib = {
             "id": lib.get("id"),
             "name": lib.get("name"),
-            "type": None, # Initialize type
-            "config": {} # Initialize config
-        }
-        # Transform backend data to frontend expected format
-        if lib.get("url") and lib.get("identifiers"):
-            formatted_lib["type"] = "bucket" # Assuming it's always a bucket type if url/identifiers exist
-            
-            # Extract bucket_name from URL or identifiers. Prioritize identifiers if available.
-            # Infer bucket_name from URL if not explicitly in identifiers.
-            bucket_name_from_url = ""
-            if lib.get("url"):
-                try:
-                    # Simple parsing: assumes URL ends with bucket name or path
-                    parsed_url = lib["url"].rstrip("/").split('/')
-                    if len(parsed_url) > 1:
-                        bucket_name_from_url = parsed_url[-1]
-                except Exception:
-                    logger.warning(f"Could not reliably extract bucket name from URL: {lib.get('url')}")
-
-            formatted_lib["config"] = {
+            "type": "bucket", 
+            "config": {
                 "bucket_name": lib.get("identifiers", {}).get("bucket_name", bucket_name_from_url), 
-                "aws_endpoint_url": lib.get("url"), # Using the provided URL as endpoint
-                "aws_access_key_id": lib.get("identifiers", {}).get("aws_access_key_id"),
-                "aws_secret_access_key": lib.get("identifiers", {}).get("aws_secret_access_key"),
-                "url_expiration": lib.get("identifiers", {}).get("url_expiration", 3600) # Default expiration
+                "aws_endpoint_url": lib.get("url"), 
+                "aws_access_key_id": lib.get("identifiers", {}).get("aws_access_key_id", ""),
+                "aws_secret_access_key": lib.get("identifiers", {}).get("aws_secret_access_key", ""),
+                "url_expiration": lib.get("identifiers", {}).get("url_expiration", 3600),
+                "bucket_host": lib.get("identifiers", {}).get("bucket_host", "")
             }
-        # Add logic here for other library types if they exist and are supported
+        }
         
         formatted_libraries.append(formatted_lib)
 
@@ -432,13 +427,13 @@ def create_library(payload: LibraryPayload, user=Depends(verify_token)):
         # Convert frontend payload (type, config) back to backend DB schema (url, identifiers)
         library_data_for_db = {
             "name": payload.name,
-            # Store type if it's to be saved in DB, otherwise it's inferred on GET
             "url": payload.config.get("aws_endpoint_url"),
             "identifiers": {
                 "bucket_name": payload.config.get("bucket_name"),
                 "aws_access_key_id": payload.config.get("aws_access_key_id"),
                 "aws_secret_access_key": payload.config.get("aws_secret_access_key"),
-                "url_expiration": payload.config.get("url_expiration")
+                "url_expiration": payload.config.get("url_expiration", 3600),
+                "bucket_host": payload.config.get("bucket_host", "")
             }
         }
         # Basic validation for 'bucket' type
@@ -471,7 +466,8 @@ def update_library(index: int, payload: LibraryPayload, user=Depends(verify_toke
                 "bucket_name": payload.config.get("bucket_name"),
                 "aws_access_key_id": payload.config.get("aws_access_key_id"),
                 "aws_secret_access_key": payload.config.get("aws_secret_access_key"),
-                "url_expiration": payload.config.get("url_expiration")
+                "url_expiration": payload.config.get("url_expiration", 3600),
+                "bucket_host": payload.config.get("bucket_host", "")
             }
         }
         if payload.type != "bucket":
@@ -482,13 +478,13 @@ def update_library(index: int, payload: LibraryPayload, user=Depends(verify_toke
         updated = repo.update_library(index, library_data_for_db)
         # Refresh S3 client configurations after updating one
         bucketS3.refresh_configs()
-        logger.info(f"Library at index {index} updated successfully.")
+        logger.info(f"Library {index} updated successfully.")
         return updated
     except IndexError:
-        logger.error(f"Update failed: Library index {index} out of range.")
+        logger.error(f"Update failed: Library {index} not found.")
         raise HTTPException(status_code=404, detail="Library not found.")
     except Exception as e:
-        logger.error(f"Error updating library at index {index}: {e}")
+        logger.error(f"Error updating library {index}: {e}")
         raise HTTPException(status_code=400, detail=str(e))
 
 class ScanRequest(BaseModel):
@@ -508,23 +504,14 @@ def trigger_bucket_scan(req: ScanRequest = Body(default=ScanRequest()), user=Dep
         libraries_to_scan = []
         if req.library_id:
             libraries_to_scan = [lib for lib in all_libraries if lib.get("id") == req.library_id]
-            logger.info(f"Filtered libraries to scan. Found {len(libraries_to_scan)} matches for ID {req.library_id}")
             if not libraries_to_scan:
                 raise HTTPException(status_code=404, detail=f"Library with ID {req.library_id} not found.")
         else:
             libraries_to_scan = all_libraries
-            logger.info(f"No library_id provided. Scanning all {len(libraries_to_scan)} libraries.")
 
         total_added = {"artists": 0, "albums": 0, "tracks": 0, "genres": 0}
         
-        current_db_data = repo.data
-        artists_db = current_db_data.setdefault("artists", {})
-        albums_db = current_db_data.setdefault("albums", {})
-        tracks_db = current_db_data.setdefault("tracks", {})
-        genres_db = current_db_data.setdefault("genres", {})
-
         for lib in libraries_to_scan:
-            # ... (previous code for library setup)
             url = lib.get("url")
             ids = lib.get("identifiers", {})
             lib_id = lib.get("id")
@@ -550,129 +537,83 @@ def trigger_bucket_scan(req: ScanRequest = Body(default=ScanRequest()), user=Dep
                 bucket_name=bucket_name
             )
 
-            # Re-generate maps
-            artist_name_to_id = {v["name"]: str(v["id"]) for v in artists_db.values()}
-            genre_name_to_id = {v["name"]: str(v["id"]) for v in genres_db.values()}
-            album_map = {}
-            for a_id, alb in albums_db.items():
-                art_id = alb.get("artistId", [None])[0]
-                art = repo.get_artist(art_id) if art_id else None
-                if art and alb.get("name"):
-                    album_map[f"{art['name']} - {alb['name']}"] = str(a_id)
-
-            current_artist_id = max(map(int, artists_db.keys()), default=0) + 1
-            current_album_id = max(map(int, albums_db.keys()), default=0) + 1
-            current_track_id = max(map(int, tracks_db.keys()), default=0) + 1
-            current_genre_id = max(map(int, genres_db.keys()), default=0) + 1
-
+            # Re-generate maps for efficiency during this scan
+            # (In SQL, we use ensure_ methods which handle uniqueness)
+            
             # Process Scanned Genres
+            genre_map = {} # local name -> id map for this scan
             for s_gen_id, s_gen in scanned_data.get("genres", {}).items():
                 name = s_gen["name"]
-                if name not in genre_name_to_id:
-                    new_id = str(current_genre_id)
-                    genres_db[new_id] = {
-                        "id": current_genre_id,
-                        "name": name
-                    }
-                    genre_name_to_id[name] = new_id
-                    current_genre_id += 1
-                    total_added["genres"] += 1
+                db_gid = repo.ensure_genre(name)
+                genre_map[name] = db_gid
+                total_added["genres"] += 1 # This is approximate now
 
             # Process Scanned Artists
+            artist_map = {} # local name -> id map
             for s_art_id, s_art in scanned_data["artists"].items():
                 name = s_art["name"]
-                if name not in artist_name_to_id:
-                    new_id = str(current_artist_id)
-                    artists_db[new_id] = {
-                        "id": current_artist_id,
-                        "name": name,
-                        "image": s_art["image"],
-                        "listAlbums": [],
-                        "library_id": lib_id
-                    }
-                    artist_name_to_id[name] = new_id
-                    current_artist_id += 1
-                    total_added["artists"] += 1
-                elif s_art["image"]:
-                    artists_db[artist_name_to_id[name]]["image"] = s_art["image"]
+                db_aid = repo.ensure_artist(name, image=s_art["image"], library_id=lib_id)
+                artist_map[name] = db_aid
+                total_added["artists"] += 1
 
             # Process Scanned Albums
+            album_map = {} # local "artist - album" -> id map
             for s_alb_id, s_alb in scanned_data["albums"].items():
                 art_name = scanned_data["artists"][str(s_alb["artistId"][0])]["name"]
-                key = f"{art_name} - {s_alb['name']}"
-                art_id = artist_name_to_id.get(art_name)
+                art_id = artist_map.get(art_name)
+                
+                # Get genre IDs for this album
+                s_genre_ids = s_alb.get("genreIds", [])
+                db_genre_ids = []
+                for sgid in s_genre_ids:
+                    gname = scanned_data["genres"][str(sgid)]["name"]
+                    if gname in genre_map:
+                        db_genre_ids.append(genre_map[gname])
 
-                if key not in album_map:
-                    new_id = str(current_album_id)
-                    albums_db[new_id] = {
-                        "id": current_album_id,
-                        "name": s_alb["name"],
-                        "artistId": [int(art_id)],
-                        "genreIds": [],
-                        "cover": s_alb["cover"],
-                        "coverSmall": s_alb["coverSmall"],
-                        "coverBucket": s_alb["coverBucket"],
-                        "listMusique": [],
-                        "library_id": lib_id
-                    }
-                    album_map[key] = new_id
-                    if art_id:
-                        artists_db[art_id].setdefault("listAlbums", []).append(current_album_id)
-                    current_album_id += 1
-                    total_added["albums"] += 1
+                db_albid = repo.ensure_album(
+                    name=s_alb["name"],
+                    artist_id=art_id,
+                    genre_ids=db_genre_ids,
+                    cover=s_alb["cover"],
+                    coverSmall=s_alb["coverSmall"],
+                    coverBucket=s_alb["coverBucket"],
+                    library_id=lib_id
+                )
+                album_map[f"{art_name} - {s_alb['name']}"] = db_albid
+                total_added["albums"] += 1
 
             # Process Scanned Tracks
             for s_trk_id, s_trk in scanned_data["tracks"].items():
                 art_name = scanned_data["artists"][str(s_trk["artistId"])]["name"]
                 alb_name = scanned_data["albums"][str(s_trk["albumId"])]["name"]
                 alb_id = album_map.get(f"{art_name} - {alb_name}")
-                art_id = artist_name_to_id.get(art_name)
+                art_id = artist_map.get(art_name)
                 
-                # Retrieve and aggregate genres for the album
-                s_genre_ids = scanned_data["albums"][str(s_trk["albumId"])].get("genreIds", [])
-                if alb_id:
-                    album_entry = albums_db[alb_id]
-                    if "genreIds" not in album_entry:
-                        album_entry["genreIds"] = []
-                    
-                    for sgid in s_genre_ids:
-                        gname = scanned_data["genres"][str(sgid)]["name"]
-                        if gname in genre_name_to_id:
-                            db_gid = int(genre_name_to_id[gname])
-                            if db_gid not in album_entry["genreIds"]:
-                                album_entry["genreIds"].append(db_gid)
-
-                if alb_id and not any(t.get("path") == s_trk["path"] for t in tracks_db.values() if t.get("albumId") == int(alb_id)):
-                    new_id = str(current_track_id)
-                    tracks_db[new_id] = {
-                        "id": current_track_id,
-                        "title": s_trk["title"],
-                        "duration": s_trk["duration"],
-                        "artistId": int(art_id),
-                        "albumId": int(alb_id),
-                        "albumTrack": len(albums_db[alb_id]["listMusique"]) + 1,
-                        "path": s_trk["path"],
-                        "bucket": s_trk["bucket"],
-                        "library_id": lib_id
-                    }
-                    albums_db[alb_id]["listMusique"].append(current_track_id)
-                    current_track_id += 1
+                if alb_id and art_id:
+                    repo.add_track(
+                        title=s_trk["title"],
+                        duration=s_trk["duration"],
+                        artist_id=art_id,
+                        album_id=alb_id,
+                        album_track=s_trk.get("albumTrack", 0), # Simplified
+                        path=s_trk["path"],
+                        bucket=s_trk["bucket"],
+                        library_id=lib_id
+                    )
                     total_added["tracks"] += 1
 
-        repo._save()
         bucketS3.refresh_configs()
         
         return {
             "message": "Scan completed.",
-            "artists_added": total_added["artists"],
-            "albums_added": total_added["albums"],
-            "tracks_added": total_added["tracks"],
-            "genres_added": total_added["genres"],
-            "total_artists": len(artists_db),
-            "total_albums": len(albums_db),
-            "total_tracks": len(tracks_db),
-            "total_genres": len(genres_db)
+            "artists_scanned": total_added["artists"],
+            "albums_scanned": total_added["albums"],
+            "tracks_scanned": total_added["tracks"]
         }
+    except Exception as e:
+        logger.exception("Scan failed")
+        raise HTTPException(status_code=500, detail=str(e))
+
     except Exception as e:
         logger.exception("Scan failed")
         raise HTTPException(status_code=500, detail=str(e))
@@ -942,8 +883,13 @@ def album_by_list_id(req: AlbumListRequest, user=Depends(verify_token)):
                     break
         if not target:
             target = libraries[0]
-        if target and target.get("url"):
-            return target["url"].rstrip("/") + "/"
+        
+        if target:
+            url = target.get("url", "").rstrip("/")
+            bucket_name = target.get("identifiers", {}).get("bucket_name")
+            if bucket_name:
+                return f"{url}/{bucket_name}/"
+            return f"{url}/"
         return None
 
     for aid in req.album_ids:
