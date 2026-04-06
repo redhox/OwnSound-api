@@ -6,13 +6,13 @@ services:
     volumes:
       - .:/app
     environment:
-    - SECRET_KEY=SUPER_SECRET_KEY_CHANGE_ME
-    - ALGORITHM=HS256
+    # - SECRET_KEY=SUPER_SECRET_KEY_CHANGE_ME
+    # - ALGORITHM=HS256
     - TOKEN_EXP_SECONDS=86400
     - URL_EXPIRATION=3600
-    - AWS_ACCESS_KEY_ID=
-    - AWS_SECRET_ACCESS_KEY=
-    - BUCKET_NAME=musique
-    - AWS_ENDPOINT_URL=
+    # - AWS_ACCESS_KEY_ID=
+    # - AWS_SECRET_ACCESS_KEY=
+    # - BUCKET_NAME=musique
+    # - AWS_ENDPOINT_URL=
 
     restart: unless-stopped
