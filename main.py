@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Literal, Dict, Any
 import os
+from passlib.context import CryptContext
 from auth import verify_token, create_token
 from repositories.json_repo import JsonRepository
 from repositories.bucket_repo import S3ContactRepository
@@ -20,6 +21,11 @@ from contextlib import asynccontextmanager
 load_dotenv() 
 
 logger = logging.getLogger(__name__)
+
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
+def get_password_hash(password):
+    return pwd_context.hash(password)
 
 repo = JsonRepository()
 bucketS3 = S3ContactRepository(json_repo=repo)
@@ -90,7 +96,17 @@ def login(payload: LoginPayload):
     if not user:
         raise HTTPException(status_code=401, detail="Invalid credentials")
 
-    if user["password"] != payload.password:
+    # Vérification du mot de passe
+    # Note: On utilise pwd_context défini plus haut
+    is_valid = False
+    try:
+        is_valid = pwd_context.verify(payload.password, user["password"])
+    except Exception:
+        # Fallback pour les anciens mots de passe en clair
+        if user["password"] == payload.password:
+            is_valid = True
+
+    if not is_valid:
         raise HTTPException(status_code=401, detail="Invalid credentials")
 
     token = create_token(user)
@@ -248,7 +264,7 @@ def change_password(payload: ChangePasswordPayload, user=Depends(verify_token)):
     if not current_user:
         raise HTTPException(401, "USER_NOT_FOUND")
     try:
-        repo.set_user_password(user["id"], payload.password)
+        repo.set_user_password(user["id"], get_password_hash(payload.password))
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
@@ -299,7 +315,7 @@ def create_user(payload: CreateUserPayload, user=Depends(verify_token)):
     try:
         user_id = repo.create_user(
             username=payload.username,
-            password=payload.password,
+            password=get_password_hash(payload.password),
             email=payload.email,
             role=payload.role
         )
@@ -328,7 +344,7 @@ def register(payload: RegisterPayload):
     try:
         user_id = repo.create_user(
             username=payload.username,
-            password=payload.password,
+            password=get_password_hash(payload.password),
             email=payload.email,
             role="user"
         )
