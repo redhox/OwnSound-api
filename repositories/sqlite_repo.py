@@ -276,57 +276,36 @@ class SqliteRepository(BaseRepository):
             libraries = session.query(Library).all()
             return [self._to_dict(lib) for lib in libraries]
 
-    def update_library(self, index: int, library_data: dict):
-        # NOTE: Index in JSON repo was position in list. In SQL, we use ID.
-        # But for consistency with existing code, let's assume index is library_id if it's high enough
-        # or we might need to change the API to pass ID.
+    def update_library(self, library_id: int, library_data: dict):
         with self.SessionLocal() as session:
-            # Try to match by ID if possible
-            lib_id = library_data.get("id")
-            lib = session.query(Library).filter(Library.id == lib_id).first()
+            lib = session.query(Library).filter(Library.id == library_id).first()
             if lib:
                 lib.name = library_data.get("name", lib.name)
                 lib.url = library_data.get("url", lib.url)
                 lib.identifiers = library_data.get("identifiers", lib.identifiers)
                 session.commit()
                 return self._to_dict(lib)
-            raise IndexError("Library not found")
+            raise KeyError("Library not found")
 
-    def add_library(self, library_data: dict):
+    def delete_library(self, library_id: int):
         with self.SessionLocal() as session:
-            new_lib = Library(
-                name=library_data.get("name"),
-                url=library_data.get("url"),
-                identifiers=library_data.get("identifiers")
-            )
-            session.add(new_lib)
-            session.commit()
-            return self._to_dict(new_lib)
+            library = session.query(Library).filter(Library.id == library_id).first()
+            if not library:
+                raise KeyError("Library not found")
 
-    def add_track_to_history(self, user_id: str, track_id: int):
-        with self.SessionLocal() as session:
-            # In SQL we add a new entry in user_history
-            new_history = UserHistory(user_id=int(user_id), track_id=track_id)
-            session.add(new_history)
-            
-            # Limit history to 200 entries per user
-            count = session.query(UserHistory).filter(UserHistory.user_id == int(user_id)).count()
-            if count > 200:
-                oldest = session.query(UserHistory)\
-                    .filter(UserHistory.user_id == int(user_id))\
-                    .order_by(UserHistory.timestamp.asc())\
-                    .limit(count - 200)\
-                    .all()
-                for o in oldest:
-                    session.delete(o)
-            
+            session.query(Track).filter(Track.library_id == library_id).delete(synchronize_session='fetch')
+            session.query(Album).filter(Album.library_id == library_id).delete(synchronize_session='fetch')
+            session.query(Artist).filter(Artist.library_id == library_id).delete(synchronize_session='fetch')
+
+            session.delete(library)
             session.commit()
+            logger.info(f"Library with ID {library_id} and its associated data deleted.")
+            return True
 
     def update_user_top_genres(self):
         with self.SessionLocal() as session:
             users = session.query(User).all()
             for user in users:
-                # Get genre counts from history
                 genre_counts = {}
                 history_tracks = session.query(Track).join(UserHistory).filter(UserHistory.user_id == user.id).all()
                 for track in history_tracks:
@@ -334,9 +313,9 @@ class SqliteRepository(BaseRepository):
                     if album:
                         for genre in album.genres:
                             genre_counts[genre.id] = genre_counts.get(genre.id, 0) + 1
-                
+
                 sorted_genres = sorted(genre_counts.items(), key=lambda x: x[1], reverse=True)[:10]
-                
+
                 top_genres_data = []
                 for g_id, count in sorted_genres:
                     genre = session.query(Genre).filter(Genre.id == g_id).first()
@@ -346,13 +325,9 @@ class SqliteRepository(BaseRepository):
                             "name": genre.name,
                             "count": count
                         })
-                
+
                 user.top_genres = top_genres_data
             session.commit()
-
-    # --- Extra methods needed for the scanning process in main.py ---
-    # Since main.py interacts with repo.data or specific repo methods, 
-    # we need to provide a way to add data during scan.
     
     def get_user_all(self):
         with self.SessionLocal() as session:
