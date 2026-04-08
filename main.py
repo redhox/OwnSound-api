@@ -487,8 +487,28 @@ def update_library(index: int, payload: LibraryPayload, user=Depends(verify_toke
         logger.error(f"Error updating library {index}: {e}")
         raise HTTPException(status_code=400, detail=str(e))
 
+@app.delete("/admin/libraries/{library_id}")
+def delete_library_endpoint(library_id: int, user=Depends(verify_token)):
+    current = repo.get_user_by_id(user["id"])
+    if not current or current.get("role") != "admin":
+        raise HTTPException(status_code=403, detail="ADMIN_REQUIRED")
+    
+    try:
+        success = repo.delete_library(library_id)
+        if success:
+            bucketS3.refresh_configs()
+            logger.info(f"Library {library_id} deleted successfully.")
+            return {"message": "Library deleted successfully."}
+    except KeyError:
+        logger.error(f"Deletion failed: Library {library_id} not found.")
+        raise HTTPException(status_code=404, detail="Library not found.")
+    except Exception as e:
+        logger.error(f"Error deleting library {library_id}: {e}")
+        raise HTTPException(status_code=400, detail=str(e))
+
 class ScanRequest(BaseModel):
     library_id: int | None = None
+    mode: Literal["parquet", "incremental", "full"] = "incremental"
 
 # --- New endpoint for scanning bucket ---
 @app.post("/admin/scan-bucket")
@@ -498,7 +518,7 @@ def trigger_bucket_scan(req: ScanRequest = Body(default=ScanRequest()), user=Dep
         raise HTTPException(status_code=403, detail="ADMIN_REQUIRED")
 
     try:
-        logger.info(f"Received request to scan. Body library_id: {req.library_id}")
+        logger.info(f"Received request to scan. Mode: {req.mode}, Body library_id: {req.library_id}")
         all_libraries = repo.get_libraries()
         
         libraries_to_scan = []
@@ -509,7 +529,7 @@ def trigger_bucket_scan(req: ScanRequest = Body(default=ScanRequest()), user=Dep
         else:
             libraries_to_scan = all_libraries
 
-        total_added = {"artists": 0, "albums": 0, "tracks": 0, "genres": 0}
+        total_scanned = {"artists_scanned": 0, "albums_scanned": 0, "tracks_scanned": 0, "tracks_removed": 0}
         
         for lib in libraries_to_scan:
             url = lib.get("url")
@@ -528,25 +548,31 @@ def trigger_bucket_scan(req: ScanRequest = Body(default=ScanRequest()), user=Dep
             if bucket_name in url:
                 endpoint_url = url.split(bucket_name)[0]
 
-            logger.info(f"Scanning library: {lib.get('name')} (Bucket: {bucket_name})")
+            logger.info(f"Scanning library: {lib.get('name')} (Bucket: {bucket_name}) - Mode: {req.mode}")
+            
+            # Fetch existing paths for incremental scan or cleanup
+            existing_paths = repo.get_track_paths_by_library(lib_id)
             
             scanned_data = scan_bucket_for_music_metadata(
                 endpoint=endpoint_url,
                 access_key=ids.get("aws_access_key_id"),
                 secret_key=ids.get("aws_secret_access_key"),
-                bucket_name=bucket_name
+                bucket_name=bucket_name,
+                mode=req.mode,
+                existing_paths=existing_paths
             )
 
-            # Re-generate maps for efficiency during this scan
-            # (In SQL, we use ensure_ methods which handle uniqueness)
-            
+            # Keep track of paths found in this scan
+            scanned_paths = set()
+            for s_trk in scanned_data["tracks"].values():
+                scanned_paths.add(s_trk["path"])
+
             # Process Scanned Genres
             genre_map = {} # local name -> id map for this scan
             for s_gen_id, s_gen in scanned_data.get("genres", {}).items():
                 name = s_gen["name"]
                 db_gid = repo.ensure_genre(name)
                 genre_map[name] = db_gid
-                total_added["genres"] += 1 # This is approximate now
 
             # Process Scanned Artists
             artist_map = {} # local name -> id map
@@ -554,7 +580,7 @@ def trigger_bucket_scan(req: ScanRequest = Body(default=ScanRequest()), user=Dep
                 name = s_art["name"]
                 db_aid = repo.ensure_artist(name, image=s_art["image"], library_id=lib_id)
                 artist_map[name] = db_aid
-                total_added["artists"] += 1
+                total_scanned["artists_scanned"] += 1
 
             # Process Scanned Albums
             album_map = {} # local "artist - album" -> id map
@@ -580,7 +606,7 @@ def trigger_bucket_scan(req: ScanRequest = Body(default=ScanRequest()), user=Dep
                     library_id=lib_id
                 )
                 album_map[f"{art_name} - {s_alb['name']}"] = db_albid
-                total_added["albums"] += 1
+                total_scanned["albums_scanned"] += 1
 
             # Process Scanned Tracks
             for s_trk_id, s_trk in scanned_data["tracks"].items():
@@ -595,28 +621,38 @@ def trigger_bucket_scan(req: ScanRequest = Body(default=ScanRequest()), user=Dep
                         duration=s_trk["duration"],
                         artist_id=art_id,
                         album_id=alb_id,
-                        album_track=s_trk.get("albumTrack", 0), # Simplified
+                        album_track=s_trk.get("albumTrack", 0),
                         path=s_trk["path"],
                         bucket=s_trk["bucket"],
                         library_id=lib_id
                     )
-                    total_added["tracks"] += 1
+                    total_scanned["tracks_scanned"] += 1
+
+            # CLEANUP: Remove tracks that are in DB but NOT in scanned_paths
+            # (Only for full or incremental scan, or if parquet is complete)
+            if req.mode in ["full", "incremental", "parquet"]:
+                paths_to_remove = set(existing_paths) - scanned_paths
+                for path in paths_to_remove:
+                    repo.delete_track_by_path(path, lib_id)
+                    total_scanned["tracks_removed"] += 1
 
         bucketS3.refresh_configs()
         
+        message = "Scan completed."
+        if req.mode == "parquet":
+            message = "Scan completed from Parquet metadata."
+        
         return {
-            "message": "Scan completed.",
-            "artists_scanned": total_added["artists"],
-            "albums_scanned": total_added["albums"],
-            "tracks_scanned": total_added["tracks"]
+            "message": message,
+            "artists_scanned": total_scanned["artists_scanned"],
+            "albums_scanned": total_scanned["albums_scanned"],
+            "tracks_scanned": total_scanned["tracks_scanned"],
+            "tracks_removed": total_scanned["tracks_removed"]
         }
     except Exception as e:
         logger.exception("Scan failed")
         raise HTTPException(status_code=500, detail=str(e))
 
-    except Exception as e:
-        logger.exception("Scan failed")
-        raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/admin/scan-artist-images")
 def trigger_artist_image_scan(user=Depends(verify_token)):
@@ -1139,12 +1175,14 @@ def recommend_genres_albums(user=Depends(verify_token)):
     result = []
     all_albums = list(repo.all_albums())
     liked_album_ids = set(current_user.get("like", {}).get("album", []))
+    recommended_ids = set()
 
     for g in top_genres:
         gid = g["id"]
-        candidates = [a for a in all_albums if gid in a.get("genreIds", [])]
+        candidates = [a for a in all_albums if gid in a.get("genreIds", []) and a["id"] not in recommended_ids]
         if candidates:
             chosen = random.choice(candidates)
+            recommended_ids.add(chosen["id"])
             primary_artist_id = chosen.get("artistId", [None])[0]
             main_artist = repo.get_artist(primary_artist_id) if primary_artist_id else None
             

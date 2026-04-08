@@ -287,6 +287,17 @@ class SqliteRepository(BaseRepository):
                 return self._to_dict(lib)
             raise KeyError("Library not found")
 
+    def add_library(self, library_data: dict):
+        with self.SessionLocal() as session:
+            new_lib = Library(
+                name=library_data.get("name"),
+                url=library_data.get("url"),
+                identifiers=library_data.get("identifiers")
+            )
+            session.add(new_lib)
+            session.commit()
+            return self._to_dict(new_lib)
+
     def delete_library(self, library_id: int):
         with self.SessionLocal() as session:
             library = session.query(Library).filter(Library.id == library_id).first()
@@ -371,6 +382,28 @@ class SqliteRepository(BaseRepository):
                 session.commit()
                 return True
             raise KeyError("USER_NOT_FOUND")
+
+    def add_track_to_history(self, user_id: str, track_id: int):
+        with self.SessionLocal() as session:
+            # Check if entry already exists to update timestamp (move to front)
+            session.query(UserHistory).filter(
+                UserHistory.user_id == int(user_id), 
+                UserHistory.track_id == track_id
+            ).delete()
+            
+            new_history = UserHistory(user_id=int(user_id), track_id=track_id)
+            session.add(new_history)
+            
+            # Limit history to 200 items per user
+            history_entries = session.query(UserHistory).filter(
+                UserHistory.user_id == int(user_id)
+            ).order_by(UserHistory.timestamp.desc()).all()
+            
+            if len(history_entries) > 200:
+                for old_entry in history_entries[200:]:
+                    session.delete(old_entry)
+            
+            session.commit()
             
     # Methods for scanning
     def ensure_genre(self, name):
@@ -445,3 +478,13 @@ class SqliteRepository(BaseRepository):
                 session.commit()
                 return True
             return False
+
+    def get_track_paths_by_library(self, library_id: int):
+        with self.SessionLocal() as session:
+            tracks = session.query(Track).filter(Track.library_id == library_id).all()
+            return [t.path for t in tracks]
+
+    def delete_track_by_path(self, path: str, library_id: int):
+        with self.SessionLocal() as session:
+            session.query(Track).filter(Track.path == path, Track.library_id == library_id).delete()
+            session.commit()

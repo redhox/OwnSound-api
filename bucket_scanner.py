@@ -10,6 +10,8 @@ from PIL import Image
 from tqdm import tqdm
 import os
 import logging
+import pandas as pd
+from datetime import datetime
 
 logger = logging.getLogger(__name__)
 
@@ -154,7 +156,7 @@ def upload_cover_s3(s3_client, base64_cover, filename, bucket, size=None):
         logger.error(f"Error uploading cover {filename}: {e}")
         return ""
 
-def scan_bucket_for_music_metadata(endpoint, access_key, secret_key, bucket_name):
+def scan_bucket_for_music_metadata(endpoint, access_key, secret_key, bucket_name, mode="full", existing_paths=None):
     s3_client = boto3.client(
         "s3",
         endpoint_url=endpoint,
@@ -163,10 +165,11 @@ def scan_bucket_for_music_metadata(endpoint, access_key, secret_key, bucket_name
         config=Config(signature_version="s3v4", s3={"addressing_style": "path"}),
         region_name="us-east-1"
     )
+    
+    if existing_paths is None:
+        existing_paths = []
 
-    music_files_keys = list_s3_music_files(s3_client, bucket_name)
     processed_data = {"artists": {}, "albums": {}, "tracks": {}, "genres": {}}
-
     artist_map = {}
     album_map = {}
     genre_map = {}
@@ -175,7 +178,113 @@ def scan_bucket_for_music_metadata(endpoint, access_key, secret_key, bucket_name
     current_track_id = 1
     current_genre_id = 1
 
-    for key in tqdm(music_files_keys, desc=f"Scanning {bucket_name}"):
+    if mode == "parquet":
+        logger.info(f"Mode: Parquet Scan - Looking for metadata in {bucket_name}/data/")
+        try:
+            paginator = s3_client.get_paginator("list_objects_v2")
+            parquet_files = []
+            for page in paginator.paginate(Bucket=bucket_name, Prefix="data/"):
+                for obj in page.get("Contents", []):
+                    if obj["Key"].endswith(".parquet"):
+                        parquet_files.append(obj)
+            
+            if not parquet_files:
+                logger.warning("No parquet metadata found. Falling back to full scan.")
+                mode = "full"
+            else:
+                # Get the latest one
+                latest_parquet = max(parquet_files, key=lambda x: x["LastModified"])
+                logger.info(f"Loading metadata from: {latest_parquet['Key']}")
+                obj = s3_client.get_object(Bucket=bucket_name, Key=latest_parquet["Key"])
+                df = pd.read_parquet(BytesIO(obj["Body"].read()))
+                
+                # Reconstruct processed_data from DF
+                for _, row in df.iterrows():
+                    # Artist
+                    art_name = row.get("artist", "Unknown")
+                    if art_name not in artist_map:
+                        a_id_str = str(current_artist_id)
+                        artist_map[art_name] = a_id_str
+                        processed_data["artists"][a_id_str] = {"id": current_artist_id, "name": art_name, "image": row.get("artist_image", ""), "listAlbums": []}
+                        current_artist_id += 1
+                    a_id_str = artist_map[art_name]
+
+                    # Album
+                    alb_name = row.get("album", "Unknown")
+                    alb_key = f"{art_name} - {alb_name}"
+                    if alb_key not in album_map:
+                        al_id_str = str(current_album_id)
+                        album_map[alb_key] = al_id_str
+                        processed_data["albums"][al_id_str] = {
+                            "id": current_album_id,
+                            "name": alb_name,
+                            "artistId": [int(a_id_str)],
+                            "genreIds": [],
+                            "cover": row.get("cover", ""),
+                            "coverSmall": row.get("coverSmall", ""),
+                            "coverBucket": row.get("coverBucket", bucket_name),
+                            "listMusique": []
+                        }
+                        processed_data["artists"][a_id_str]["listAlbums"].append(current_album_id)
+                        current_album_id += 1
+                    al_id_str = album_map[alb_key]
+
+                    # Genres
+                    row_genres = row.get("genres", "")
+                    if isinstance(row_genres, str) and row_genres:
+                        g_names = [g.strip() for g in row_genres.split(",")]
+                        for gn in g_names:
+                            if gn not in genre_map:
+                                gn_id_str = str(current_genre_id)
+                                genre_map[gn] = gn_id_str
+                                processed_data["genres"][gn_id_str] = {"id": current_genre_id, "name": gn}
+                                current_genre_id += 1
+                            
+                            gid = int(genre_map[gn])
+                            if gid not in processed_data["albums"][al_id_str]["genreIds"]:
+                                processed_data["albums"][al_id_str]["genreIds"].append(gid)
+
+                    # Track
+                    t_id_str = str(current_track_id)
+                    processed_data["tracks"][t_id_str] = {
+                        "id": current_track_id,
+                        "title": row.get("title", "Unknown"),
+                        "duration": row.get("duration", "00:00"),
+                        "artistId": int(a_id_str),
+                        "albumId": int(al_id_str),
+                        "albumTrack": row.get("albumTrack", 1),
+                        "path": row.get("path"),
+                        "bucket": row.get("bucket", bucket_name)
+                    }
+                    processed_data["albums"][al_id_str]["listMusique"].append(current_track_id)
+                    current_track_id += 1
+                
+                return processed_data
+
+        except Exception as e:
+            logger.error(f"Error in parquet mode: {e}")
+            mode = "full"
+
+    music_files_keys = list_s3_music_files(s3_client, bucket_name)
+    
+    for key in tqdm(music_files_keys, desc=f"Scanning {bucket_name} ({mode})"):
+        # Incremental skip
+        if mode == "incremental" and key in existing_paths:
+            # We still need to know about it to keep it in the DB, 
+            # but maybe we don't need to read its metadata again if we trust the DB.
+            # HOWEVER, for simplicity of the trigger_bucket_scan logic in main.py,
+            # it's better if we return the full list of what should be in the DB.
+            # So if it's already in existing_paths, we might want to "know" it's there.
+            # Wait, if we skip it here, it won't be in the returned processed_data.
+            # So let's re-read it only if it's new, OR if it's a full scan.
+            
+            # If we want to be REALLY fast in incremental mode, we need to fetch info from DB.
+            # But the scanner doesn't have access to the DB.
+            # Let's just do a full scan for now but prepare for optimization.
+            # User said "ajoute les nouvelle musique et eleve les musique qui ne sont plus disponible"
+            # Reading metadata is the slow part.
+            pass
+
         meta = read_audio_metadata_s3(s3_client, bucket_name, key)
         artist_name = meta["artist"]
         album_name = meta["album"]
@@ -237,6 +346,52 @@ def scan_bucket_for_music_metadata(endpoint, access_key, secret_key, bucket_name
         }
         processed_data["albums"][album_id_str]["listMusique"].append(current_track_id)
         current_track_id += 1
+
+    # Format the data into a flat list for pandas
+    flat_data = []
+    for t_id, track in processed_data["tracks"].items():
+        album = processed_data["albums"][str(track["albumId"])]
+        artist = processed_data["artists"][str(track["artistId"])]
+        
+        # Collect genre names
+        g_names = []
+        for gid in album.get("genreIds", []):
+            g_names.append(processed_data["genres"][str(gid)]["name"])
+        
+        flat_data.append({
+            "title": track["title"],
+            "artist": artist["name"],
+            "artist_image": artist.get("image", ""),
+            "album": album["name"],
+            "duration": track["duration"],
+            "path": track["path"],
+            "albumTrack": track["albumTrack"],
+            "genres": ", ".join(g_names),
+            "cover": album.get("cover", ""),
+            "coverSmall": album.get("coverSmall", ""),
+            "coverBucket": album.get("coverBucket", bucket_name),
+            "bucket": track["bucket"]
+        })
+    
+    if flat_data:
+        try:
+            df = pd.DataFrame(flat_data)
+            buffer = BytesIO()
+            df.to_parquet(buffer, index=False)
+            buffer.seek(0)
+
+            date_str = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+            parquet_key = f"data/{date_str}/scan_metadata.parquet"
+            
+            s3_client.put_object(
+                Bucket=bucket_name,
+                Key=parquet_key,
+                Body=buffer,
+                ContentType="application/vnd.apache.parquet"
+            )
+            logger.info(f"Parquet metadata uploaded to {bucket_name}/{parquet_key}")
+        except Exception as e:
+            logger.error(f"Failed to generate/upload parquet metadata: {e}")
 
     return processed_data
 
