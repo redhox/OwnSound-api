@@ -19,6 +19,9 @@ def get_s3_client_for_library(library):
     ids = library.get("identifiers", {})
     
     bucket_name = ids.get("bucket_name")
+    if bucket_name:
+        bucket_name = bucket_name.rstrip("/")
+    
     if not bucket_name and url:
         try: bucket_name = url.rstrip("/").split("/")[-1]
         except: pass

@@ -404,6 +404,32 @@ class SqliteRepository(BaseRepository):
                     session.delete(old_entry)
             
             session.commit()
+
+    def delete_user(self, user_id: str):
+        with self.SessionLocal() as session:
+            user = session.query(User).filter(User.id == int(user_id)).first()
+            if not user:
+                raise KeyError("USER_NOT_FOUND")
+            
+            # Delete playlists owned by the user
+            user_playlists = session.query(Playlist).filter(Playlist.owner_id == int(user_id)).all()
+            for pl in user_playlists:
+                # Clean up playlist associations
+                session.query(PlaylistTrack).filter(PlaylistTrack.playlist_id == pl.id).delete()
+                session.execute(user_like_playlists.delete().where(user_like_playlists.c.playlist_id == pl.id))
+                session.delete(pl)
+            
+            # Clean up user's likes
+            session.execute(user_like_tracks.delete().where(user_like_tracks.c.user_id == int(user_id)))
+            session.execute(user_like_albums.delete().where(user_like_albums.c.user_id == int(user_id)))
+            session.execute(user_like_artists.delete().where(user_like_artists.c.user_id == int(user_id)))
+            session.execute(user_like_playlists.delete().where(user_like_playlists.c.user_id == int(user_id)))
+            
+            # history is handled by cascade="all, delete-orphan" in User model
+            
+            session.delete(user)
+            session.commit()
+            return True
             
     # Methods for scanning
     def ensure_genre(self, name):
@@ -488,3 +514,16 @@ class SqliteRepository(BaseRepository):
         with self.SessionLocal() as session:
             session.query(Track).filter(Track.path == path, Track.library_id == library_id).delete()
             session.commit()
+
+    def search(self, query: str):
+        q = f"%{query.lower()}%"
+        with self.SessionLocal() as session:
+            tracks = session.query(Track).filter(Track.title.ilike(q)).limit(50).all()
+            albums = session.query(Album).filter(Album.name.ilike(q)).limit(50).all()
+            artists = session.query(Artist).filter(Artist.name.ilike(q)).limit(50).all()
+            
+            return {
+                "tracks": [self._to_dict(t) for t in tracks],
+                "albums": [self._to_dict(a) for a in albums],
+                "artists": [self._to_dict(art) for art in artists]
+            }

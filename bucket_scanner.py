@@ -18,12 +18,11 @@ logger = logging.getLogger(__name__)
 # =====================
 # CONFIGURATION
 # =====================
-# Moved to API environment variables or configuration if possible, but hardcoding for now based on scan_2_json.py
-ENDPOINT = os.environ.get("S3_ENDPOINT", "https://bucket.morgan-coulm.fr")
-ACCESS_KEY = os.environ.get("S3_ACCESS_KEY", "Xx2z3G6Yhl1ABsPa4Eic")
-SECRET_KEY = os.environ.get("S3_SECRET_KEY", "LnEdVzwA5ve8rmI1tk4Q3MUqpNb6ujOy0RBG9YaZ")
-BUCKET_NAME = os.environ.get("S3_BUCKET_NAME", "music2")
-COVER_PATH_PREFIX = "public/covers/" # Prefix for storing covers in S3
+ENDPOINT = os.environ.get("S3_ENDPOINT", "")
+ACCESS_KEY = os.environ.get("S3_ACCESS_KEY", "")
+SECRET_KEY = os.environ.get("S3_SECRET_KEY", "")
+BUCKET_NAME = os.environ.get("S3_BUCKET_NAME", "musique")
+COVER_PATH_PREFIX = "public/covers/" 
 
 AUDIO_EXTENSIONS = [".flac", ".mp3", ".wav", ".m4a", ".aac", ".ogg", ".aiff", ".wma"]
 

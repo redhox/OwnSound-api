@@ -257,6 +257,8 @@ def change_username(payload: ChangeUsernamePayload, user=Depends(verify_token)):
 
     return {"username": payload.username}
 
+from pydantic import BaseModel, Field
+
 class ChangePasswordPayload(BaseModel):
     password: str
 
@@ -271,22 +273,27 @@ def change_password(payload: ChangePasswordPayload, user=Depends(verify_token)):
         raise HTTPException(status_code=400, detail=str(e))
 
 class SetRolePayload(BaseModel):
-    user_id: str
-    role: Literal["user", "admin"]
+    user_id: Any = Field(alias="userId", default=None)
+    role: str
+
+    class Config:
+        populate_by_name = True
 
 @app.post("/admin/user/role")
-def set_role(payload: SetRolePayload, user=Depends(verify_token)):
+def set_role(payload: SetRolePayload = Body(...), user=Depends(verify_token)):
     current = repo.get_user_by_id(user["id"])
     if not current or current.get("role") != "admin":
         raise HTTPException(403, "ADMIN_REQUIRED")
 
+    # Handle alias or direct field
+    uid = payload.user_id
     try:
-        repo.set_user_role(payload.user_id, payload.role)
+        repo.set_user_role(uid, payload.role)
     except Exception as e:
         raise HTTPException(400, str(e))
 
     return {
-        "user_id": payload.user_id,
+        "user_id": uid,
         "role": payload.role
     }
 @app.post("/admin/user/listUser")
@@ -361,6 +368,25 @@ def register(payload: RegisterPayload):
         "email": payload.email,
         "role": "user"
     }
+
+@app.delete("/user")
+def delete_self(user=Depends(verify_token)):
+    try:
+        repo.delete_user(user["id"])
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    return {"message": "Account deleted successfully"}
+
+@app.delete("/admin/user/{user_id}")
+def delete_user_admin(user_id: int, user=Depends(verify_token)):
+    current = repo.get_user_by_id(user["id"])
+    if not current or current.get("role") != "admin":
+        raise HTTPException(403, "ADMIN_REQUIRED")
+    try:
+        repo.delete_user(user_id)
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    return {"message": f"User {user_id} deleted successfully"}
 
 @app.post("/admin/generateToken")
 def generate_token(user=Depends(verify_token)):
@@ -510,6 +536,9 @@ class ScanRequest(BaseModel):
     library_id: int | None = None
     mode: Literal["parquet", "incremental", "full"] = "incremental"
 
+import io
+import csv
+
 # --- New endpoint for scanning bucket ---
 @app.post("/admin/scan-bucket")
 def trigger_bucket_scan(req: ScanRequest = Body(default=ScanRequest()), user=Depends(verify_token)):
@@ -531,12 +560,17 @@ def trigger_bucket_scan(req: ScanRequest = Body(default=ScanRequest()), user=Dep
 
         total_scanned = {"artists_scanned": 0, "albums_scanned": 0, "tracks_scanned": 0, "tracks_removed": 0}
         
+        is_postgres = hasattr(repo, 'copy_to_staging')
+
         for lib in libraries_to_scan:
             url = lib.get("url")
             ids = lib.get("identifiers", {})
             lib_id = lib.get("id")
             
             bucket_name = ids.get("bucket_name")
+            if bucket_name:
+                bucket_name = bucket_name.rstrip("/")
+            
             if not bucket_name and url:
                 try: bucket_name = url.rstrip("/").split("/")[-1]
                 except: continue
@@ -567,69 +601,108 @@ def trigger_bucket_scan(req: ScanRequest = Body(default=ScanRequest()), user=Dep
             for s_trk in scanned_data["tracks"].values():
                 scanned_paths.add(s_trk["path"])
 
-            # Process Scanned Genres
-            genre_map = {} # local name -> id map for this scan
-            for s_gen_id, s_gen in scanned_data.get("genres", {}).items():
-                name = s_gen["name"]
-                db_gid = repo.ensure_genre(name)
-                genre_map[name] = db_gid
-
-            # Process Scanned Artists
-            artist_map = {} # local name -> id map
-            for s_art_id, s_art in scanned_data["artists"].items():
-                name = s_art["name"]
-                db_aid = repo.ensure_artist(name, image=s_art["image"], library_id=lib_id)
-                artist_map[name] = db_aid
-                total_scanned["artists_scanned"] += 1
-
-            # Process Scanned Albums
-            album_map = {} # local "artist - album" -> id map
-            for s_alb_id, s_alb in scanned_data["albums"].items():
-                art_name = scanned_data["artists"][str(s_alb["artistId"][0])]["name"]
-                art_id = artist_map.get(art_name)
+            if is_postgres:
+                # Optimized PostgreSQL Bulk Load
+                output = io.StringIO()
+                writer = csv.writer(output, delimiter='\t')
                 
-                # Get genre IDs for this album
-                s_genre_ids = s_alb.get("genreIds", [])
-                db_genre_ids = []
-                for sgid in s_genre_ids:
-                    gname = scanned_data["genres"][str(sgid)]["name"]
-                    if gname in genre_map:
-                        db_genre_ids.append(genre_map[gname])
-
-                db_albid = repo.ensure_album(
-                    name=s_alb["name"],
-                    artist_id=art_id,
-                    genre_ids=db_genre_ids,
-                    cover=s_alb["cover"],
-                    coverSmall=s_alb["coverSmall"],
-                    coverBucket=s_alb["coverBucket"],
-                    library_id=lib_id
-                )
-                album_map[f"{art_name} - {s_alb['name']}"] = db_albid
-                total_scanned["albums_scanned"] += 1
-
-            # Process Scanned Tracks
-            for s_trk_id, s_trk in scanned_data["tracks"].items():
-                art_name = scanned_data["artists"][str(s_trk["artistId"])]["name"]
-                alb_name = scanned_data["albums"][str(s_trk["albumId"])]["name"]
-                alb_id = album_map.get(f"{art_name} - {alb_name}")
-                art_id = artist_map.get(art_name)
+                for s_trk_id, s_trk in scanned_data["tracks"].items():
+                    art_name = scanned_data["artists"][str(s_trk["artistId"])]["name"]
+                    alb_obj = scanned_data["albums"][str(s_trk["albumId"])]
+                    alb_name = alb_obj["name"]
+                    
+                    # Genres for this album
+                    genre_names = []
+                    for gid in alb_obj.get("genreIds", []):
+                        genre_names.append(scanned_data["genres"][str(gid)]["name"])
+                    
+                    writer.writerow([
+                        art_name,
+                        alb_name,
+                        ",".join(genre_names),
+                        s_trk["title"],
+                        s_trk["duration"],
+                        s_trk.get("albumTrack", 0),
+                        s_trk["path"],
+                        s_trk["bucket"],
+                        alb_obj.get("cover"),
+                        alb_obj.get("coverSmall"),
+                        alb_obj.get("coverBucket"),
+                        alb_obj.get("date"),
+                        lib_id
+                    ])
                 
-                if alb_id and art_id:
-                    repo.add_track(
-                        title=s_trk["title"],
-                        duration=s_trk["duration"],
+                output.seek(0)
+                repo.copy_to_staging(output)
+                repo.bulk_import_from_staging()
+                
+                total_scanned["artists_scanned"] += len(scanned_data["artists"])
+                total_scanned["albums_scanned"] += len(scanned_data["albums"])
+                total_scanned["tracks_scanned"] += len(scanned_data["tracks"])
+            else:
+                # Standard row-by-row load (SQLite)
+                # Process Scanned Genres
+                genre_map = {} # local name -> id map for this scan
+                for s_gen_id, s_gen in scanned_data.get("genres", {}).items():
+                    name = s_gen["name"]
+                    db_gid = repo.ensure_genre(name)
+                    genre_map[name] = db_gid
+
+                # Process Scanned Artists
+                artist_map = {} # local name -> id map
+                for s_art_id, s_art in scanned_data["artists"].items():
+                    name = s_art["name"]
+                    db_aid = repo.ensure_artist(name, image=s_art["image"], library_id=lib_id)
+                    artist_map[name] = db_aid
+                    total_scanned["artists_scanned"] += 1
+
+                # Process Scanned Albums
+                album_map = {} # local "artist - album" -> id map
+                for s_alb_id, s_alb in scanned_data["albums"].items():
+                    art_name = scanned_data["artists"][str(s_alb["artistId"][0])]["name"]
+                    art_id = artist_map.get(art_name)
+                    
+                    # Get genre IDs for this album
+                    s_genre_ids = s_alb.get("genreIds", [])
+                    db_genre_ids = []
+                    for sgid in s_genre_ids:
+                        gname = scanned_data["genres"][str(sgid)]["name"]
+                        if gname in genre_map:
+                            db_genre_ids.append(genre_map[gname])
+
+                    db_albid = repo.ensure_album(
+                        name=s_alb["name"],
                         artist_id=art_id,
-                        album_id=alb_id,
-                        album_track=s_trk.get("albumTrack", 0),
-                        path=s_trk["path"],
-                        bucket=s_trk["bucket"],
+                        genre_ids=db_genre_ids,
+                        cover=s_alb["cover"],
+                        coverSmall=s_alb["coverSmall"],
+                        coverBucket=s_alb["coverBucket"],
                         library_id=lib_id
                     )
-                    total_scanned["tracks_scanned"] += 1
+                    album_map[f"{art_name} - {s_alb['name']}"] = db_albid
+                    total_scanned["albums_scanned"] += 1
+
+                # Process Scanned Tracks
+                for s_trk_id, s_trk in scanned_data["tracks"].items():
+                    art_name = scanned_data["artists"][str(s_trk["artistId"])]["name"]
+                    alb_name = scanned_data["albums"][str(s_trk["albumId"])]["name"]
+                    alb_id = album_map.get(f"{art_name} - {alb_name}")
+                    art_id = artist_map.get(art_name)
+                    
+                    if alb_id and art_id:
+                        repo.add_track(
+                            title=s_trk["title"],
+                            duration=s_trk["duration"],
+                            artist_id=art_id,
+                            album_id=alb_id,
+                            album_track=s_trk.get("albumTrack", 0),
+                            path=s_trk["path"],
+                            bucket=s_trk["bucket"],
+                            library_id=lib_id
+                        )
+                        total_scanned["tracks_scanned"] += 1
 
             # CLEANUP: Remove tracks that are in DB but NOT in scanned_paths
-            # (Only for full or incremental scan, or if parquet is complete)
             if req.mode in ["full", "incremental", "parquet"]:
                 paths_to_remove = set(existing_paths) - scanned_paths
                 for path in paths_to_remove:
@@ -1313,15 +1386,11 @@ class SearchPayload(BaseModel):
 
 @app.post("/search")
 def search(payload: SearchPayload, user=Depends(verify_token)):
-    q = payload.q.lower().strip()
+    q = payload.q.strip()
     if not q:
         return {"tracks": [], "albums": [], "artists": []}
 
-    tracks = [t for t in repo.all_tracks() if q in t["title"].lower()]
-    albums = [a for a in repo.all_albums() if q in a["name"].lower()]
-    artists = [a for a in repo.all_artists() if q in a["name"].lower()]
-
-    return {"tracks": tracks, "albums": albums, "artists": artists}
+    return repo.search(q)
 
 class LikeUpdate(BaseModel):
     id: int

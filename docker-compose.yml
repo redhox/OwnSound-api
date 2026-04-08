@@ -1,18 +1,27 @@
 services:
+  db:
+    image: postgres:15-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${PGUSER:-postgres}
+      POSTGRES_PASSWORD: ${PGPASSWORD:-postgres}
+      POSTGRES_DB: ${PGDATABASE:-musique}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
   backend:
     build: .
+    restart: unless-stopped
     ports:
       - "8000:8000"
     volumes:
       - .:/app
-    environment:
-    # - SECRET_KEY=SUPER_SECRET_KEY_CHANGE_ME
-    # - ALGORITHM=HS256
-    - TOKEN_EXP_SECONDS=86400
-    - URL_EXPIRATION=3600
-    # - AWS_ACCESS_KEY_ID=
-    # - AWS_SECRET_ACCESS_KEY=
-    # - BUCKET_NAME=musique
-    # - AWS_ENDPOINT_URL=
+    env_file:
+      - .env
+    depends_on:
+      - db
 
-    restart: unless-stopped
+volumes:
+  pgdata:

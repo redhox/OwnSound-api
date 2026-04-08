@@ -121,12 +121,16 @@ class S3ContactRepository:
         
         # Robust endpoint extraction
         url = config.get("endpoint_url", "")
-        bucket_name = config["bucket_name"]
-        endpoint = url
-        if bucket_name and bucket_name in url:
-            parts = url.split(f"/{bucket_name}")
-            if len(parts) > 1:
-                endpoint = parts[0]
+        bucket_name = config["bucket_name"].rstrip("/")
+        
+        # Clean endpoint: remove bucket from path and handle trailing slashes
+        endpoint = url.rstrip('/')
+        if bucket_name and bucket_name in endpoint:
+            # Only remove if it's at the end of the URL
+            if endpoint.endswith(f"/{bucket_name}"):
+                endpoint = endpoint[:-(len(bucket_name)+1)]
+        
+        logger.info(f"Setting active S3 client for bucket '{bucket_name}' at endpoint '{endpoint}' (original: '{url}')")
         
         self.active_s3_client = boto3.client(
             's3',
@@ -182,14 +186,13 @@ class S3ContactRepository:
         try:
             client = self.active_s3_client
             if config != self.active_config:
-                # Localized client creation with robust endpoint
+                # Localized client creation with robust endpoint cleanup
                 url = config.get("endpoint_url", "")
                 b_name = config["bucket_name"]
-                endpoint = url
-                if b_name and b_name in url:
-                    parts = url.split(f"/{b_name}")
-                    if len(parts) > 1:
-                        endpoint = parts[0]
+                
+                endpoint = url.rstrip('/')
+                if b_name and endpoint.endswith(f"/{b_name}"):
+                    endpoint = endpoint[:-(len(b_name)+1)]
 
                 client = boto3.client(
                     's3',

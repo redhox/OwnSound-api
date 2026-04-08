@@ -74,7 +74,7 @@ class Artist(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String, index=True)
     image = Column(String)
-    bucket = Column(Integer)
+    bucket = Column(String)
     library_id = Column(Integer, ForeignKey('libraries.id'))
 
 class Album(Base):
@@ -83,7 +83,7 @@ class Album(Base):
     name = Column(String, index=True)
     cover = Column(String)
     coverSmall = Column(String)
-    coverBucket = Column(Integer)
+    coverBucket = Column(String)
     date = Column(String)
     library_id = Column(Integer, ForeignKey('libraries.id'))
     

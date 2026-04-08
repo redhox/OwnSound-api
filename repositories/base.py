@@ -58,3 +58,6 @@ class BaseRepository(ABC):
 
     @abstractmethod
     def update_user_top_genres(self): ...
+
+    @abstractmethod
+    def search(self, query: str): ...
