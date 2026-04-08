@@ -1,6 +1,7 @@
 # /repositories/base.py
 from abc import ABC, abstractmethod
 from typing import List
+from datetime import datetime
 
 class BaseRepository(ABC):
 
@@ -61,3 +62,18 @@ class BaseRepository(ABC):
 
     @abstractmethod
     def search(self, query: str): ...
+
+    @abstractmethod
+    def get_user_by_email(self, email: str): ...
+
+    @abstractmethod
+    def set_reset_token(self, email: str, token: str, expiry: datetime): ...
+
+    @abstractmethod
+    def get_user_by_reset_token(self, token: str): ...
+
+    @abstractmethod
+    def update_password_with_token(self, token: str, hashed_password: str): ...
+
+    @abstractmethod
+    def get_all_active_reset_tokens(self) -> List[dict]: ...

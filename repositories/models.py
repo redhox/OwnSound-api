@@ -49,6 +49,8 @@ class User(Base):
     email = Column(String)
     role = Column(String, default="user")
     created_at = Column(DateTime, default=datetime.utcnow)
+    reset_token = Column(String, nullable=True)
+    reset_token_expiry = Column(DateTime, nullable=True)
     top_genres = Column(JSON, default=list)
     
     # Relationships

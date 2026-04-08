@@ -527,3 +527,47 @@ class SqliteRepository(BaseRepository):
                 "albums": [self._to_dict(a) for a in albums],
                 "artists": [self._to_dict(art) for art in artists]
             }
+
+    def get_user_by_email(self, email: str):
+        with self.SessionLocal() as session:
+            user = session.query(User).filter(User.email == email).first()
+            return self._to_dict(user)
+
+    def set_reset_token(self, email: str, token: str, expiry: datetime):
+        with self.SessionLocal() as session:
+            user = session.query(User).filter(User.email == email).first()
+            if user:
+                user.reset_token = token
+                user.reset_token_expiry = expiry
+                session.commit()
+                return True
+            return False
+
+    def get_user_by_reset_token(self, token: str):
+        with self.SessionLocal() as session:
+            user = session.query(User).filter(User.reset_token == token).first()
+            if user and user.reset_token_expiry > datetime.utcnow():
+                return self._to_dict(user)
+            return None
+
+    def update_password_with_token(self, token: str, hashed_password: str):
+        with self.SessionLocal() as session:
+            user = session.query(User).filter(User.reset_token == token).first()
+            if user and user.reset_token_expiry > datetime.utcnow():
+                user.password = hashed_password
+                user.reset_token = None
+                user.reset_token_expiry = None
+                session.commit()
+                return True
+            return False
+
+    def get_all_active_reset_tokens(self) -> List[dict]:
+        with self.SessionLocal() as session:
+            now = datetime.utcnow()
+            users = session.query(User).filter(User.reset_token != None, User.reset_token_expiry > now).all()
+            return [{
+                "username": u.username,
+                "email": u.email,
+                "token": u.reset_token,
+                "expiry": u.reset_token_expiry.isoformat()
+            } for u in users]

@@ -9,6 +9,10 @@ from auth import verify_token, create_token
 from repositories import repo, bucketS3
 from dotenv import load_dotenv
 import logging
+import uuid
+from datetime import datetime, timedelta
+import smtplib
+from email.mime.text import MIMEText
 
 # Import the bucket scanner
 from bucket_scanner import scan_bucket_for_music_metadata
@@ -89,6 +93,13 @@ def get_base_url_for_bucket(identifier: int | str | None = None) -> str | None:
 # ======================
 class LoginPayload(BaseModel):
     username: str
+    password: str
+
+class ForgotPasswordPayload(BaseModel):
+    email: str
+
+class ResetPasswordPayload(BaseModel):
+    token: str
     password: str
 
 @app.post("/login")
@@ -1410,3 +1421,94 @@ def update_like(payload: LikeUpdate, user=Depends(verify_token)):
         like=payload.like
     )
     return payload
+
+# ======================
+# PASSWORD RESET (MINIMALIST)
+# ======================
+
+MAIL_DUMP_DIR = "mail_dump"
+if not os.path.exists(MAIL_DUMP_DIR):
+    os.makedirs(MAIL_DUMP_DIR)
+
+
+def send_real_email(to_email: str, subject: str, body: str):
+    """
+    Attempts to send an email via SMTP. 
+    Returns True if successful, False otherwise.
+    Configured via env variables: SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_FROM
+    """
+    smtp_host = os.getenv("SMTP_HOST")
+    smtp_port = os.getenv("SMTP_PORT")
+    smtp_user = os.getenv("SMTP_USER")
+    smtp_pass = os.getenv("SMTP_PASS")
+    smtp_from = os.getenv("SMTP_FROM", "no-reply@musique.local")
+
+    if not smtp_host:
+        logger.info("SMTP_HOST not configured, skipping real email sending.")
+        return False
+
+    try:
+        msg = MIMEText(body)
+        msg['Subject'] = subject
+        msg['From'] = smtp_from
+        msg['To'] = to_email
+
+        with smtplib.SMTP(smtp_host, int(smtp_port or 25)) as server:
+            if smtp_user and smtp_pass:
+                server.login(smtp_user, smtp_pass)
+            server.send_message(msg)
+        
+        logger.info(f"Email sent successfully to {to_email} via {smtp_host}")
+        return True
+    except Exception as e:
+        logger.error(f"Failed to send email to {to_email}: {e}")
+        return False
+
+@app.post("/forgot-password")
+def forgot_password(payload: ForgotPasswordPayload):
+    user = repo.get_user_by_email(payload.email)
+    if not user:
+        return {"message": "Si l'adresse existe, un lien a été généré."}
+    
+    token = str(uuid.uuid4())
+    expiry = datetime.utcnow() + timedelta(hours=1)
+    
+    repo.set_reset_token(payload.email, token, expiry)
+    
+    reset_url = f"http://localhost:5173/?reset_token={token}"
+    subject = "Réinitialisation de votre mot de passe OwnSound"
+    body = f"Bonjour {user['username']},\n\nPour réinitialiser votre mot de passe, veuillez cliquer sur le lien ci-dessous :\n{reset_url}\n\nCe lien expirera dans une heure."
+    
+    # 1. Always create the local fallback file
+    mail_filename = os.path.join(MAIL_DUMP_DIR, f"reset_{user['username']}_{token[:8]}.txt")
+    with open(mail_filename, "w") as f:
+        f.write(f"Sujet: {subject}\n\n{body}")
+        
+    # 2. Try real SMTP (optional)
+    smtp_success = send_real_email(payload.email, subject, body)
+    
+    msg = "Un lien de réinitialisation a été généré."
+    if smtp_success:
+        msg += " Un email vous a été envoyé."
+    else:
+        msg += " (Consultez le serveur / mail_dump ou contactez un admin)."
+        
+    logger.info(f"Password reset link generated for {user['username']}: {reset_url}")
+    return {"message": msg}
+
+@app.post("/reset-password")
+def reset_password(payload: ResetPasswordPayload):
+    hashed_pw = get_password_hash(payload.password)
+    success = repo.update_password_with_token(payload.token, hashed_pw)
+    
+    if not success:
+        raise HTTPException(status_code=400, detail="Jeton invalide ou expiré.")
+        
+    return {"message": "Mot de passe mis à jour avec succès."}
+
+@app.get("/admin/active-resets")
+def get_active_resets(user_data: dict = Depends(verify_token)):
+    if user_data.get("role") != "admin":
+        raise HTTPException(status_code=403, detail="Réservé aux admins")
+    
+    return {"active_resets": repo.get_all_active_reset_tokens()}

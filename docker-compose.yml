@@ -22,6 +22,14 @@ services:
       - .env
     depends_on:
       - db
+      - mailserver
+
+  mailserver:
+    image: maildev/maildev
+    restart: unless-stopped
+    ports:
+      - "1080:1080"
+      - "1025:1025"
 
 volumes:
   pgdata:
